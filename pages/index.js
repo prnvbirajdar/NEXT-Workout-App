@@ -1,82 +1,90 @@
-import Head from 'next/head'
+import Link from "next/link";
+
+//import ImageLight from '../assets/img/login-office.jpeg'
+//import ImageDark from '../assets/img/login-office-dark.jpeg'
+//import { GithubIcon, TwitterIcon } from '../icons'
+import { Label, Input, Button } from "@windmill/react-ui";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <main>
+      <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+        <div className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
+          <div className="flex flex-col overflow-y-auto md:flex-row">
+            <div className="h-32 md:h-auto md:w-1/2">
+              <img
+                aria-hidden="true"
+                className="object-cover w-full h-full dark:hidden"
+                //src={ImageLight}
+                alt="Office"
+              />
+              <img
+                aria-hidden="true"
+                className="hidden object-cover w-full h-full dark:block"
+                //src={ImageDark}
+                alt="Office"
+              />
+            </div>
+            <main className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+              <div className="w-full">
+                <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+                  Login
+                </h1>
+                <Label>
+                  <span>Email</span>
+                  <Input
+                    className="mt-1"
+                    type="email"
+                    placeholder="john@doe.com"
+                  />
+                </Label>
 
-      <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+                <Label className="mt-4">
+                  <span>Password</span>
+                  <Input
+                    className="mt-1"
+                    type="password"
+                    placeholder="***************"
+                  />
+                </Label>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="p-3 font-mono text-lg bg-gray-100 rounded-md">
-            pages/index.js
-          </code>
-        </p>
+                <Button block className="mt-4">
+                  <Link href="/home">
+                    <a>Log in</a>
+                  </Link>
+                </Button>
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
+                <hr className="my-8" />
 
-          <a
-            href="https://nextjs.org/learn"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+                <Button block layout="outline">
+                  {/*              <GithubIcon className="w-4 h-4 mr-2" aria-hidden="true" />
+                   */}{" "}
+                  Github
+                </Button>
+                <Button className="mt-4" block layout="outline">
+                  {/* <TwitterIcon className="w-4 h-4 mr-2" aria-hidden="true" /> */}
+                  Twitter
+                </Button>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+                <p className="mt-4">
+                  <Link href="/ForgotPassword">
+                    <a className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline">
+                      Forgot your password?
+                    </a>
+                  </Link>
+                </p>
+                <p className="mt-1">
+                  <Link href="/CreateAccount">
+                    <a className="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline">
+                      Create account
+                    </a>
+                  </Link>
+                </p>
+              </div>
+            </main>
+          </div>
         </div>
-      </main>
-
-      <footer className="flex items-center justify-center w-full h-24 border-t">
-        <a
-          className="flex items-center justify-center"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className="h-4 ml-2" />
-        </a>
-      </footer>
-    </div>
-  )
+      </div>
+    </main>
+  );
 }
