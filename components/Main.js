@@ -10,31 +10,18 @@ import SetReps from "./RepsSets";
 const Main = () => {
   //Workout Log Empty Component
   const [showEmptyLog, setShowEmptyLog] = useState(true);
-  //Body Part Component
-  const [isCardOpen, setIsCardOpen] = useState(false);
-  //Exercise Modal Component
-  const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
-  //Exercise Card Component
-  const [isExerciseOpen, setIsExerciseOpen] = useState(false);
-  //Set and Reps Modal Component
-  const [isSetOpen, setIsSetOpen] = useState(false);
-
-  const [isRepsSetsModalOpen, setIsRepsSetsModalOpen] = useState(false);
-
-  function openRepsSetsModal() {
-    setIsRepsSetsModalOpen(true);
-  }
-  function closeRepsSetsModal() {
-    setIsRepsSetsModalOpen(false);
-  }
-
   const closeEmptyLog = () => setShowEmptyLog(false);
 
+  //Body Part Component
+  const [isCardOpen, setIsCardOpen] = useState(false);
   const openCard = () => setIsCardOpen(true);
   const closeCard = () => setIsCardOpen(false);
+  //Exercise Modal Component
 
-  console.log(isExerciseModalOpen);
+  const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
+  //Exercise Card Component
+  const [isExerciseOpen, setIsExerciseOpen] = useState(false);
   const openExerciseModal = () => setIsExerciseModalOpen(true);
   const closeExerciseModal = () => {
     setIsExerciseModalOpen(false);
@@ -42,9 +29,14 @@ const Main = () => {
     setIsExerciseOpen(true);
   };
 
-  const openSetCard = () => {
-    setIsSetOpen(true);
-  };
+  //Set and Reps Modal Component
+  const [isRepsSetsModalOpen, setIsRepsSetsModalOpen] = useState(false);
+  function openRepsSetsModal() {
+    setIsRepsSetsModalOpen(true);
+  }
+  function closeRepsSetsModal() {
+    setIsRepsSetsModalOpen(false);
+  }
 
   return (
     <div className="flex items-center flex-col sm:m-20">
@@ -71,7 +63,6 @@ const Main = () => {
             </p>
             <AddSet openRepsSetsModal={openRepsSetsModal} />
             <SetReps
-              isSetOpen={isSetOpen}
               isRepsSetsModalOpen={isRepsSetsModalOpen}
               closeRepsSetsModal={closeRepsSetsModal}
             />
