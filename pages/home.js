@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Nav from "../components/Nav";
-import EmptyLog from "../components/EmptyLog";
+import Nav from "../components/Navbar";
+import EmptyLog from "../components/Main";
 import Autocomplete from "../components/Autocomplete";
 import WorkoutList from "../components/WorkoutList";
 
