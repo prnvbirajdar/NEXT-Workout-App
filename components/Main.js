@@ -16,8 +16,8 @@ const Main = () => {
   const [isCardOpen, setIsCardOpen] = useState(false);
   const openCard = () => setIsCardOpen(true);
   const closeCard = () => setIsCardOpen(false);
-  //Exercise Modal Component
 
+  //Exercise Modal Component
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
   //Exercise Card Component
