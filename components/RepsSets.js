@@ -5,7 +5,7 @@ import {
   ModalFooter,
   Button,
 } from "@windmill/react-ui";
-import { Plus, Minus } from "./Icons/Icons";
+import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
 
 const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
   return (
@@ -20,7 +20,10 @@ const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
               </div>
               <div className="flex justify-center pb-2">
                 <Minus />
-                <input className="py-2 rounded w-1/3 border" type="number" />
+                <input
+                  className="py-2 rounded w-1/3 border text-black text-center"
+                  type="number"
+                />
                 <Plus />
               </div>
             </form>
@@ -31,21 +34,21 @@ const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
               <div className="flex justify-center ">
                 <Minus />
 
-                <input className="py-2 rounded w-1/3 border" type="number" />
+                <input
+                  className="py-2 rounded w-1/3 border text-black text-center	"
+                  type="number"
+                />
                 <Plus />
               </div>
             </form>
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button
-            className="w-full sm:w-auto"
-            layout="outline"
-            onClick={closeRepsSetsModal}
-          >
-            Cancel
-          </Button>
-          <Button className="w-full sm:w-auto">Accept</Button>
+          <div onClick={closeRepsSetsModal}>
+            <Delete />
+          </div>
+
+          <Correct />
         </ModalFooter>
       </Modal>
     </div>

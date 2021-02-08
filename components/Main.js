@@ -12,15 +12,18 @@ const Main = () => {
   const [showEmptyLog, setShowEmptyLog] = useState(true);
   const closeEmptyLog = () => setShowEmptyLog(false);
 
-  //Body Part Component
+  //Body Part Card Component
   const [isCardOpen, setIsCardOpen] = useState(false);
   const openCard = () => setIsCardOpen(true);
   const closeCard = () => setIsCardOpen(false);
 
+  //Selected Body Part
+  const [bodyPart, setBodyPart] = useState();
+  console.log(bodyPart);
   //Exercise Modal Component
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
-  //Exercise Card Component
+  //Selected Exercise Card Component
   const [isExerciseOpen, setIsExerciseOpen] = useState(false);
   const openExerciseModal = () => setIsExerciseModalOpen(true);
   const closeExerciseModal = () => {
@@ -46,6 +49,7 @@ const Main = () => {
         closeCard={closeCard}
         openExerciseModal={openExerciseModal}
         isCardOpen={isCardOpen}
+        setBodyPart={setBodyPart}
       />
 
       <AddExercise openCard={openCard} showEmptyLog={showEmptyLog} />
@@ -53,6 +57,7 @@ const Main = () => {
       <AddExerciseModal
         isExerciseModalOpen={isExerciseModalOpen}
         closeExerciseModal={closeExerciseModal}
+        bodyPart={bodyPart}
       />
 
       <div className={`${isExerciseOpen ? "block" : "hidden"} w-1/2 shadow`}>
