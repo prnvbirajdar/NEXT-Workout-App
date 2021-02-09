@@ -11,6 +11,7 @@
     "@headlessui/react": "^0.2.0",
     "@windmill/react-ui": "^0.5.0",
     "autoprefixer": "^10.0.4",
+    "firebase": "^8.2.6",
     "next": "latest",
     "next-themes": "0.0.10",
     "postcss": "^8.1.10",

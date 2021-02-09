@@ -2,8 +2,7 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
-  Button,
+  ModalFooter
 } from "@windmill/react-ui";
 import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
 
