@@ -15,7 +15,6 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
   //firebase.firestore().settings({ experimentalForceLongPolling: true });
 } else {
   console.log("firebase apps already running...");
