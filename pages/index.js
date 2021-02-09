@@ -1,7 +1,12 @@
 import Link from "next/link";
-import { useState } from "react";
-import { auth } from "../components/data/firebase";
-import firebase from "firebase";
+import { useRouter } from 'next/router'
+
+import { useState, useEffect } from "react";
+import {
+  auth,
+  handleGoogleLogin,
+  handleFacebookLogin,
+} from "../components/data/firebase";
 
 //import ImageLight from '../assets/img/login-office.jpeg'
 //import ImageDark from '../assets/img/login-office-dark.jpeg'
@@ -9,66 +14,27 @@ import { Label, Input, Button } from "@windmill/react-ui";
 import { Facebook, Google } from "../components/Icons/Icons";
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleGoogleLogin = () => {
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const router = useRouter()
 
-    auth
-      .signInWithPopup(googleProvider)
-      .then((result) => {
-        /** @type {firebase.auth.OAuthCredential} */
-        var credential = result.credential;
 
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        var token = credential.accessToken;
-        // The signed-in user info.
-        var user = result.user;
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-      });
-  };
+  useEffect(() => {
+    auth.onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        console.log("user", user.photoURL);
+        setIsLoggedIn(true);
+      } else {
+        // No user is signed in.
+        console.log("not signed in");
+      }
+    });
+  }, []);
 
-  const handleFacebookLogin = () => {
-    const facebookProvider = new firebase.auth.FacebookAuthProvider();
-
-    auth
-      .signInWithPopup(facebookProvider)
-      .then((result) => {
-        /** @type {firebase.auth.OAuthCredential} */
-        var credential = result.credential;
-
-        // The signed-in user info.
-        var user = result.user;
-
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-        var accessToken = credential.accessToken;
-
-        // ...
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-
-        // ...
-      });
-  };
-
-  return (
+  return isLoggedIn ? (
+    <div>not signed in</div>
+  ) : (
     <main>
       <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
         <div className="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">

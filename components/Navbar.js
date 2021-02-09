@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Transition } from "@headlessui/react";
 import { Button, WindmillContext } from "@windmill/react-ui";
 import { auth } from "./data/firebase";
+import { useRouter } from "next/router";
 
 const Nav = () => {
   //const [isOpen, setisOpen] = useState(false); //hamburger toggle
@@ -11,6 +12,8 @@ const Nav = () => {
   const { mode, toggleMode } = useContext(WindmillContext); //dark mode
 
   const wrapperRef = useRef(null);
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -131,6 +134,7 @@ const Nav = () => {
                           .signOut()
                           .then(() => {
                             // Sign-out successful.
+                            router.push("/");
                           })
                           .catch((error) => {
                             // An error happened.

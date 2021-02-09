@@ -17,6 +17,7 @@
     "postcss": "^8.1.10",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-firebaseui": "^4.1.0",
     "tailwindcss": "^2.0.2"
   }
 }
