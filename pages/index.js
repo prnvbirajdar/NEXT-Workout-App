@@ -1,12 +1,23 @@
 import Link from "next/link";
+import { useState } from "react";
+import firebase from "firebase";
 
 //import ImageLight from '../assets/img/login-office.jpeg'
 //import ImageDark from '../assets/img/login-office-dark.jpeg'
-//import { GithubIcon, TwitterIcon } from '../icons'
 import { Label, Input, Button } from "@windmill/react-ui";
-import { Facebook, Gmail, Google } from "../components/Icons/Icons";
+import { Facebook, Google } from "../components/Icons/Icons";
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  const handleGoogleLogin = () => {
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+  };
+
+  const handleFacebookLogin = () => {
+    const facebookProvider = new firebase.auth.FacebookAuthProvider();
+  };
+
   return (
     <main>
       <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -57,13 +68,18 @@ export default function Home() {
 
                 <hr className="my-8" />
 
-                <Button block layout="outline">
+                <Button block layout="outline" onClick={handleGoogleLogin}>
                   <div className="mr-2">
                     <Google />{" "}
                   </div>
                   Sign in with Google
                 </Button>
-                <Button className="mt-4" block layout="outline">
+                <Button
+                  className="mt-4"
+                  block
+                  layout="outline"
+                  onClick={handleFacebookLogin}
+                >
                   <div className="mr-2">
                     <Facebook />
                   </div>
