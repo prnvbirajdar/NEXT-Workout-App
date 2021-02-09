@@ -4,6 +4,7 @@ import Link from "next/link";
 //import ImageDark from '../assets/img/login-office-dark.jpeg'
 //import { GithubIcon, TwitterIcon } from '../icons'
 import { Label, Input, Button } from "@windmill/react-ui";
+import { Facebook, Gmail, Google } from "../components/Icons/Icons";
 
 export default function Home() {
   return (
@@ -57,13 +58,16 @@ export default function Home() {
                 <hr className="my-8" />
 
                 <Button block layout="outline">
-                  {/*              <GithubIcon className="w-4 h-4 mr-2" aria-hidden="true" />
-                   */}{" "}
-                  Gmail
+                  <div className="mr-2">
+                    <Google />{" "}
+                  </div>
+                  Sign in with Google
                 </Button>
                 <Button className="mt-4" block layout="outline">
-                  {/* <TwitterIcon className="w-4 h-4 mr-2" aria-hidden="true" /> */}
-                  Facebook
+                  <div className="mr-2">
+                    <Facebook />
+                  </div>
+                  Sign in with Facebook
                 </Button>
 
                 <p className="mt-4">
