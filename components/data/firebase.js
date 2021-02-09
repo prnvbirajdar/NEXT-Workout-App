@@ -23,6 +23,20 @@ if (firebase.apps.length === 0) {
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+const uiConfig = {
+  // Popup signin flow rather than redirect flow.
+  signInFlow: "popup",
+  // We will display Google and Facebook as auth providers.
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+  ],
+  callbacks: {
+    // Avoid redirects after sign-in.
+    signInSuccessWithAuthResult: () => false,
+  },
+};
+
 const handleGoogleLogin = () => {
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
@@ -61,7 +75,6 @@ const handleFacebookLogin = () => {
 
       // The signed-in user info.
       var user = result.user;
-      console.log(user.photoURL);
 
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
       var accessToken = credential.accessToken;
@@ -81,4 +94,4 @@ const handleFacebookLogin = () => {
     });
 };
 
-export { auth, db, handleGoogleLogin, handleFacebookLogin };
+export { auth, db, handleGoogleLogin, handleFacebookLogin, uiConfig };

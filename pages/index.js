@@ -1,39 +1,20 @@
-import Link from "next/link";
-import { useRouter } from 'next/router'
-
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { useState, useEffect } from "react";
-import {
-  auth,
-  handleGoogleLogin,
-  handleFacebookLogin,
-} from "../components/data/firebase";
+import { auth, uiConfig } from "../components/data/firebase";
 
-//import ImageLight from '../assets/img/login-office.jpeg'
-//import ImageDark from '../assets/img/login-office-dark.jpeg'
-import { Label, Input, Button } from "@windmill/react-ui";
-import { Facebook, Google } from "../components/Icons/Icons";
+import Dashboard from "../components/Dashboard";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const router = useRouter()
-
-
   useEffect(() => {
-    auth.onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        console.log("user", user.photoURL);
-        setIsLoggedIn(true);
-      } else {
-        // No user is signed in.
-        console.log("not signed in");
-      }
+    auth.onAuthStateChanged((user) => {
+      setIsLoggedIn(!!user);
     });
   }, []);
 
   return isLoggedIn ? (
-    <div>not signed in</div>
+    <Dashboard />
   ) : (
     <main>
       <div className="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
@@ -54,25 +35,7 @@ export default function Home() {
               />
             </div>
             <main className="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-              <div className="w-full">
-                <Button block layout="outline" onClick={handleGoogleLogin}>
-                  <div className="mr-2">
-                    <Google />{" "}
-                  </div>
-                  Sign in with Google
-                </Button>
-                <Button
-                  className="mt-4"
-                  block
-                  layout="outline"
-                  onClick={handleFacebookLogin}
-                >
-                  <div className="mr-2">
-                    <Facebook />
-                  </div>
-                  Sign in with Facebook
-                </Button>
-              </div>
+              <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
             </main>
           </div>
         </div>
@@ -80,6 +43,26 @@ export default function Home() {
     </main>
   );
 }
+
+//import Link from "next/link";
+//import ImageLight from '../assets/img/login-office.jpeg'
+//import ImageDark from '../assets/img/login-office-dark.jpeg'
+//import { Label, Input, Button } from "@windmill/react-ui";
+//import { Facebook, Google } from "../components/Icons/Icons";
+
+// useEffect(() => {
+//   auth.onAuthStateChanged( (user)=> {
+//     if (user) {
+//       // User is signed in.
+//       console.log("user", user.photoURL);
+//       setIsLoggedIn(true);
+//       router.push("/home");
+//     } else {
+//       // No user is signed in.
+//       console.log("not signed in");
+//     }
+//   });
+// }, []);
 
 // <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
 //                   Login
@@ -109,6 +92,26 @@ export default function Home() {
 //                 </Button>
 
 //                 <hr className="my-8" />
+
+// <div className="w-full">
+//               <Button block layout="outline" onClick={handleGoogleLogin}>
+//                 <div className="mr-2">
+//                   <Google />{" "}
+//                 </div>
+//                 Sign in with Google
+//               </Button>
+//               <Button
+//                 className="mt-4"
+//                 block
+//                 layout="outline"
+//                 onClick={handleFacebookLogin}
+//               >
+//                 <div className="mr-2">
+//                   <Facebook />
+//                 </div>
+//                 Sign in with Facebook
+//               </Button>
+// </div>
 
 // <p className="mt-4">
 // <Link href="/ForgotPassword">
