@@ -3,7 +3,7 @@ import { Transition } from "@headlessui/react";
 import { WindmillContext } from "@windmill/react-ui";
 import { useAuth } from "./data/authProvider";
 import { Moon, Sun } from "./Icons/Icons";
-import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Nav = () => {
   const [current, setCurrent] = useState("first"); //highlight nav options on large screens
@@ -15,7 +15,7 @@ const Nav = () => {
 
   const { user, logout } = useAuth(); //firebase context
 
-  // console.log(user.displayName, user.photoURL);
+  const router = useRouter();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -124,6 +124,7 @@ const Nav = () => {
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
                         tabIndex="0"
+                        onClick={() => router.push("/profile")}
                       >
                         Profile
                       </a>
