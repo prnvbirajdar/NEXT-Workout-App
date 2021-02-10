@@ -1,12 +1,10 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { Transition } from "@headlessui/react";
 import { WindmillContext } from "@windmill/react-ui";
-import { useRouter } from "next/router";
 import { useAuth } from "./data/authProvider";
 import { Moon, Sun } from "./Icons/Icons";
 
 const Nav = () => {
-  //const [isOpen, setisOpen] = useState(false); //hamburger toggle
   const [current, setCurrent] = useState("first"); //highlight nav options on large screens
   const [profileOpen, setProfileOpen] = useState(false); //profile toggle
 
@@ -14,9 +12,7 @@ const Nav = () => {
 
   const wrapperRef = useRef(null);
 
-  const router = useRouter();
-
-  const { logout } = useAuth();
+  const { logout } = useAuth(); //firebase context
 
   useEffect(() => {
     const handleClickOutside = (event) => {

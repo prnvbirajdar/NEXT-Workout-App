@@ -27,6 +27,7 @@ const Login = () => {
                 <h1 className="mb-2 text-xl font-semibold text-gray-700 dark:text-gray-200">
                   Login
                 </h1>
+                {/*StyledFirebaseAuth gives the out of box Google and Facebook login*/}
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
               </div>
             </main>

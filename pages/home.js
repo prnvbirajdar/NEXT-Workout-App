@@ -1,24 +1,11 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
-
 import Nav from "../components/Navbar";
 import Main from "../components/Main";
 import { useAuth } from "../components/data/authProvider";
 
-import Autocomplete from "../components/Autocomplete";
-import WorkoutList from "../components/WorkoutList";
-
 const Home = () => {
-  const [reps, setReps] = useState(0); //input reps
-  const [weight, setWeight] = useState(0); //input weights
-  const [inputText, setinputText] = useState(""); //search input
-  const [dailyExercises, setDailyExercises] = useState([]); //array of all the exercises
-  const [exerciseObj, setExerciseObj] = useState({
-    exercise: "",
-    time: "",
-    data: [],
-  });
-
+  //if login credentials of user disappear, revert back to login page
   const router = useRouter();
 
   const { user } = useAuth();
@@ -33,7 +20,27 @@ const Home = () => {
     <div>
       <Nav />
       <Main />
-      {/*
+    </div>
+  );
+};
+
+export default Home;
+
+// import Autocomplete from "../components/Autocomplete";
+// import WorkoutList from "../components/WorkoutList";
+
+// const [reps, setReps] = useState(0); //input reps
+// const [weight, setWeight] = useState(0); //input weights
+// const [inputText, setinputText] = useState(""); //search input
+// const [dailyExercises, setDailyExercises] = useState([]); //array of all the exercises
+// const [exerciseObj, setExerciseObj] = useState({
+//   exercise: "",
+//   time: "",
+//   data: [],
+// });
+
+{
+  /*
         <Autocomplete
         inputText={inputText}
         setinputText={setinputText}
@@ -65,9 +72,5 @@ const Home = () => {
         setReps={setReps}
         weight={weight}
         setWeight={setWeight}
-      />*/}
-    </div>
-  );
-};
-
-export default Home;
+      />*/
+}
