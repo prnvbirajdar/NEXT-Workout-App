@@ -4,6 +4,7 @@ import { Button, WindmillContext } from "@windmill/react-ui";
 import { auth } from "./data/firebase";
 import { useRouter } from "next/router";
 import { useAuth } from "./data/authProvider";
+import { Moon, Sun } from "./Icons/Icons";
 
 const Nav = () => {
   //const [isOpen, setisOpen] = useState(false); //hamburger toggle
@@ -76,7 +77,16 @@ const Nav = () => {
           </div>
           <div className=" md:block">
             <div className="ml-4 flex items-center md:ml-6">
-              <Button onClick={toggleMode}>{mode}</Button>
+              <button
+                onClick={toggleMode}
+                className="bg-gray-200 focus:ring focus:ring-gray-500 dark:bg-gray-600 focus:outline-none rounded-md p-1.5"
+              >
+                {mode === "dark" ? (
+                  <Moon aria-hidden="true" />
+                ) : (
+                  <Sun aria-hidden="true" />
+                )}
+              </button>
               <div className="ml-3 relative" ref={wrapperRef}>
                 <div>
                   <button
