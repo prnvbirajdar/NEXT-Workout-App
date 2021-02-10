@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { auth } from "./firebase";
+import { useRouter } from "next/router";
 
 const AuthContext = createContext({
   user: null,
@@ -10,27 +11,29 @@ const AuthContext = createContext({
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(setCurrentUser);
-  // }, []);
+
+  const router = useRouter();
 
   useEffect(() => {
     const cancelAuthListener = auth.onAuthStateChanged((u) => {
-      //setIsLoggedIn(!!user);
       setUser(u);
       setLoading(false);
-      // const { displayName, email } = user;
-      // setCurrentUser({
-      //   displayName,
-      //   email,
-      // });
     });
 
     return () => cancelAuthListener();
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, logout:()=> auth.signOut() }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        logout: () => {
+          auth.signOut();
+          router.push("/");
+        },
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

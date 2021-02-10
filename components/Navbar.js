@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { Transition } from "@headlessui/react";
-import { Button, WindmillContext } from "@windmill/react-ui";
-import { auth } from "./data/firebase";
+import { WindmillContext } from "@windmill/react-ui";
 import { useRouter } from "next/router";
 import { useAuth } from "./data/authProvider";
 import { Moon, Sun } from "./Icons/Icons";

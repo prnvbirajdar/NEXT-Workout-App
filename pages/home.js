@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import Nav from "../components/Navbar";
 import Main from "../components/Main";
+import { useAuth } from "../components/data/authProvider";
+
 import Autocomplete from "../components/Autocomplete";
 import WorkoutList from "../components/WorkoutList";
 
@@ -15,6 +18,16 @@ const Home = () => {
     time: "",
     data: [],
   });
+
+  const router = useRouter();
+
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user]);
 
   return (
     <div>

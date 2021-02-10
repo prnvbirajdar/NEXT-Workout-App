@@ -1,15 +1,25 @@
+import { useEffect } from "react";
 import { useAuth } from "../components/data/authProvider";
 import Dashboard from "../components/Dashboard";
 import Login from "../components/Login";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const { user, loading } = useAuth();
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push("/home");
+    }
+  }, [user]);
 
   console.log(user);
 
   if (loading) return null;
 
-  return user ? <Dashboard /> : <Login />;
+  return !user && <Login />;
 }
 
 //import Link from "next/link";
