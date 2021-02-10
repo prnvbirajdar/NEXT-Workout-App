@@ -3,6 +3,7 @@ import { Transition } from "@headlessui/react";
 import { Button, WindmillContext } from "@windmill/react-ui";
 import { auth } from "./data/firebase";
 import { useRouter } from "next/router";
+import { useAuth } from "./data/authProvider";
 
 const Nav = () => {
   //const [isOpen, setisOpen] = useState(false); //hamburger toggle
@@ -14,6 +15,8 @@ const Nav = () => {
   const wrapperRef = useRef(null);
 
   const router = useRouter();
+
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -129,18 +132,7 @@ const Nav = () => {
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       role="menuitem"
                       tabIndex="0"
-                      onClick={() =>
-                        auth
-                          .signOut()
-                          .then(() => {
-                            // Sign-out successful.
-                            router.push("/");
-                          })
-                          .catch((error) => {
-                            // An error happened.
-                            console.log(error, "Sign-out error");
-                          })
-                      }
+                      onClick={logout}
                     >
                       Sign out
                     </a>

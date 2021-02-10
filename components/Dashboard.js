@@ -1,11 +1,11 @@
-import Nav from "./Navbar";
-import EmptyLog from "./EmptyLog";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 const Dashboard = () => {
   return (
     <div>
-      <Nav />
-      <EmptyLog />
+      <Navbar/>
+      <Main />
     </div>
   );
 };

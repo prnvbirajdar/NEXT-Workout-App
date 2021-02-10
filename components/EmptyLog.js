@@ -1,5 +1,4 @@
-
-const EmptyLog = ({ showEmptyLog, closeEmptyLog }) => {
+const EmptyLog = ({ showEmptyLog, closeEmptyLog}) => {
   return (
     <div
       className={`${
