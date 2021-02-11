@@ -37,7 +37,13 @@ const uiConfig = {
   },
 };
 
-export { auth, db, uiConfig };
+const getPhysicalStats = async (id) => {
+  const snapshot = await db.collection(id).get();
+  const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  console.log(data);
+};
+
+export { auth, db, uiConfig, getPhysicalStats };
 
 // const handleGoogleLogin = () => {
 //     const googleProvider = new firebase.auth.GoogleAuthProvider();

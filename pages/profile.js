@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import ProfileSettings from "../components/Profile/ProfileSettings";
 import { Card, CardBody, Button } from "@windmill/react-ui";
-
+import { getPhysicalStats } from "../components/data/firebase";
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
@@ -12,6 +12,10 @@ const Profile = () => {
   function closeProfileModal() {
     setIsProfileModalOpen(false);
   }
+
+  useEffect(() => {
+    getPhysicalStats("new");
+  }, []);
 
   return (
     <div>
@@ -37,7 +41,10 @@ const Profile = () => {
           </Card>
         </div>
       </div>
-      <ProfileSettings isProfileModalOpen={isProfileModalOpen} closeProfileModal={closeProfileModal}/>
+      <ProfileSettings
+        isProfileModalOpen={isProfileModalOpen}
+        closeProfileModal={closeProfileModal}
+      />
     </div>
   );
 };

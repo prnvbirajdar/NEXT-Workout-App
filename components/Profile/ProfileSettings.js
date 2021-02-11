@@ -7,6 +7,8 @@ import {
   ModalFooter,
 } from "@windmill/react-ui";
 import { useForm } from "react-hook-form";
+import { db } from "../data/firebase";
+import firebase from "firebase/app";
 
 const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
   const [physicalStats, setPhysicalStats] = useState(null);
@@ -21,7 +23,17 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
 
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmit = (data) => setPhysicalStats(data);
+  const onSubmit = (data) => {
+    setPhysicalStats(data);
+    db.collection("new").doc().add({
+      Weight: data.weight,
+      Height: data.Height,
+      "Daily Calories": data.dailyCalories,
+      "Body Fat Percentage": data.bodyFatPercentage,
+      timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+  };
+
   console.log(errors);
 
   //   const handleValueChange = (e) => {

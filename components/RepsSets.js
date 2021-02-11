@@ -1,9 +1,4 @@
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter
-} from "@windmill/react-ui";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
 import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
 
 const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
