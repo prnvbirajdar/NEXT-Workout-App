@@ -14,6 +14,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true); //loading state
 
   const router = useRouter();
+  
 
   //checks if auth works, assign user and loading values
   useEffect(() => {

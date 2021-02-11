@@ -9,6 +9,7 @@ import {
 import { useForm } from "react-hook-form";
 import { db } from "../data/firebase";
 import firebase from "firebase/app";
+import { useAuth } from "../data/authProvider";
 
 const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
   const [physicalStats, setPhysicalStats] = useState(null);
@@ -20,12 +21,13 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
   //     dailyCalories: "",
   //     BMI: "",
   //   });
+  const { user } = useAuth(); //context
 
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = (data) => {
     setPhysicalStats(data);
-    db.collection("new").doc().add({
+    db.collection("new").doc(user.uid).collection("stats").add({
       Weight: data.weight,
       Height: data.Height,
       "Daily Calories": data.dailyCalories,
@@ -34,7 +36,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
     });
   };
 
-  console.log(errors);
+ // console.log(errors);
 
   //   const handleValueChange = (e) => {
   //     const { name, value } = e.target;
@@ -70,7 +72,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
               <input
                 className="py-2 rounded w-1/3 border text-black text-center	"
                 type="number"
-                placeholder="Weight"
+                placeholder="pounds"
                 name="weight"
                 ref={register}
               />
@@ -81,7 +83,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
             <div className="flex justify-center ">
               <input
                 className="py-2 rounded w-1/3 border text-black text-center	"
-                placeholder="Height"
+                placeholder="inches"
                 name="height"
                 ref={register}
               />
@@ -93,7 +95,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
               <input
                 className="py-2 rounded w-1/3 border text-black text-center	"
                 placeholder="Daily Calories"
-                name="dailyCalories"
+                name="calories"
                 ref={register}
               />
             </div>
@@ -106,7 +108,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
                 ref={register}
                 type="number"
                 name="bodyFatPercentage"
-                placeholder="Body Fat Percentage"
+                placeholder="%"
               />
             </div>
             {/*  <div className="text-center text-base p-2">

@@ -5,16 +5,17 @@ import { db } from "../components/data/firebase";
 const SideProg = () => {
   const [text, setText] = React.useState("");
 
-  const { user, loading } = useAuth(); //context
+  const { user} = useAuth(); //context
 
-  console.log(user.uid);
+  //const [textArray, setTextArray] = React.useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    db.collection("random")
+    db.collection("hello")
       .doc(user.uid)
-      .set({
+      .collection("stats")
+      .add({
         message: { text },
       })
       .then(() => {
