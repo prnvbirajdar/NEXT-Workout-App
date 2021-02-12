@@ -25,18 +25,41 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
 
   const { register, handleSubmit, errors } = useForm();
 
+//   const onSubmit = (data) => {
+//     setPhysicalStats(data);
+//     db.collection("new").doc(user.uid).collection("stats").add({
+//       Weight: data.weight,
+//       Height: data.Height,
+//       "Daily Calories": data.dailyCalories,
+//       "Body Fat Percentage": data.bodyFatPercentage,
+//       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+//     });
+//   };
+
+
   const onSubmit = (data) => {
-    setPhysicalStats(data);
-    db.collection("new").doc(user.uid).collection("stats").add({
-      Weight: data.weight,
-      Height: data.Height,
-      "Daily Calories": data.dailyCalories,
-      "Body Fat Percentage": data.bodyFatPercentage,
-      timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    //setPhysicalStats(data);
+    db.collection("profiles")
+      .doc(user.uid)
+      .collection("stats")
+      .add({
+        weight: data.weight,
+        height: data.height,
+        dailyCalories: data.dailyCalories,
+        bodyFatPercentage: data.bodyFatPercentage,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        profileId: user.uid,
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
   };
 
- // console.log(errors);
+
+  // console.log(errors);
 
   //   const handleValueChange = (e) => {
   //     const { name, value } = e.target;
@@ -86,6 +109,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
                 placeholder="inches"
                 name="height"
                 ref={register}
+                type="number"
               />
             </div>
             <div className="text-center text-base p-2">
@@ -97,6 +121,7 @@ const ProfileSettings = ({ closeProfileModal, isProfileModalOpen }) => {
                 placeholder="Daily Calories"
                 name="calories"
                 ref={register}
+                type="number"
               />
             </div>
             <div className="text-center text-base p-2">

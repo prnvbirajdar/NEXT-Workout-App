@@ -23,17 +23,6 @@ const Profile = () => {
   //     }
   //   };
 
-  //console.log(user?.uid);
-
-  //   const getPhysicalStats = async () => {
-  //     await db
-  //       .collection("profiles")
-  //       .onSnapshot((querySnapshot) => {
-  //         console.log(querySnapshot.docs.map(doc=>console.log(doc.data())));
-  //         setPhysicalStats(querySnapshot.docs);
-  //       });
-  //   };
-
   console.log(user?.uid);
 
   const getPhysicalStats = async () => {
@@ -95,41 +84,43 @@ const Profile = () => {
               </p>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col justify-around p-2 m-4">
-                  <label>Weight</label>
-                  <p>{physicalStats.weight ? physicalStats.weight : "0"} lbs</p>
-                  <input type="number" name="weight" ref={register} />
-                  <p>
-                    {physicalStats.height ? physicalStats.height : "0"} inches
-                  </p>
-                  <label>Height</label>
+                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                    <label className="self-end">Weight</label>
+                    <p className="text-xl text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
+                      {physicalStats.weight ? physicalStats.weight : "0"} lbs
+                    </p>
+                  </div>
+                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                    <label className="self-end">Height</label>
+                    <p className="text-xl text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
+                      {physicalStats.height ? physicalStats.height : "0"} inches
+                    </p>
+                  </div>
 
-                  <input type="number" name="height" ref={register} />
-                  <label>Body Fat Percentage</label>
-                  <p>
-                    {physicalStats.bodyFatPercentage
-                      ? physicalStats.bodyFatPercentage
-                      : "0"}{" "}
-                    %
-                  </p>
+                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                    <label className="self-end">Body Fat Percentage</label>
+                    <p className="text-xl text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
+                      {physicalStats.bodyFatPercentage
+                        ? physicalStats.bodyFatPercentage
+                        : "0"}{" "}
+                      %
+                    </p>
+                  </div>
 
-                  <input
-                    type="number"
-                    name="bodyFatPercentage"
-                    ref={register}
-                  />
-                  <label>Daily Calories</label>
-                  <p>
-                    {physicalStats.dailyCalories
-                      ? physicalStats.dailyCalories
-                      : "0"}{" "}
-                    calories
-                  </p>
-                  <input type="number" name="dailyCalories" ref={register} />
+                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                    <label className="self-end">Daily Calories</label>
+                    <p className="text-xl text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
+                      {physicalStats.dailyCalories
+                        ? physicalStats.dailyCalories
+                        : "0"}{" "}
+                      calories
+                    </p>
+                  </div>
                   {/* <label>BMI</label>
                  <p>{BMIdata(physicalStats.height, physicalStats.weight)}</p>*/}
                 </div>
                 <div className="flex justify-end">
-                  <Button type="submit">Save</Button>
+                  <Button onClick={openProfileModal}>EDIT</Button>
                 </div>
               </form>
             </CardBody>
