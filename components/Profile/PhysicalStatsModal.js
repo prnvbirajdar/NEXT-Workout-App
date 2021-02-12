@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Button,
   Modal,
@@ -11,7 +10,7 @@ import { db } from "../data/firebase";
 import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 
-const ProfileSettings = ({
+const PhysicalStatsModal = ({
   closeProfileModal,
   isProfileModalOpen,
   physicalStats,
@@ -20,19 +19,8 @@ const ProfileSettings = ({
 
   const { register, handleSubmit, errors } = useForm();
 
-  //   const onSubmit = (data) => {
-  //     setPhysicalStats(data);
-  //     db.collection("new").doc(user.uid).collection("stats").add({
-  //       Weight: data.weight,
-  //       Height: data.Height,
-  //       "Daily Calories": data.dailyCalories,
-  //       "Body Fat Percentage": data.bodyFatPercentage,
-  //       timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-  //     });
-  //   };
-
-  const onSubmit = (data) => {
-    db.collection("profiles")
+  const onSubmit = async (data) => {
+    await db.collection("profiles")
       .doc(user.uid)
       .collection("stats")
       .add({
@@ -68,7 +56,9 @@ const ProfileSettings = ({
               <input
                 className="py-1 text-lg rounded w-1/3 border text-black text-center	"
                 type="number"
-                placeholder={physicalStats?.weight ? physicalStats?.weight : "0"}
+                placeholder={
+                  physicalStats?.weight ? physicalStats?.weight : "0"
+                }
                 name="weight"
                 ref={register}
               />
@@ -79,7 +69,9 @@ const ProfileSettings = ({
             <div className="flex justify-center ">
               <input
                 className="py-1 text-lg rounded w-1/3 border text-black text-center	"
-                placeholder={physicalStats?.height ? physicalStats?.height : "0"}
+                placeholder={
+                  physicalStats?.height ? physicalStats?.height : "0"
+                }
                 name="height"
                 ref={register}
                 type="number"
@@ -136,4 +128,4 @@ const ProfileSettings = ({
   );
 };
 
-export default ProfileSettings;
+export default PhysicalStatsModal;

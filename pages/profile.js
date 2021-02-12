@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import ProfileSettings from "../components/Profile/ProfileSettings";
+import PhysicalStatsModal from "../components/Profile/PhysicalStatsModal";
 import { Card, CardBody, Button } from "@windmill/react-ui";
 import { useAuth } from "../components/data/authProvider";
 import { db } from "../components/data/firebase";
@@ -10,6 +10,8 @@ const Profile = () => {
   const [physicalStats, setPhysicalStats] = useState([]);
 
   const { user } = useAuth(); //context
+
+  console.log(user);
 
   const getPhysicalStats = async () => {
     await db
@@ -40,12 +42,38 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex justify-center mt-12 pt-5">
+      <div className="flex justify-center mt-8 pt-5">
         <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
           <Card>
             <CardBody>
               <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-center text-xl">
-                Profile Settings
+                Personal Information
+              </p>
+              <div className="flex flex-col justify-around p-2 mx-4 mb-2">
+                <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                  <label className="self-end">Username</label>
+                  <p className=" text-gray-800 font-medium ml-3 capitalize text-right dark:text-gray-100">
+                    {user?.displayName ? user?.displayName : ""}
+                  </p>
+                </div>
+                <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                  <label className="self-end">Email</label>
+                  <p className=" text-gray-800 font-medium ml-3  text-right dark:text-gray-100">
+                    {user?.email ? user?.email : ""}
+                  </p>
+                </div>
+              </div>
+            </CardBody>
+          </Card>
+        </div>
+      </div>
+
+      <div className="flex justify-center mt-8 pt-2">
+        <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
+          <Card>
+            <CardBody>
+              <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-center text-xl">
+                Physical Stats
               </p>
               <div className="flex flex-col justify-around p-2 mx-4 mb-2">
                 <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
@@ -75,7 +103,8 @@ const Profile = () => {
                   <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                     {physicalStats?.bodyFatPercentage
                       ? physicalStats?.bodyFatPercentage
-                      : "0"}%
+                      : "0"}
+                    %
                   </p>
                 </div>
               </div>
@@ -86,7 +115,7 @@ const Profile = () => {
           </Card>
         </div>
       </div>
-      <ProfileSettings
+      <PhysicalStatsModal
         isProfileModalOpen={isProfileModalOpen}
         closeProfileModal={closeProfileModal}
         physicalStats={physicalStats}
