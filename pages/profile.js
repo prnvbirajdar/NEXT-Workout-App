@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import PhysicalStatsModal from "../components/Profile/PhysicalStatsModal";
-import { Card, CardBody, Button } from "@windmill/react-ui";
+import { Card, CardBody, Button, Alert } from "@windmill/react-ui";
 import { useAuth } from "../components/data/authProvider";
 import { db } from "../components/data/firebase";
+import DeleteAccountModal from "../components/Profile/DeleteAccountModal";
 
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const [physicalStats, setPhysicalStats] = useState([]);
 
   const { user } = useAuth(); //context
@@ -31,6 +34,13 @@ const Profile = () => {
   }
   function closeProfileModal() {
     setIsProfileModalOpen(false);
+  }
+
+  function openDeleteModal() {
+    setIsDeleteModalOpen(true);
+  }
+  function closeDeleteModal() {
+    setIsDeleteModalOpen(false);
   }
 
   useEffect(() => {
@@ -120,6 +130,15 @@ const Profile = () => {
         closeProfileModal={closeProfileModal}
         physicalStats={physicalStats}
         setPhysicalStats={setPhysicalStats}
+      />
+      <div className="flex justify-end mb-4 mr-4">
+        <Button layout="outline" onClick={openDeleteModal}>
+          DELETE
+        </Button>
+      </div>
+      <DeleteAccountModal
+        isDeleteModalOpen={isDeleteModalOpen}
+        closeDeleteModal={closeDeleteModal}
       />
     </div>
   );

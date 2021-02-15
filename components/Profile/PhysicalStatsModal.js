@@ -20,7 +20,8 @@ const PhysicalStatsModal = ({
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmit = async (data) => {
-    await db.collection("profiles")
+    await db
+      .collection("profiles")
       .doc(user.uid)
       .collection("stats")
       .add({
@@ -48,6 +49,7 @@ const PhysicalStatsModal = ({
           Physical Stats
         </ModalHeader>
         <ModalBody>
+
           <div className="flex flex-col  text-gray-600 dark:text-gray-200 ">
             <div className="text-center text-base pb-2">
               <label>Weight</label>

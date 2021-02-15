@@ -19,7 +19,7 @@ const SideProg = () => {
       .set({
         name: text,
         address: text2,
-      })
+      }, { merge: true })
       .then(() => {
         console.log("Document successfully written!");
       })
