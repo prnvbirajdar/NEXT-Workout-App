@@ -5,6 +5,8 @@ import { Card, CardBody, Button, Alert } from "@windmill/react-ui";
 import { useAuth } from "../components/data/authProvider";
 import { db } from "../components/data/firebase";
 import DeleteAccountModal from "../components/Profile/DeleteAccountModal";
+import { useRouter } from "next/router";
+import ProfileCard from "../components/Profile/ProfileCard";
 
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -14,7 +16,14 @@ const Profile = () => {
 
   const { user } = useAuth(); //context
 
-  console.log(user);
+  //if login credentials of user disappear, revert back to login page
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
+    }
+  }, [user]);
 
   const getPhysicalStats = async () => {
     await db
@@ -24,7 +33,7 @@ const Profile = () => {
       .orderBy("timeStamp", "desc")
       .limit(1)
       .onSnapshot((querySnapshot) => {
-        console.log(querySnapshot.docs.map((d) => console.log(d.data())));
+        //console.log(querySnapshot.docs.map((d) => console.log(d.data())));
         setPhysicalStats(querySnapshot.docs[0]?.data());
       });
   };
@@ -54,27 +63,7 @@ const Profile = () => {
       <Navbar />
       <div className="flex justify-center mt-8 pt-5">
         <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
-          <Card>
-            <CardBody>
-              <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-center text-xl">
-                Personal Information
-              </p>
-              <div className="flex flex-col justify-around p-2 mx-4 mb-2">
-                <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
-                  <label className="self-end">Username</label>
-                  <p className=" text-gray-800 font-medium ml-3 capitalize text-right dark:text-gray-100">
-                    {user?.displayName ? user?.displayName : ""}
-                  </p>
-                </div>
-                <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
-                  <label className="self-end">Email</label>
-                  <p className=" text-gray-800 font-medium ml-3  text-right dark:text-gray-100">
-                    {user?.email ? user?.email : ""}
-                  </p>
-                </div>
-              </div>
-            </CardBody>
-          </Card>
+          <ProfileCard user={user} />
         </div>
       </div>
 
