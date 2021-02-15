@@ -25,12 +25,16 @@ const PhysicalStatsModal = ({
       .doc(user.uid)
       .collection("stats")
       .add({
-        weight: data.weight,
-        height: data.height,
-        dailyCalories: data.dailyCalories,
-        bodyFatPercentage: data.bodyFatPercentage,
+        stats: {
+          weight: data.weight,
+          height: data.height,
+          dailyCalories: data.dailyCalories,
+          bodyFatPercentage: data.bodyFatPercentage,
+        },
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         profileId: user.uid,
+        userName: user.displayName,
+        userEmail: user.email,
       })
       .then(() => {
         console.log("Document successfully written!");
@@ -49,7 +53,6 @@ const PhysicalStatsModal = ({
           Physical Stats
         </ModalHeader>
         <ModalBody>
-
           <div className="flex flex-col  text-gray-600 dark:text-gray-200 ">
             <div className="text-center text-base pb-2">
               <label>Weight</label>
@@ -59,7 +62,9 @@ const PhysicalStatsModal = ({
                 className="py-1 text-lg rounded w-1/3 border text-black text-center	"
                 type="number"
                 placeholder={
-                  physicalStats?.weight ? physicalStats?.weight : "0"
+                  physicalStats?.stats?.weight
+                    ? physicalStats?.stats?.weight
+                    : "0"
                 }
                 name="weight"
                 ref={register}
@@ -72,7 +77,9 @@ const PhysicalStatsModal = ({
               <input
                 className="py-1 text-lg rounded w-1/3 border text-black text-center	"
                 placeholder={
-                  physicalStats?.height ? physicalStats?.height : "0"
+                  physicalStats?.stats?.height
+                    ? physicalStats?.stats?.height
+                    : "0"
                 }
                 name="height"
                 ref={register}
@@ -86,8 +93,8 @@ const PhysicalStatsModal = ({
               <input
                 className="py-1 text-lg rounded w-1/3 border text-black text-center	"
                 placeholder={
-                  physicalStats?.dailyCalories
-                    ? physicalStats?.dailyCalories
+                  physicalStats?.stats?.dailyCalories
+                    ? physicalStats?.stats?.dailyCalories
                     : "0"
                 }
                 name="dailyCalories"
@@ -105,8 +112,8 @@ const PhysicalStatsModal = ({
                 type="number"
                 name="bodyFatPercentage"
                 placeholder={
-                  physicalStats?.bodyFatPercentage
-                    ? physicalStats?.bodyFatPercentage
+                  physicalStats?.stats?.bodyFatPercentage
+                    ? physicalStats?.stats?.bodyFatPercentage
                     : "0"
                 }
               />

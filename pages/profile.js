@@ -89,20 +89,26 @@ const Profile = () => {
                 <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
                   <label className="self-end">Weight</label>
                   <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
-                    {physicalStats?.weight ? physicalStats?.weight : "0"} pounds
+                    {physicalStats?.stats?.weight
+                      ? physicalStats?.stats?.weight
+                      : "0"}{" "}
+                    pounds
                   </p>
                 </div>
                 <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
                   <label className="self-end">Height</label>
                   <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
-                    {physicalStats?.height ? physicalStats?.height : "0"} inches
+                    {physicalStats?.stats?.height
+                      ? physicalStats?.stats?.height
+                      : "0"}{" "}
+                    inches
                   </p>
                 </div>
                 <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
                   <label className="self-end">Daily Calories</label>
                   <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
-                    {physicalStats?.dailyCalories
-                      ? physicalStats?.dailyCalories
+                    {physicalStats?.stats?.dailyCalories
+                      ? physicalStats?.stats?.dailyCalories
                       : "0"}{" "}
                     calories
                   </p>
@@ -111,8 +117,8 @@ const Profile = () => {
                 <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded">
                   <label className="self-end">Body Fat Percentage</label>
                   <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
-                    {physicalStats?.bodyFatPercentage
-                      ? physicalStats?.bodyFatPercentage
+                    {physicalStats?.stats?.bodyFatPercentage
+                      ? physicalStats?.stats?.bodyFatPercentage
                       : "0"}
                     %
                   </p>

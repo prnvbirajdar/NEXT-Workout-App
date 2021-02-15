@@ -4,12 +4,17 @@ import { db } from "../components/data/firebase";
 import { useEffect } from "react";
 
 const SideProg = () => {
-  const [text, setText] = React.useState("");
-  const [text2, setText2] = React.useState("");
+  const [text, setText] = React.useState({ t1: "", t2: "" });
+  // const [text2, setText2] = React.useState("");
 
   const { user } = useAuth(); //context
 
   //console.log(user?.uid);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setText((prevState) => ({ ...prevState, [name]: value }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,9 +22,9 @@ const SideProg = () => {
     db.collection("cities")
       .doc("LA")
       .set({
-        name: text,
-        address: text2,
-      }, { merge: true })
+        name: text.t1,
+        address: text.t2,
+      })
       .then(() => {
         console.log("Document successfully written!");
       })
@@ -27,8 +32,7 @@ const SideProg = () => {
         console.error("Error writing document: ", error);
       });
 
-    setText("");
-    setText2("");
+    setText({ t1: "", t2: "" });
   };
 
   // const getCityStats = async () => {
@@ -56,17 +60,8 @@ const SideProg = () => {
         onSubmit={handleSubmit}
         className="flex justify-content items-center flex-col"
       >
-        <input
-          className="mb-4"
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <input
-          type="text"
-          value={text2}
-          onChange={(e) => setText2(e.target.value)}
-        />
+        <input className="mb-4" type="text" name="t1" onChange={handleChange} />
+        <input type="text" name="t2" onChange={handleChange} />
         <button type="submit">Send</button>
         <p>Hi</p>
       </form>
@@ -75,4 +70,3 @@ const SideProg = () => {
 };
 
 export default SideProg;
-
