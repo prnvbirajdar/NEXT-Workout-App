@@ -45,7 +45,7 @@ const Main = () => {
   const [currentExerciseData, setCurrentExerciseData] = useState({
     currentExer: "",
     notes: "",
-    sets: [{}],
+    sets: [],
   });
   console.log(currentExerciseData);
 

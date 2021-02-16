@@ -3,6 +3,7 @@ import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
 import { db } from "../components/data/firebase";
 import firebase from "firebase/app";
 import { useAuth } from "../components/data/authProvider";
+import produce from "immer";
 
 const RepsSets = ({
   isRepsSetsModalOpen,
@@ -12,15 +13,34 @@ const RepsSets = ({
 }) => {
   const { user } = useAuth(); //context
 
+  const [currentSet, setCurrentSet] = React.useState({ reps: 0, weight: 0 });
+
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setCurrentExerciseData((prevState) => ({
+  //     ...prevState,
+  //     sets: { ...prevState.sets, [name]: value },
+  //   }));
+  // };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCurrentExerciseData((prevState) => ({
-      ...prevState,
-      sets: { ...prevState.sets, [name]: value },
-    }));
+    setCurrentSet(
+      produce(currentSet, (draft) => {
+        draft[name] = value;
+      })
+    );
   };
 
+  console.log(currentSet);
+
   const handleSubmit = async () => {
+    setCurrentExerciseData(
+      produce(currentExerciseData, (draft) => {
+        draft.sets.push(currentSet);
+      })
+    );
+
     // await db
     //   .collection("profiles")
     //   .doc(user.uid)
@@ -62,6 +82,7 @@ const RepsSets = ({
                   type="number"
                   name="weight"
                   onChange={handleChange}
+                  required
                 />
                 <Plus />
               </div>
@@ -77,6 +98,7 @@ const RepsSets = ({
                   type="number"
                   name="reps"
                   onChange={handleChange}
+                  required
                 />
                 <Plus />
               </div>

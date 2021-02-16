@@ -8,8 +8,6 @@ const AddExerciseModal = ({
   setCurrentExercise,
   setCurrentExerciseData,
 }) => {
- 
-
   return (
     <Fragment>
       <Modal isOpen={isExerciseModalOpen} onClose={closeExerciseModal}>
