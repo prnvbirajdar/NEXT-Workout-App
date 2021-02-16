@@ -7,8 +7,15 @@ import AddExercise from "./AddExercise";
 import AddSet from "./AddSet";
 import RepsSetsModal from "./RepsSetsModal";
 import RepsSetsDisplay from "./RepsSetsDisplay";
+import { Correct, Delete } from "./Icons/Icons";
+
+import { db } from "./data/firebase";
+import firebase from "firebase/app";
+import { useAuth } from "./data/authProvider";
 
 const Main = () => {
+  const { user } = useAuth(); //context
+
   //Workout Log Empty Component
   const [showEmptyLog, setShowEmptyLog] = useState(true);
   const closeEmptyLog = () => setShowEmptyLog(false);
@@ -49,8 +56,27 @@ const Main = () => {
   });
   console.log(currentExerciseData);
 
+  const submitExerciseData = async () => {
+    await db
+      .collection("profiles")
+      .doc(user.uid)
+      .collection("workouts")
+      .add({
+        exercise: currentExerciseData.currentExer,
+        sets: currentExerciseData.sets,
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        profileId: user.uid,
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
+  };
+
   return (
-    <div className="flex items-center flex-col sm:m-20">
+    <div className="flex items-center flex-col dark:bg-black">
       <EmptyLog showEmptyLog={showEmptyLog} closeEmptyLog={closeEmptyLog} />
 
       <BodyPartsSelect
@@ -74,9 +100,12 @@ const Main = () => {
         <div className={`${isExerciseOpen ? "block" : "hidden"} w-1/2 shadow`}>
           <Card>
             <CardBody>
-              <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 ">
-                {currentExerciseData.currentExer}
-              </p>
+              <div className="flex justify-between">
+                <p className="self-center font-semibold text-gray-600 dark:text-gray-300 ">
+                  {currentExerciseData.currentExer}
+                </p>
+                <Delete />
+              </div>
               <AddSet openRepsSetsModal={openRepsSetsModal} />
               <RepsSetsDisplay currentExerciseData={currentExerciseData} />
               <RepsSetsModal
@@ -85,6 +114,9 @@ const Main = () => {
                 setCurrentExerciseData={setCurrentExerciseData}
                 currentExerciseData={currentExerciseData}
               />
+              <div onClick={submitExerciseData} className="flex justify-end">
+                <Correct />
+              </div>
             </CardBody>
           </Card>
         </div>

@@ -2,7 +2,7 @@
 
 html,
 body {
-  min-height: 100vh;
+  height: 100vh;
   @apply bg-gray-50 dark:bg-black;
 }
 
