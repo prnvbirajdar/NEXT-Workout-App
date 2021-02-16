@@ -1,7 +1,19 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
 import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
 
-const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
+const RepsSets = ({
+  isRepsSetsModalOpen,
+  closeRepsSetsModal,
+  setCurrentExerciseData,
+}) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCurrentExerciseData((prevState) => ({
+      ...prevState,
+      sets: { ...prevState.sets, [name]: value },
+    }));
+  };
+
   return (
     <div className=" text-gray-600 dark:text-gray-400 flex justify-center">
       <Modal isOpen={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
@@ -17,6 +29,8 @@ const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
                 <input
                   className="py-2 rounded w-1/3 border text-black text-center"
                   type="number"
+                  name="weight"
+                  onChange={handleChange}
                 />
                 <Plus />
               </div>
@@ -27,10 +41,11 @@ const RepsSets = ({ isRepsSetsModalOpen, closeRepsSetsModal }) => {
               </div>
               <div className="flex justify-center ">
                 <Minus />
-
                 <input
                   className="py-2 rounded w-1/3 border text-black text-center	"
                   type="number"
+                  name="reps"
+                  onChange={handleChange}
                 />
                 <Plus />
               </div>

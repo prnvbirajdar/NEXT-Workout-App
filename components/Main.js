@@ -5,7 +5,7 @@ import EmptyLog from "./EmptyLog";
 import BodyPartsSelect from "./BodyPartsSelect";
 import AddExercise from "./AddExercise";
 import AddSet from "./AddSet";
-import SetReps from "./RepsSets";
+import RepsSets from "./RepsSets";
 
 const Main = () => {
   //Workout Log Empty Component
@@ -19,7 +19,6 @@ const Main = () => {
 
   //Selected Body Part
   const [bodyPart, setBodyPart] = useState();
-  console.log(bodyPart);
   //Exercise Modal Component
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
@@ -43,7 +42,12 @@ const Main = () => {
 
   //Selected exercise to be added to Firestore
   const [currentExercise, setCurrentExercise] = useState("");
-  console.log(currentExercise);
+  const [currentExerciseData, setCurrentExerciseData] = useState({
+    currentExer: "",
+    notes: "",
+    sets: [{}],
+  });
+  console.log(currentExerciseData);
 
   return (
     <div className="flex items-center flex-col sm:m-20">
@@ -63,22 +67,26 @@ const Main = () => {
         closeExerciseModal={closeExerciseModal}
         bodyPart={bodyPart}
         setCurrentExercise={setCurrentExercise}
+        setCurrentExerciseData={setCurrentExerciseData}
       />
 
-      <div className={`${isExerciseOpen ? "block" : "hidden"} w-1/2 shadow`}>
-        <Card>
-          <CardBody>
-            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 ">
-              {currentExercise}
-            </p>
-            <AddSet openRepsSetsModal={openRepsSetsModal} />
-            <SetReps
-              isRepsSetsModalOpen={isRepsSetsModalOpen}
-              closeRepsSetsModal={closeRepsSetsModal}
-            />
-          </CardBody>
-        </Card>
-      </div>
+      {currentExerciseData.currentExer.length > 0 && (
+        <div className={`${isExerciseOpen ? "block" : "hidden"} w-1/2 shadow`}>
+          <Card>
+            <CardBody>
+              <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 ">
+                {currentExerciseData.currentExer}
+              </p>
+              <AddSet openRepsSetsModal={openRepsSetsModal} />
+              <RepsSets
+                isRepsSetsModalOpen={isRepsSetsModalOpen}
+                closeRepsSetsModal={closeRepsSetsModal}
+                setCurrentExerciseData={setCurrentExerciseData}
+              />
+            </CardBody>
+          </Card>
+        </div>
+      )}
     </div>
   );
 };

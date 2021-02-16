@@ -6,7 +6,9 @@ const AddExerciseModal = ({
   closeExerciseModal,
   bodyPart,
   setCurrentExercise,
+  setCurrentExerciseData,
 }) => {
+ 
 
   return (
     <Fragment>
@@ -18,7 +20,12 @@ const AddExerciseModal = ({
               bodyPart.exercises.map((e) => (
                 <div key={e.id} onClick={closeExerciseModal}>
                   <button
-                    onClick={() => setCurrentExercise(e.exercise)}
+                    onClick={() =>
+                      setCurrentExerciseData((prevState) => ({
+                        ...prevState,
+                        currentExer: e.exercise,
+                      }))
+                    }
                     className="shadow-lg m-2 h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
                   >
                     {e.exercise}
