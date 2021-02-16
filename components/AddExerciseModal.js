@@ -7,7 +7,6 @@ const AddExerciseModal = ({
   isExerciseModalOpen,
   closeExerciseModal,
   bodyPart,
-  setCurrentExercise,
   setCurrentExerciseData,
   currentExerciseData,
 }) => {

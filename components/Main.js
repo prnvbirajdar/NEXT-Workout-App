@@ -5,7 +5,8 @@ import EmptyLog from "./EmptyLog";
 import BodyPartsSelect from "./BodyPartsSelect";
 import AddExercise from "./AddExercise";
 import AddSet from "./AddSet";
-import RepsSets from "./RepsSets";
+import RepsSetsModal from "./RepsSetsModal";
+import RepsSetsDisplay from "./RepsSetsDisplay";
 
 const Main = () => {
   //Workout Log Empty Component
@@ -41,7 +42,6 @@ const Main = () => {
   }
 
   //Selected exercise to be added to Firestore
-  const [currentExercise, setCurrentExercise] = useState("");
   const [currentExerciseData, setCurrentExerciseData] = useState({
     currentExer: "",
     notes: "",
@@ -66,7 +66,6 @@ const Main = () => {
         isExerciseModalOpen={isExerciseModalOpen}
         closeExerciseModal={closeExerciseModal}
         bodyPart={bodyPart}
-        setCurrentExercise={setCurrentExercise}
         setCurrentExerciseData={setCurrentExerciseData}
         currentExerciseData={currentExerciseData}
       />
@@ -79,7 +78,8 @@ const Main = () => {
                 {currentExerciseData.currentExer}
               </p>
               <AddSet openRepsSetsModal={openRepsSetsModal} />
-              <RepsSets
+              <RepsSetsDisplay currentExerciseData={currentExerciseData} />
+              <RepsSetsModal
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
                 closeRepsSetsModal={closeRepsSetsModal}
                 setCurrentExerciseData={setCurrentExerciseData}

@@ -1,11 +1,11 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
 import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
-import { db } from "../components/data/firebase";
+import { db } from "./data/firebase";
 import firebase from "firebase/app";
-import { useAuth } from "../components/data/authProvider";
+import { useAuth } from "./data/authProvider";
 import produce from "immer";
 
-const RepsSets = ({
+const RepsSetsModal = ({
   isRepsSetsModalOpen,
   closeRepsSetsModal,
   setCurrentExerciseData,
@@ -32,9 +32,9 @@ const RepsSets = ({
     );
   };
 
-  console.log(currentSet);
-
   const dateToday = new Date().toLocaleString().split(",")[0];
+  
+  console.log(dateToday);
 
   const handleSubmit = async () => {
     setCurrentExerciseData(
@@ -43,23 +43,22 @@ const RepsSets = ({
       })
     );
 
-    await db
-      .collection("profiles")
-      .doc(user.uid)
-      .collection("workouts")
-      .add({
-        exercise: currentExerciseData.currentExer,
-        sets: [].push(currentSet),
-        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-        profileId: user.uid,
-        date: dateToday,
-      })
-      .then(() => {
-        console.log("Document successfully written!");
-      })
-      .catch((error) => {
-        console.error("Error writing document: ", error);
-      });
+    // await db
+    //   .collection("profiles")
+    //   .doc(user.uid)
+    //   .collection("workouts")
+    //   .add({
+    //     exercise: currentExerciseData.currentExer,
+    //     sets: [].push(currentSet),
+    //     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+    //     profileId: user.uid,
+    //   })
+    //   .then(() => {
+    //     console.log("Document successfully written!");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error writing document: ", error);
+    //   });
 
     closeRepsSetsModal();
   };
@@ -117,4 +116,4 @@ const RepsSets = ({
   );
 };
 
-export default RepsSets;
+export default RepsSetsModal;
