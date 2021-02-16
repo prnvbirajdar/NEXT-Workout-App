@@ -82,6 +82,7 @@ const Main = () => {
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
                 closeRepsSetsModal={closeRepsSetsModal}
                 setCurrentExerciseData={setCurrentExerciseData}
+                currentExerciseData={currentExerciseData}
               />
             </CardBody>
           </Card>

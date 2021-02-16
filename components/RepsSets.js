@@ -1,17 +1,48 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
 import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
+import { db } from "../components/data/firebase";
+import firebase from "firebase/app";
+import { useAuth } from "../components/data/authProvider";
 
 const RepsSets = ({
   isRepsSetsModalOpen,
   closeRepsSetsModal,
   setCurrentExerciseData,
+  currentExerciseData,
 }) => {
+  const { user } = useAuth(); //context
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCurrentExerciseData((prevState) => ({
       ...prevState,
       sets: { ...prevState.sets, [name]: value },
     }));
+  };
+
+  const handleSubmit = async () => {
+    // await db
+    //   .collection("profiles")
+    //   .doc(user.uid)
+    //   .collection("workouts")
+    //   .add({
+    //     stats: {
+    //       weight: currentExerciseData.,
+    //       height: data.height,
+    //       dailyCalories: data.dailyCalories,
+    //       bodyFatPercentage: data.bodyFatPercentage,
+    //     },
+    //     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+    //     profileId: user.uid,
+    //   })
+    //   .then(() => {
+    //     console.log("Document successfully written!");
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error writing document: ", error);
+    //   });
+
+    closeRepsSetsModal();
   };
 
   return (
@@ -56,8 +87,9 @@ const RepsSets = ({
           <div onClick={closeRepsSetsModal}>
             <Delete />
           </div>
-
-          <Correct />
+          <div onClick={handleSubmit}>
+            <Correct />
+          </div>
         </ModalFooter>
       </Modal>
     </div>
