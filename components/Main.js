@@ -41,6 +41,10 @@ const Main = () => {
     setIsRepsSetsModalOpen(false);
   }
 
+  //Selected exercise to be added to Firestore
+  const [currentExercise, setCurrentExercise] = useState("");
+  console.log(currentExercise);
+
   return (
     <div className="flex items-center flex-col sm:m-20">
       <EmptyLog showEmptyLog={showEmptyLog} closeEmptyLog={closeEmptyLog} />
@@ -58,13 +62,14 @@ const Main = () => {
         isExerciseModalOpen={isExerciseModalOpen}
         closeExerciseModal={closeExerciseModal}
         bodyPart={bodyPart}
+        setCurrentExercise={setCurrentExercise}
       />
 
       <div className={`${isExerciseOpen ? "block" : "hidden"} w-1/2 shadow`}>
         <Card>
           <CardBody>
             <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 ">
-              Squats
+              {currentExercise}
             </p>
             <AddSet openRepsSetsModal={openRepsSetsModal} />
             <SetReps

@@ -1,6 +1,6 @@
 import { Card, CardBody } from "@windmill/react-ui";
 
-const ProfileCard = ({ user }) => {
+const PersonalDetailsCard = ({ user }) => {
   return (
     <Card>
       <CardBody>
@@ -26,4 +26,4 @@ const ProfileCard = ({ user }) => {
   );
 };
 
-export default ProfileCard;
+export default PersonalDetailsCard;

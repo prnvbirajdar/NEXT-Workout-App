@@ -6,7 +6,7 @@ import { useAuth } from "../components/data/authProvider";
 import { db } from "../components/data/firebase";
 import DeleteAccountModal from "../components/Profile/DeleteAccountModal";
 import { useRouter } from "next/router";
-import ProfileCard from "../components/Profile/ProfileCard";
+import PersonalDetailsCard from "../components/Profile/PersonalDetailsCard";
 
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -63,7 +63,7 @@ const Profile = () => {
       <Navbar />
       <div className="flex justify-center mt-8 pt-5">
         <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
-          <ProfileCard user={user} />
+          <PersonalDetailsCard user={user} />
         </div>
       </div>
 
