@@ -1,8 +1,8 @@
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
-import { Plus, Minus, Correct, Delete } from "./Icons/Icons";
-import { db } from "./data/firebase";
+import { Plus, Minus, Correct, Delete } from "../Icons/Icons";
+import { db } from "../data/firebase";
 import firebase from "firebase/app";
-import { useAuth } from "./data/authProvider";
+import { useAuth } from "../data/authProvider";
 import produce from "immer";
 
 const RepsSetsModal = ({
@@ -32,10 +32,7 @@ const RepsSetsModal = ({
     );
   };
 
-  const dateToday = new Date().toLocaleString().split(",")[0];
   
-  console.log(dateToday);
-
   const handleSubmit = async () => {
     setCurrentExerciseData(
       produce(currentExerciseData, (draft) => {

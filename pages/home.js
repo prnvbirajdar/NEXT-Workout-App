@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Nav from "../components/Navbar";
-import Main from "../components/Main";
+import Main from "../components/Main/Main";
 import { useAuth } from "../components/data/authProvider";
 
 const Home = () => {

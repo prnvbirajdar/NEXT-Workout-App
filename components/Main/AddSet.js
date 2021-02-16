@@ -1,4 +1,4 @@
-import { Add } from "./Icons/Icons";
+import { Add } from "../Icons/Icons";
 
 const AddSet = ({ openRepsSetsModal }) => {
   return (

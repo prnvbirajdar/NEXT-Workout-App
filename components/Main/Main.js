@@ -7,11 +7,12 @@ import AddExercise from "./AddExercise";
 import AddSet from "./AddSet";
 import RepsSetsModal from "./RepsSetsModal";
 import RepsSetsDisplay from "./RepsSetsDisplay";
-import { Correct, Delete } from "./Icons/Icons";
+import { Correct, Delete } from "../Icons/Icons";
 
-import { db } from "./data/firebase";
+import { db } from "../data/firebase";
 import firebase from "firebase/app";
-import { useAuth } from "./data/authProvider";
+import { useAuth } from "../data/authProvider";
+import DisplayExercisesAfterSubmit from "./DisplayExercisesAfterSubmit";
 
 const Main = () => {
   const { user } = useAuth(); //context
@@ -56,6 +57,10 @@ const Main = () => {
   });
   console.log(currentExerciseData);
 
+  const dateToday = new Date().toLocaleString().split(",")[0];
+
+  console.log(dateToday);
+
   const submitExerciseData = async () => {
     await db
       .collection("profiles")
@@ -66,6 +71,7 @@ const Main = () => {
         sets: currentExerciseData.sets,
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         profileId: user.uid,
+        date: dateToday,
       })
       .then(() => {
         console.log("Document successfully written!");
@@ -119,6 +125,10 @@ const Main = () => {
               </div>
             </CardBody>
           </Card>
+
+          <div className="mt-5">
+            <DisplayExercisesAfterSubmit />
+          </div>
         </div>
       )}
     </div>

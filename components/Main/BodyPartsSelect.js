@@ -1,6 +1,6 @@
 import { Card, CardBody } from "@windmill/react-ui";
-import { exerciseArray, exerciseList1 } from "./data/data";
-import { Close } from "./Icons/Icons";
+import { exerciseArray, exerciseList1 } from "../data/data";
+import { Close } from "../Icons/Icons";
 
 const BodyPartsSelect = ({
   closeCard,

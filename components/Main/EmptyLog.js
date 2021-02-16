@@ -3,7 +3,7 @@ const EmptyLog = ({ showEmptyLog, closeEmptyLog}) => {
     <div
       className={`${
         showEmptyLog ? "block" : "hidden"
-      } flex flex-col items-center `}
+      } flex flex-col items-center mt-5`}
     >
       <h2 className="mb-10 text-3xl text-gray-600 dark:text-gray-300">
         Workout Log Empty
