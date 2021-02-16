@@ -34,6 +34,8 @@ const RepsSets = ({
 
   console.log(currentSet);
 
+  const dateToday = new Date().toLocaleString().split(",")[0];
+
   const handleSubmit = async () => {
     setCurrentExerciseData(
       produce(currentExerciseData, (draft) => {
@@ -41,26 +43,23 @@ const RepsSets = ({
       })
     );
 
-    // await db
-    //   .collection("profiles")
-    //   .doc(user.uid)
-    //   .collection("workouts")
-    //   .add({
-    //     stats: {
-    //       weight: currentExerciseData.,
-    //       height: data.height,
-    //       dailyCalories: data.dailyCalories,
-    //       bodyFatPercentage: data.bodyFatPercentage,
-    //     },
-    //     timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
-    //     profileId: user.uid,
-    //   })
-    //   .then(() => {
-    //     console.log("Document successfully written!");
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error writing document: ", error);
-    //   });
+    await db
+      .collection("profiles")
+      .doc(user.uid)
+      .collection("workouts")
+      .add({
+        exercise: currentExerciseData.currentExer,
+        sets: [].push(currentSet),
+        timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+        profileId: user.uid,
+        date: dateToday,
+      })
+      .then(() => {
+        console.log("Document successfully written!");
+      })
+      .catch((error) => {
+        console.error("Error writing document: ", error);
+      });
 
     closeRepsSetsModal();
   };

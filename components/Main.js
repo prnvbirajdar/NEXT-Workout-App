@@ -68,6 +68,7 @@ const Main = () => {
         bodyPart={bodyPart}
         setCurrentExercise={setCurrentExercise}
         setCurrentExerciseData={setCurrentExerciseData}
+        currentExerciseData={currentExerciseData}
       />
 
       {currentExerciseData.currentExer.length > 0 && (
