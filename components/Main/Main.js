@@ -18,8 +18,8 @@ const Main = () => {
   const { user } = useAuth(); //context
 
   //Workout Log Empty Component
-  const [showEmptyLog, setShowEmptyLog] = useState(true);
-  const closeEmptyLog = () => setShowEmptyLog(false);
+  // const [showEmptyLog, setShowEmptyLog] = useState(true);
+  // const closeEmptyLog = () => setShowEmptyLog(false);
 
   //Body Part Card Component
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -98,7 +98,7 @@ const Main = () => {
 
   return (
     <div className="flex items-center flex-col dark:bg-black">
-      <EmptyLog showEmptyLog={showEmptyLog} closeEmptyLog={closeEmptyLog} />
+      {/*<EmptyLog showEmptyLog={showEmptyLog} closeEmptyLog={closeEmptyLog} />*/}
 
       <BodyPartsSelect
         closeCard={closeCard}
@@ -107,7 +107,7 @@ const Main = () => {
         setBodyPart={setBodyPart}
       />
 
-      <AddExercise openCard={openCard} showEmptyLog={showEmptyLog} />
+      <AddExercise openCard={openCard} />
 
       <AddExerciseModal
         isExerciseModalOpen={isExerciseModalOpen}
@@ -131,6 +131,7 @@ const Main = () => {
                 </div>
               </div>
               <AddSet openRepsSetsModal={openRepsSetsModal} />
+              {/*<textarea className="flex justify-center items-center rounded" />*/}
               <RepsSetsDisplay currentExerciseData={currentExerciseData} />
               <RepsSetsModal
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
@@ -143,12 +144,11 @@ const Main = () => {
               </div>
             </CardBody>
           </Card>
-
-          <div className="mt-5">
-            <DisplayExercisesAfterSubmit />
-          </div>
         </div>
       )}
+      <div className="mt-5 w-1/2">
+        <DisplayExercisesAfterSubmit />
+      </div>
     </div>
   );
 };

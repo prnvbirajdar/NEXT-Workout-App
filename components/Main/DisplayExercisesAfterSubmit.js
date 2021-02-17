@@ -9,11 +9,14 @@ const DisplayExercisesAfterSubmit = () => {
 
   const [exerciseStats, setExerciseStats] = React.useState([]);
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
+  const [selected, setSelected] = React.useState(null);
 
-  function openEditExerciseModal() {
+  function openEditExerciseModal(city) {
+    setSelected(city);
     setIsEditExerciseModal(true);
   }
   function closeEditExerciseModal() {
+    setSelected(null);
     setIsEditExerciseModal(false);
   }
 
@@ -38,8 +41,6 @@ const DisplayExercisesAfterSubmit = () => {
       });
   };
 
-  console.log(exerciseStats);
-
   const randomNum = Math.floor(Math.random() * 100);
   const randomKey = (num) => (num + randomNum) * randomNum;
 
@@ -55,12 +56,12 @@ const DisplayExercisesAfterSubmit = () => {
       <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-xl">
               {e.exercise}
             </p>
             {e.sets.map((s, index) => (
               <div key={randomKey(index)}>
-                <p className=" font-semibold text-gray-800 dark:text-gray-300 text-center text-xl">
+                <p className=" font-semibold text-gray-800 dark:text-gray-300 text-center text-lg mb-1 ">
                   Set {index + 1}
                 </p>
                 <div className="flex flex-col md:flex-row justify-around p-2 mx-4 mb-2 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
@@ -79,14 +80,16 @@ const DisplayExercisesAfterSubmit = () => {
                 </div>
               </div>
             ))}
-            <div className="flex justify-end" onClick={openEditExerciseModal}>
+            <div
+              className="flex justify-end"
+              onClick={() => openEditExerciseModal(e)}
+            >
               <Edit />
             </div>
             <EditExerciseModal
               isEditExerciseModal={isEditExerciseModal}
               closeEditExerciseModal={closeEditExerciseModal}
-              exercise={e.exercise}
-              sets={e.sets}
+              selected={selected}
             />
           </CardBody>
         </Card>
