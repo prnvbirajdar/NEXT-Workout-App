@@ -1,12 +1,21 @@
 import { Card, CardBody } from "@windmill/react-ui";
 import { db } from "../data/firebase";
-import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
+import { Edit } from "../Icons/Icons";
+import EditExerciseModal from "./EditExerciseModal";
 
 const DisplayExercisesAfterSubmit = () => {
   const { user } = useAuth(); //context
 
   const [exerciseStats, setExerciseStats] = React.useState([]);
+  const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
+
+  function openEditExerciseModal() {
+    setIsEditExerciseModal(true);
+  }
+  function closeEditExerciseModal() {
+    setIsEditExerciseModal(false);
+  }
 
   const dateToday = new Date().toLocaleString().split(",")[0];
 
@@ -34,7 +43,7 @@ const DisplayExercisesAfterSubmit = () => {
   return (
     exerciseStats.length > 0 &&
     exerciseStats.map((e) => (
-      <div key={e.timeStamp}>
+      <div key={e.timeStamp} className="mb-4">
         <Card>
           <CardBody>
             <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
@@ -61,29 +70,18 @@ const DisplayExercisesAfterSubmit = () => {
                 </div>
               </div>
             ))}
+            <div className="flex justify-end" onClick={openEditExerciseModal}>
+              <Edit />
+            </div>
           </CardBody>
         </Card>
+        <EditExerciseModal
+          isEditExerciseModal={isEditExerciseModal}
+          closeEditExerciseModal={closeEditExerciseModal}
+        />
       </div>
     ))
   );
 };
 
 export default DisplayExercisesAfterSubmit;
-
-// <Card>
-// <CardBody>
-//   <p className=" font-semibold text-gray-800 dark:text-gray-300 text-center text-xl">
-//     Set {index + 1}
-//   </p>
-//   <div className="flex flex-col md:flex-row justify-around p-2 mx-4 mb-2 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-//     <div className="flex justify-between p-2   ">
-//       <label className="self-end  ">Weight</label>
-//       <p className=" font-medium ml-3  text-right ">{m.weight} lbs</p>
-//     </div>
-//     <div className="flex justify-between p-2   ">
-//       <label className="self-end  ">Reps</label>
-//       <p className=" font-medium ml-3 capitalize text-right ">{m.reps}</p>
-//     </div>
-//   </div>
-// </CardBody>
-// </Card>

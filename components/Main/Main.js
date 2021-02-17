@@ -79,6 +79,12 @@ const Main = () => {
       .catch((error) => {
         console.error("Error writing document: ", error);
       });
+
+    setCurrentExerciseData({
+      currentExer: "",
+      notes: "",
+      sets: [],
+    });
   };
 
   return (

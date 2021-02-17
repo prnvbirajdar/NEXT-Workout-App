@@ -63,7 +63,7 @@ const RepsSetsModal = ({
   return (
     <div className=" text-gray-600 dark:text-gray-400 flex justify-center">
       <Modal isOpen={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
-        <ModalHeader>Modal header</ModalHeader>
+        <ModalHeader>{currentExerciseData.currentExer}</ModalHeader>
         <ModalBody>
           <div className="flex flex-col sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
             <form>
