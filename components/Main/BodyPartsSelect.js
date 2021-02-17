@@ -11,7 +11,7 @@ const BodyPartsSelect = ({
   return (
     <div
       className={`${
-        isCardOpen ? "block" : "hidden" 
+        isCardOpen ? "block" : "hidden"
       } mx-5 w-auto shadow transition mt-4`}
     >
       <Card>
