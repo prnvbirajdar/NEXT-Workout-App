@@ -5,6 +5,8 @@ import {
   ModalFooter,
   Button,
 } from "@windmill/react-ui";
+import { db } from "../data/firebase";
+import { useAuth } from "../data/authProvider";
 
 const EditExerciseModal = ({
   isEditExerciseModal,
@@ -12,6 +14,18 @@ const EditExerciseModal = ({
 
   selected,
 }) => {
+  console.log(selected);
+
+  const { user } = useAuth(); //context
+
+  const handleDelete = (id) => {
+    db.collection("profiles")
+      .doc(user?.uid)
+      .collection("workouts")
+      .doc(id)
+      .delete();
+  };
+
   return (
     selected && (
       <div>
@@ -20,6 +34,7 @@ const EditExerciseModal = ({
           onClose={() => closeEditExerciseModal(selected)}
         >
           <ModalHeader>{selected.exercise}</ModalHeader>
+          <button onClick={handleDelete(selected.id)}>Delete</button>
           <ModalBody>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
             eligendi repudiandae voluptatem tempore!
