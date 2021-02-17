@@ -20,6 +20,16 @@ const DisplayExercisesAfterSubmit = () => {
     setIsEditExerciseModal(false);
   }
 
+  function deleteExercise(id) {
+    db.collection("profiles")
+      .doc(user?.uid)
+      .collection("workouts")
+      .doc(id)
+      .delete();
+    setSelected(null);
+    setIsEditExerciseModal(false);
+  }
+
   const dateToday = new Date().toLocaleString().split(",")[0];
 
   const getExerciseStats = async () => {
@@ -48,7 +58,7 @@ const DisplayExercisesAfterSubmit = () => {
     if (user) {
       getExerciseStats();
     }
-  }, [user]);
+  }, []);
 
   return (
     exerciseStats.length > 0 &&
@@ -90,6 +100,7 @@ const DisplayExercisesAfterSubmit = () => {
               isEditExerciseModal={isEditExerciseModal}
               closeEditExerciseModal={closeEditExerciseModal}
               selected={selected}
+              deleteExercise={deleteExercise}
             />
           </CardBody>
         </Card>

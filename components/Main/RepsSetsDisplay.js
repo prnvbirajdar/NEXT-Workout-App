@@ -1,8 +1,11 @@
 import { Card, CardBody } from "@windmill/react-ui";
 
 const RepsSetsDisplay = ({ currentExerciseData }) => {
+  const randomNum = Math.floor(Math.random() * 100);
+  const randomKey = (num) => (num + randomNum) * randomNum;
+
   return currentExerciseData.sets.map((m, index) => (
-    <Card>
+    <Card key={randomKey(index)}>
       <CardBody>
         <p className=" font-semibold text-gray-800 dark:text-gray-300 text-center text-xl">
           Set {index + 1}

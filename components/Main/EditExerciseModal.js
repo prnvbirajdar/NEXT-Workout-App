@@ -1,30 +1,13 @@
-import {
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-} from "@windmill/react-ui";
-import { db } from "../data/firebase";
-import { useAuth } from "../data/authProvider";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
+import { Correct, Delete } from "../Icons/Icons";
 
 const EditExerciseModal = ({
   isEditExerciseModal,
   closeEditExerciseModal,
-
+  deleteExercise,
   selected,
 }) => {
   console.log(selected);
-
-  const { user } = useAuth(); //context
-
-  const handleDelete = (id) => {
-    db.collection("profiles")
-      .doc(user?.uid)
-      .collection("workouts")
-      .doc(id)
-      .delete();
-  };
 
   return (
     selected && (
@@ -34,20 +17,17 @@ const EditExerciseModal = ({
           onClose={() => closeEditExerciseModal(selected)}
         >
           <ModalHeader>{selected.exercise}</ModalHeader>
-          <button onClick={handleDelete(selected.id)}>Delete</button>
           <ModalBody>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
             eligendi repudiandae voluptatem tempore!
           </ModalBody>
           <ModalFooter>
-            <Button
-              className="w-full sm:w-auto"
-              layout="outline"
-              onClick={() => closeEditExerciseModal(selected)}
-            >
-              Cancel
-            </Button>
-            <Button className="w-full sm:w-auto">Accept</Button>
+            <div onClick={() => deleteExercise(selected.id)}>
+              <Delete />
+            </div>
+            <div>
+              <Correct />
+            </div>
           </ModalFooter>
         </Modal>
       </div>
