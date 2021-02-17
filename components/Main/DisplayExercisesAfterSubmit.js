@@ -27,12 +27,21 @@ const DisplayExercisesAfterSubmit = () => {
       .where("date", "==", dateToday)
       .orderBy("timeStamp", "asc")
       .onSnapshot((querySnapshot) => {
-        //console.log(querySnapshot.docs.map((d) => d.data()));
-        setExerciseStats(querySnapshot.docs.map((d) => d.data()));
+        setExerciseStats(
+          querySnapshot.docs.map((doc) => ({
+            timeStamp: doc.data().timeStamp,
+            exercise: doc.data().exercise,
+            sets: doc.data().sets,
+            id: doc.id,
+          }))
+        );
       });
   };
 
   console.log(exerciseStats);
+
+  const randomNum = Math.floor(Math.random() * 100);
+  const randomKey = (num) => (num + randomNum) * randomNum;
 
   React.useEffect(() => {
     if (user) {
@@ -43,20 +52,20 @@ const DisplayExercisesAfterSubmit = () => {
   return (
     exerciseStats.length > 0 &&
     exerciseStats.map((e) => (
-      <div key={e.timeStamp} className="mb-4">
+      <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
             <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
               {e.exercise}
             </p>
             {e.sets.map((s, index) => (
-              <div>
+              <div key={randomKey(index)}>
                 <p className=" font-semibold text-gray-800 dark:text-gray-300 text-center text-xl">
                   Set {index + 1}
                 </p>
                 <div className="flex flex-col md:flex-row justify-around p-2 mx-4 mb-2 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
                   <div className="flex justify-between p-2   ">
-                    <label className="self-end  ">Weight</label>
+                    <label className="self-end ">Weight</label>
                     <p className=" font-medium ml-3  text-right ">
                       {s.weight} lbs
                     </p>
@@ -73,12 +82,14 @@ const DisplayExercisesAfterSubmit = () => {
             <div className="flex justify-end" onClick={openEditExerciseModal}>
               <Edit />
             </div>
+            <EditExerciseModal
+              isEditExerciseModal={isEditExerciseModal}
+              closeEditExerciseModal={closeEditExerciseModal}
+              exercise={e.exercise}
+              sets={e.sets}
+            />
           </CardBody>
         </Card>
-        <EditExerciseModal
-          isEditExerciseModal={isEditExerciseModal}
-          closeEditExerciseModal={closeEditExerciseModal}
-        />
       </div>
     ))
   );

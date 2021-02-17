@@ -87,6 +87,15 @@ const Main = () => {
     });
   };
 
+  const handleDeleteCurrentExercise = () => {
+    setCurrentExerciseData({
+      currentExer: "",
+      notes: "",
+      sets: [],
+    });
+    setIsExerciseOpen(false);
+  };
+
   return (
     <div className="flex items-center flex-col dark:bg-black">
       <EmptyLog showEmptyLog={showEmptyLog} closeEmptyLog={closeEmptyLog} />
@@ -116,7 +125,10 @@ const Main = () => {
                 <p className="self-center font-semibold text-gray-600 dark:text-gray-300 ">
                   {currentExerciseData.currentExer}
                 </p>
-                <Delete />
+
+                <div onClick={handleDeleteCurrentExercise}>
+                  <Delete />
+                </div>
               </div>
               <AddSet openRepsSetsModal={openRepsSetsModal} />
               <RepsSetsDisplay currentExerciseData={currentExerciseData} />

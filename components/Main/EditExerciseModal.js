@@ -6,11 +6,18 @@ import {
   Button,
 } from "@windmill/react-ui";
 
-const EditExerciseModal = ({ isEditExerciseModal, closeEditExerciseModal }) => {
+const EditExerciseModal = ({
+  isEditExerciseModal,
+  closeEditExerciseModal,
+  exercise, sets
+}) => {
+
+    console.log(exercise);
+
   return (
     <div>
       <Modal isOpen={isEditExerciseModal} onClose={closeEditExerciseModal}>
-        <ModalHeader>Modal header</ModalHeader>
+        <ModalHeader>{exercise}</ModalHeader>
         <ModalBody>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
           eligendi repudiandae voluptatem tempore!
