@@ -9,12 +9,13 @@ const AddExercise = ({ openCard, showEmptyLog }) => {
       } flex flex-col items-center mt-6`}
     >
       <Add
-        lineHeight={"w-7"}
-        lineWidth={"h-7"}
-        circleHeight={"h-14"}
-        circleWidth={"w-14"}
+        lineHeight={"w-6 md:w-7"}
+        lineWidth={"h-6  md:h-7"}
+        circleHeight={"h-10 md:h-14"}
+        circleWidth={"w-10 md:w-14"}
       />
-      <p className="text-gray-600 dark:text-gray-300 m-3">Add Exercise</p>
+     
+      <p className="text-gray-600 dark:text-gray-300 m-2 mb-3">Add Exercise</p>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Card, CardBody } from "@windmill/react-ui";
 import AddExerciseModal from "./AddExerciseModal";
-import EmptyLog from "./EmptyLog";
 import BodyPartsSelect from "./BodyPartsSelect";
 import AddExercise from "./AddExercise";
 import AddSet from "./AddSet";
@@ -16,10 +15,6 @@ import DisplayExercisesAfterSubmit from "./DisplayExercisesAfterSubmit";
 
 const Main = () => {
   const { user } = useAuth(); //context
-
-  //Workout Log Empty Component
-  // const [showEmptyLog, setShowEmptyLog] = useState(true);
-  // const closeEmptyLog = () => setShowEmptyLog(false);
 
   //Body Part Card Component
   const [isCardOpen, setIsCardOpen] = useState(false);
@@ -96,7 +91,6 @@ const Main = () => {
 
   return (
     <div className="flex items-center flex-col dark:bg-black">
-      {/*<EmptyLog showEmptyLog={showEmptyLog} closeEmptyLog={closeEmptyLog} />*/}
 
       <BodyPartsSelect
         closeCard={closeCard}
