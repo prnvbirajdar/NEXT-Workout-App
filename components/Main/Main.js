@@ -59,8 +59,6 @@ const Main = () => {
 
   const dateToday = new Date().toLocaleString().split(",")[0];
 
-  console.log(dateToday);
-
   const submitExerciseData = async () => {
     await db
       .collection("profiles")
@@ -132,7 +130,10 @@ const Main = () => {
               </div>
               <AddSet openRepsSetsModal={openRepsSetsModal} />
               {/*<textarea className="flex justify-center items-center rounded" />*/}
-              <RepsSetsDisplay currentExerciseData={currentExerciseData} />
+              <RepsSetsDisplay
+                currentExerciseData={currentExerciseData}
+                setCurrentExerciseData={setCurrentExerciseData}
+              />
               <RepsSetsModal
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
                 closeRepsSetsModal={closeRepsSetsModal}

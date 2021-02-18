@@ -4,6 +4,7 @@ import { db } from "../data/firebase";
 import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 import produce from "immer";
+import { nanoid } from "nanoid";
 
 const RepsSetsModal = ({
   isRepsSetsModalOpen,
@@ -13,7 +14,11 @@ const RepsSetsModal = ({
 }) => {
   const { user } = useAuth(); //context
 
-  const [currentSet, setCurrentSet] = React.useState({ reps: 0, weight: 0 });
+  const [currentSet, setCurrentSet] = React.useState({
+    reps: 0,
+    weight: 0,
+    id: "",
+  });
 
   // const handleChange = (e) => {
   //   const { name, value } = e.target;
@@ -28,11 +33,11 @@ const RepsSetsModal = ({
     setCurrentSet(
       produce(currentSet, (draft) => {
         draft[name] = value;
+        draft.id = nanoid();
       })
     );
   };
 
-  
   const handleSubmit = async () => {
     setCurrentExerciseData(
       produce(currentExerciseData, (draft) => {

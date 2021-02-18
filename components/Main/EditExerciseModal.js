@@ -11,19 +11,30 @@ const EditExerciseModal = ({
 }) => {
   console.log(selected?.sets);
 
+  const [currentId, setCurrentId] = React.useState("");
+
   const randomNum = Math.floor(Math.random() * 100);
   const randomKey = (num) => (num + randomNum) * randomNum;
 
-  //   const handleChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setSelected(
-  //       produce(selected.sets, (draft) => {
-  //         const index = draft.findIndex(set => set.id === "id1")
+  //   React.useEffect(() => {
+  //       effect
+  //       return () => {
+  //           cleanup
+  //       }
+  //   }, [input])
 
-  //         draft[name] = value;
-  //       })
-  //     );
-  //   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // setSelected(
+    //   produce(selected.sets, (draft) => {
+    //     const index = draft.findIndex((set) => {
+    //       setCurrentId(set.id);
+    //       set.id === currentId;
+    //     });
+    //     if (index !== -1) draft[name] = value;
+    //   })
+    // );
+  };
 
   return (
     selected && (
@@ -51,7 +62,7 @@ const EditExerciseModal = ({
                         name="weight"
                         required
                         value={set.weight}
-                        // onChange={handleChange}
+                       onChange={handleChange}
                       />
                     </div>
                   </form>
@@ -66,7 +77,7 @@ const EditExerciseModal = ({
                         name="reps"
                         required
                         value={set.reps}
-                        // onChange={handleChange}
+                        onChange={handleChange}
                       />
                     </div>
                   </form>

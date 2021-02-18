@@ -1,8 +1,17 @@
 import { Card, CardBody } from "@windmill/react-ui";
+import produce from "immer";
 
-const RepsSetsDisplay = ({ currentExerciseData }) => {
+const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
   const randomNum = Math.floor(Math.random() * 100);
   const randomKey = (num) => (num + randomNum) * randomNum;
+
+  const handleDelete = (index) => {
+    const deletedExerciseArray = produce(currentExerciseData, (draft) => {
+      draft.sets.splice(index, 1);
+    });
+
+    setCurrentExerciseData(deletedExerciseArray);
+  };
 
   return currentExerciseData.sets.map((m, index) => (
     <Card key={randomKey(index)}>
@@ -19,6 +28,7 @@ const RepsSetsDisplay = ({ currentExerciseData }) => {
             <label className="self-end  ">Reps</label>
             <p className=" font-medium ml-3 capitalize text-right ">{m.reps}</p>
           </div>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       </CardBody>
     </Card>

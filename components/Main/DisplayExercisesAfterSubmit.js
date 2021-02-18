@@ -11,8 +11,8 @@ const DisplayExercisesAfterSubmit = () => {
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
-  function openEditExerciseModal(city) {
-    setSelected(city);
+  function openEditExerciseModal(exercise) {
+    setSelected(exercise);
     setIsEditExerciseModal(true);
   }
   function closeEditExerciseModal() {
