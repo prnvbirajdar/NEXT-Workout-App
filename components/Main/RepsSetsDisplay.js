@@ -14,26 +14,26 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
     setCurrentExerciseData(deletedExerciseArray);
   };
 
-  return currentExerciseData.sets.map((m, index) => (
+  return currentExerciseData.sets.map((s, index) => (
     <Card key={randomKey(index)}>
-      <CardBody>
-        <p className=" text-gray-800 dark:text-gray-300 text-center mb-1">
+      <div>
+        <p className=" text-gray-800 dark:text-gray-300 text-center m-2">
           Set {index + 1}
         </p>
-        <div className="flex md:flex-row justify-around py-2 sm:mx-4 mb-2 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+        <div className="flex md:flex-row justify-around py-2 sm:mx-4  bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
           <div className="flex flex-col sm:flex-row justify-between py-2 ml-2">
             <label className=" self-center sm:self-end  ">Weight</label>
-            <p className="  sm:text-right font-semibold ">{m.weight} lbs</p>
+            <p className="  sm:text-right font-semibold ">{s.weight} lbs</p>
           </div>
           <div className="flex flex-col sm:flex-row justify-between p-2 ml-2">
             <label className="sm:self-end  ">Reps</label>
-            <p className=" text-center sm:text-right font-semibold  ">{m.reps}</p>
+            <p className=" text-center sm:text-right font-semibold  ">{s.reps}</p>
           </div>
           <div onClick={handleDelete} className="self-center">
             <Delete />
           </div>
         </div>
-      </CardBody>
+      </div>
     </Card>
   ));
 };

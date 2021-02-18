@@ -135,7 +135,7 @@ const Main = () => {
                 setCurrentExerciseData={setCurrentExerciseData}
                 currentExerciseData={currentExerciseData}
               />
-              <div onClick={submitExerciseData} className="flex justify-end">
+              <div onClick={submitExerciseData} className="flex justify-end mt-2">
                 <Correct />
               </div>
             </CardBody>

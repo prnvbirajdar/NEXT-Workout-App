@@ -71,19 +71,19 @@ const DisplayExercisesAfterSubmit = () => {
             </p>
             {e.sets.map((s, index) => (
               <div key={randomKey(index)}>
-                <p className=" font-semibold text-gray-800 dark:text-gray-300 text-center text-lg mb-1 ">
+                <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
                   Set {index + 1}
                 </p>
-                <div className="flex flex-col md:flex-row justify-around p-2 mx-4 mb-2 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-                  <div className="flex justify-between p-2   ">
-                    <label className="self-end ">Weight</label>
-                    <p className=" font-medium ml-3  text-right ">
+                <div className="flex md:flex-row justify-around py-2 sm:mx-4  bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+                  <div className="flex flex-col sm:flex-row justify-between py-2 ml-2">
+                    <label className=" self-center sm:self-end  ">Weight</label>
+                    <p className="  sm:text-right font-semibold ">
                       {s.weight} lbs
                     </p>
                   </div>
-                  <div className="flex justify-between p-2   ">
-                    <label className="self-end  ">Reps</label>
-                    <p className=" font-medium ml-3 capitalize text-right ">
+                  <div className="flex flex-col sm:flex-row justify-between p-2 ml-2">
+                    <label className="sm:self-end  ">Reps</label>
+                    <p className=" text-center sm:text-right font-semibold  ">
                       {s.reps}
                     </p>
                   </div>
@@ -91,7 +91,7 @@ const DisplayExercisesAfterSubmit = () => {
               </div>
             ))}
             <div
-              className="flex justify-end"
+              className="flex justify-end mt-2"
               onClick={() => openEditExerciseModal(e)}
             >
               <Edit />
