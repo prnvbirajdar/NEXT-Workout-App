@@ -43,41 +43,43 @@ const EditExerciseModal = ({
           isOpen={isEditExerciseModal}
           onClose={() => closeEditExerciseModal(selected)}
         >
-          <ModalHeader>{selected.exercise}</ModalHeader>
+          <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+            {selected.exercise}
+          </p>
           <ModalBody>
             {selected.sets.map((set, index) => (
               <div key={randomKey(index)}>
-                <div className="text-center">
-                  <p>Set {index + 1}</p>
-                </div>
-                <div className="flex flex-col sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+                <p className=" text-gray-800 dark:text-gray-300 text-center m-2 text-base ">
+                  Set {index + 1}
+                </p>
+                <div className="flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
                   <form>
-                    <div className="text-center pb-2">
+                    <div className="text-center pb-2 text-base font-semibold">
                       <label>Weight</label>
                     </div>
-                    <div className="flex justify-center pb-2">
+                    <div className="flex justify-center pb-2 ">
                       <input
-                        className="py-2 rounded w-1/3 border text-black text-center"
+                        className="py-2 rounded w-1/2 border text-black text-center"
                         type="number"
                         name="weight"
+                        onChange={handleChange}
                         required
                         value={set.weight}
-                       onChange={handleChange}
                       />
                     </div>
                   </form>
                   <form>
-                    <div className="text-center pb-2">
+                    <div className="text-center pb-2 text-base font-semibold">
                       <label>Reps</label>
                     </div>
                     <div className="flex justify-center ">
                       <input
-                        className="py-2 rounded w-1/3 border text-black text-center	"
+                        className="py-2 rounded w-1/2 border text-black text-center	"
                         type="number"
                         name="reps"
+                        onChange={handleChange}
                         required
                         value={set.reps}
-                        onChange={handleChange}
                       />
                     </div>
                   </form>

@@ -1,7 +1,5 @@
-import { Modal, ModalBody, ModalFooter, Button } from "@windmill/react-ui";
-import { Plus, Minus, Correct, Delete } from "../Icons/Icons";
-import { db } from "../data/firebase";
-import firebase from "firebase/app";
+import { Modal, ModalBody } from "@windmill/react-ui";
+import { Correct, Delete } from "../Icons/Icons";
 import { useAuth } from "../data/authProvider";
 import produce from "immer";
 import { nanoid } from "nanoid";
@@ -118,53 +116,3 @@ const RepsSetsModal = ({
 };
 
 export default RepsSetsModal;
-
-// <div className="flex md:flex-row justify-around py-2 sm:mx-4  bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-// <div className="flex flex-col sm:flex-row justify-between py-2 ml-2">
-//   <label className=" self-center sm:self-end  ">Weight</label>
-//   <p className="  sm:text-right font-semibold ">
-//     {s.weight} lbs
-//   </p>
-// </div>
-// <div className="flex flex-col sm:flex-row justify-between p-2 ml-2">
-//   <label className="sm:self-end  ">Reps</label>
-//   <p className=" text-center sm:text-right font-semibold  ">
-//     {s.reps}
-//   </p>
-// </div>
-// </div>
-
-// <div className="flex flex-col sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
-// <form>
-//   <div className="text-center pb-2">
-//     <label>Weight</label>
-//   </div>
-//   <div className="flex justify-center pb-2">
-//     <Minus />
-//     <input
-//       className="py-2 rounded w-1/3 border text-black text-center"
-//       type="number"
-//       name="weight"
-//       onChange={handleChange}
-//       required
-//     />
-//     <Plus />
-//   </div>
-// </form>
-// <form>
-//   <div className="text-center pb-2">
-//     <label>Reps</label>
-//   </div>
-//   <div className="flex justify-center ">
-//     <Minus />
-//     <input
-//       className="py-2 rounded w-1/3 border text-black text-center	"
-//       type="number"
-//       name="reps"
-//       onChange={handleChange}
-//       required
-//     />
-//     <Plus />
-//   </div>
-// </form>
-// </div>
