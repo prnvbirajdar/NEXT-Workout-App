@@ -13,6 +13,7 @@
     "autoprefixer": "^10.0.4",
     "firebase": "^8.2.6",
     "immer": "^8.0.1",
+    "nanoid": "^3.1.20",
     "next": "latest",
     "next-themes": "0.0.10",
     "postcss": "^8.1.10",
