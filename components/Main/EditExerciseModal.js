@@ -1,13 +1,29 @@
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
+import { Modal, ModalHeader, ModalBody } from "@windmill/react-ui";
 import { Correct, Delete } from "../Icons/Icons";
+import produce from "immer";
 
 const EditExerciseModal = ({
   isEditExerciseModal,
   closeEditExerciseModal,
   deleteExercise,
   selected,
+  setSelected,
 }) => {
-  console.log(selected);
+  console.log(selected?.sets);
+
+  const randomNum = Math.floor(Math.random() * 100);
+  const randomKey = (num) => (num + randomNum) * randomNum;
+
+  //   const handleChange = (e) => {
+  //     const { name, value } = e.target;
+  //     setSelected(
+  //       produce(selected.sets, (draft) => {
+  //         const index = draft.findIndex(set => set.id === "id1")
+
+  //         draft[name] = value;
+  //       })
+  //     );
+  //   };
 
   return (
     selected && (
@@ -18,17 +34,58 @@ const EditExerciseModal = ({
         >
           <ModalHeader>{selected.exercise}</ModalHeader>
           <ModalBody>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum et
-            eligendi repudiandae voluptatem tempore!
+            {selected.sets.map((set, index) => (
+              <div key={randomKey(index)}>
+                <div className="text-center">
+                  <p>Set {index + 1}</p>
+                </div>
+                <div className="flex flex-col sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+                  <form>
+                    <div className="text-center pb-2">
+                      <label>Weight</label>
+                    </div>
+                    <div className="flex justify-center pb-2">
+                      <input
+                        className="py-2 rounded w-1/3 border text-black text-center"
+                        type="number"
+                        name="weight"
+                        required
+                        value={set.weight}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </form>
+                  <form>
+                    <div className="text-center pb-2">
+                      <label>Reps</label>
+                    </div>
+                    <div className="flex justify-center ">
+                      <input
+                        className="py-2 rounded w-1/3 border text-black text-center	"
+                        type="number"
+                        name="reps"
+                        required
+                        value={set.reps}
+                        // onChange={handleChange}
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            ))}
           </ModalBody>
-          <ModalFooter>
-            <div onClick={() => deleteExercise(selected.id)}>
+
+          <div className="flex justify-evenly sm:justify-end ">
+            <div
+              onClick={() => deleteExercise(selected.id)}
+              className="sm:mx-3"
+            >
               <Delete />
             </div>
             <div>
               <Correct />
             </div>
-          </ModalFooter>
+          </div>
         </Modal>
       </div>
     )

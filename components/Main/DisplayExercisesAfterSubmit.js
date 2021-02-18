@@ -101,6 +101,7 @@ const DisplayExercisesAfterSubmit = () => {
               closeEditExerciseModal={closeEditExerciseModal}
               selected={selected}
               deleteExercise={deleteExercise}
+              setSelected={setSelected}
             />
           </CardBody>
         </Card>
