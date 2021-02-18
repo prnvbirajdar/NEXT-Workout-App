@@ -66,7 +66,7 @@ const DisplayExercisesAfterSubmit = () => {
       <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-xl">
+            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
               {e.exercise}
             </p>
             {e.sets.map((s, index) => (

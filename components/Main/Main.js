@@ -91,7 +91,6 @@ const Main = () => {
 
   return (
     <div className="flex items-center flex-col dark:bg-black">
-
       <BodyPartsSelect
         closeCard={closeCard}
         openExerciseModal={openExerciseModal}
@@ -116,14 +115,14 @@ const Main = () => {
           <Card>
             <CardBody>
               <div className="flex justify-between">
-                <p className="self-center font-semibold text-gray-600 dark:text-gray-300 ">
+                <p className="self-center font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {currentExerciseData.currentExer}
                 </p>
-
                 <div onClick={handleDeleteCurrentExercise}>
                   <Delete />
                 </div>
               </div>
+              
               <AddSet openRepsSetsModal={openRepsSetsModal} />
               {/*<textarea className="flex justify-center items-center rounded" />*/}
               <RepsSetsDisplay
