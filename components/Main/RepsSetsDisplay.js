@@ -1,5 +1,6 @@
 import { Card, CardBody } from "@windmill/react-ui";
 import produce from "immer";
+import { Delete } from "../Icons/Icons";
 
 const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
   const randomNum = Math.floor(Math.random() * 100);
@@ -28,7 +29,9 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
             <label className="self-end  ">Reps</label>
             <p className=" font-medium ml-3 capitalize text-right ">{m.reps}</p>
           </div>
-          <button onClick={handleDelete}>Delete</button>
+          <div onClick={handleDelete}>
+            <Delete />
+          </div>
         </div>
       </CardBody>
     </Card>

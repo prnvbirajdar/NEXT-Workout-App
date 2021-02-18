@@ -116,7 +116,9 @@ const Main = () => {
       />
 
       {currentExerciseData.currentExer.length > 0 && (
-        <div className={`${isExerciseOpen ? "block" : "hidden"} w-1/2`}>
+        <div
+          className={`${isExerciseOpen ? "block" : "hidden"} w-11/12  sm:w-1/2`}
+        >
           <Card>
             <CardBody>
               <div className="flex justify-between">
@@ -147,7 +149,7 @@ const Main = () => {
           </Card>
         </div>
       )}
-      <div className="mt-5 w-1/2">
+      <div className="mt-5 w-11/12  sm:w-1/2">
         <DisplayExercisesAfterSubmit />
       </div>
     </div>
