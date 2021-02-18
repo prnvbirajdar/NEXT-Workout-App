@@ -1,4 +1,4 @@
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "@windmill/react-ui";
+import { Modal, ModalBody, ModalFooter, Button } from "@windmill/react-ui";
 import { Plus, Minus, Correct, Delete } from "../Icons/Icons";
 import { db } from "../data/firebase";
 import firebase from "firebase/app";
@@ -68,54 +68,103 @@ const RepsSetsModal = ({
   return (
     <div className=" text-gray-600 dark:text-gray-400 flex justify-center">
       <Modal isOpen={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
-        <ModalHeader>{currentExerciseData.currentExer}</ModalHeader>
+        <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+          {currentExerciseData.currentExer}
+        </p>
         <ModalBody>
-          <div className="flex flex-col sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+          <div className="flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
             <form>
-              <div className="text-center pb-2">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Weight</label>
               </div>
-              <div className="flex justify-center pb-2">
-                <Minus />
+              <div className="flex justify-center pb-2 ">
                 <input
-                  className="py-2 rounded w-1/3 border text-black text-center"
+                  className="py-2 rounded w-1/2 border text-black text-center"
                   type="number"
                   name="weight"
                   onChange={handleChange}
                   required
                 />
-                <Plus />
               </div>
             </form>
             <form>
-              <div className="text-center pb-2">
+              <div className="text-center pb-2 text-base font-semibold">
                 <label>Reps</label>
               </div>
               <div className="flex justify-center ">
-                <Minus />
                 <input
-                  className="py-2 rounded w-1/3 border text-black text-center	"
+                  className="py-2 rounded w-1/2 border text-black text-center	"
                   type="number"
                   name="reps"
                   onChange={handleChange}
                   required
                 />
-                <Plus />
               </div>
             </form>
           </div>
         </ModalBody>
-        <ModalFooter>
-          <div onClick={closeRepsSetsModal}>
-            <Delete />
+       
+          <div className="flex justify-evenly">
+            <div onClick={closeRepsSetsModal}>
+              <Delete />
+            </div>
+            <div onClick={handleSubmit}>
+              <Correct />
+            </div>
           </div>
-          <div onClick={handleSubmit}>
-            <Correct />
-          </div>
-        </ModalFooter>
       </Modal>
     </div>
   );
 };
 
 export default RepsSetsModal;
+
+// <div className="flex md:flex-row justify-around py-2 sm:mx-4  bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+// <div className="flex flex-col sm:flex-row justify-between py-2 ml-2">
+//   <label className=" self-center sm:self-end  ">Weight</label>
+//   <p className="  sm:text-right font-semibold ">
+//     {s.weight} lbs
+//   </p>
+// </div>
+// <div className="flex flex-col sm:flex-row justify-between p-2 ml-2">
+//   <label className="sm:self-end  ">Reps</label>
+//   <p className=" text-center sm:text-right font-semibold  ">
+//     {s.reps}
+//   </p>
+// </div>
+// </div>
+
+// <div className="flex flex-col sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+// <form>
+//   <div className="text-center pb-2">
+//     <label>Weight</label>
+//   </div>
+//   <div className="flex justify-center pb-2">
+//     <Minus />
+//     <input
+//       className="py-2 rounded w-1/3 border text-black text-center"
+//       type="number"
+//       name="weight"
+//       onChange={handleChange}
+//       required
+//     />
+//     <Plus />
+//   </div>
+// </form>
+// <form>
+//   <div className="text-center pb-2">
+//     <label>Reps</label>
+//   </div>
+//   <div className="flex justify-center ">
+//     <Minus />
+//     <input
+//       className="py-2 rounded w-1/3 border text-black text-center	"
+//       type="number"
+//       name="reps"
+//       onChange={handleChange}
+//       required
+//     />
+//     <Plus />
+//   </div>
+// </form>
+// </div>
