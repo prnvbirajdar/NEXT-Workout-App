@@ -38,7 +38,6 @@ const EditExerciseModal = ({
 
   return (
     selected && (
-      <div>
         <Modal
           isOpen={isEditExerciseModal}
           onClose={() => closeEditExerciseModal(selected)}
@@ -52,7 +51,7 @@ const EditExerciseModal = ({
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 text-base ">
                   Set {index + 1}
                 </p>
-                <div className="flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+                <div className=" flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
                   <form>
                     <div className="text-center pb-2 text-base font-semibold">
                       <label>Weight</label>
@@ -100,7 +99,6 @@ const EditExerciseModal = ({
             </div>
           </div>
         </Modal>
-      </div>
     )
   );
 };

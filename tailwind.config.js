@@ -15,6 +15,7 @@ module.exports = windmill({
   },
   variants: {
     extend: {},
+    scrollbar: ["rounded"],
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 });
