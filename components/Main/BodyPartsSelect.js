@@ -30,7 +30,7 @@ const BodyPartsSelect = ({
               <div key={e.id} onClick={openExerciseModal}>
                 <button
                   onClick={() => setBodyPart(e)}
-                  className="shadow-lg m-2 h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
+                  className="text-sm sm:text-base shadow-lg m-1.5 h-8 px-4 sm:m-2 sm:h-10 sm:px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
                 >
                   {e.muscle}
                 </button>

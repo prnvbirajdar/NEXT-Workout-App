@@ -1,4 +1,4 @@
-import { Modal, ModalHeader, ModalBody } from "@windmill/react-ui";
+import { Modal, ModalBody } from "@windmill/react-ui";
 import { Fragment } from "react";
 import ExerciseLog from "./EmptyLog";
 import produce from "immer";
@@ -13,9 +13,9 @@ const AddExerciseModal = ({
   return (
     <Fragment>
       <Modal isOpen={isExerciseModalOpen} onClose={closeExerciseModal}>
-        <ModalHeader>Select exercise</ModalHeader>
+        <p className="mb-4 font-semibold  text-gray-600 dark:text-gray-300 md:text-xl">Select exercise</p>
         <ModalBody>
-          <div className="pt-2 flex justify-center flex-wrap">
+          <div className="sm:pt-2 flex justify-center flex-wrap ">
             {bodyPart &&
               bodyPart.exercises.map((e) => (
                 <div key={e.id} onClick={closeExerciseModal}>
@@ -27,7 +27,7 @@ const AddExerciseModal = ({
                         })
                       )
                     }
-                    className="shadow-lg m-2 h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
+                    className="text-sm sm:text-base shadow-lg m-1.5 h-8 px-3 sm:m-2 sm:h-10 sm:px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
                   >
                     {e.exercise}
                   </button>
