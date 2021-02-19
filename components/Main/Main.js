@@ -102,7 +102,7 @@ const Main = () => {
         setBodyPart={setBodyPart}
       />
 
-      {currentExerciseData.currentExer.length > 0 ? (
+      {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
         <div></div>
       ) : (
         <AddExercise openCard={openCard} />
