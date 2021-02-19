@@ -46,6 +46,7 @@ const DisplayExercisesAfterSubmit = () => {
             exercise: doc.data().exercise,
             sets: doc.data().sets,
             id: doc.id,
+            notes: doc.data().notes,
           }))
         );
       });

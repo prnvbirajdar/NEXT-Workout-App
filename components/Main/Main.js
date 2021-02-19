@@ -7,6 +7,7 @@ import AddSet from "./AddSet";
 import RepsSetsModal from "./RepsSetsModal";
 import RepsSetsDisplay from "./RepsSetsDisplay";
 import { Correct, Delete } from "../Icons/Icons";
+import produce from "immer";
 
 import { db } from "../data/firebase";
 import firebase from "firebase/app";
@@ -66,6 +67,7 @@ const Main = () => {
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         profileId: user.uid,
         date: dateToday,
+        notes: currentExerciseData.notes
       })
       .then(() => {
         console.log("Document successfully written!");
@@ -99,7 +101,6 @@ const Main = () => {
         setBodyPart={setBodyPart}
       />
 
-
       {currentExerciseData.currentExer.length > 0 ? (
         <div></div>
       ) : (
@@ -116,7 +117,9 @@ const Main = () => {
 
       {currentExerciseData.currentExer.length > 0 && (
         <div
-          className={`${isExerciseOpen ? "block" : "hidden"} mt-6 w-11/12  sm:w-1/2`}
+          className={`${
+            isExerciseOpen ? "block" : "hidden"
+          } mt-6 w-11/12  sm:w-1/2`}
         >
           <Card>
             <CardBody>
@@ -130,11 +133,26 @@ const Main = () => {
               </div>
 
               <AddSet openRepsSetsModal={openRepsSetsModal} />
-              {/*<textarea className="flex justify-center items-center rounded" />*/}
+
               <RepsSetsDisplay
                 currentExerciseData={currentExerciseData}
                 setCurrentExerciseData={setCurrentExerciseData}
               />
+              <div>
+                <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+                  Notes
+                </p>
+                <textarea
+                  onChange={(e) =>
+                    setCurrentExerciseData(
+                      produce(currentExerciseData, (draft) => {
+                        draft.notes = e.target.value;
+                      })
+                    )
+                  }
+                  className="p-2 flex justify-center items-center rounded w-full m-auto text-sm"
+                />
+              </div>
               <RepsSetsModal
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
                 closeRepsSetsModal={closeRepsSetsModal}
