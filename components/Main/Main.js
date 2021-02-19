@@ -50,6 +50,7 @@ const Main = () => {
     notes: "",
     sets: [],
   });
+
   console.log(currentExerciseData);
 
   const dateToday = new Date().toLocaleString().split(",")[0];
@@ -98,7 +99,12 @@ const Main = () => {
         setBodyPart={setBodyPart}
       />
 
-      <AddExercise openCard={openCard} />
+
+      {currentExerciseData.currentExer.length > 0 ? (
+        <div></div>
+      ) : (
+        <AddExercise openCard={openCard} />
+      )}
 
       <AddExerciseModal
         isExerciseModalOpen={isExerciseModalOpen}
@@ -110,7 +116,7 @@ const Main = () => {
 
       {currentExerciseData.currentExer.length > 0 && (
         <div
-          className={`${isExerciseOpen ? "block" : "hidden"} w-11/12  sm:w-1/2`}
+          className={`${isExerciseOpen ? "block" : "hidden"} mt-6 w-11/12  sm:w-1/2`}
         >
           <Card>
             <CardBody>
@@ -122,7 +128,7 @@ const Main = () => {
                   <Delete />
                 </div>
               </div>
-              
+
               <AddSet openRepsSetsModal={openRepsSetsModal} />
               {/*<textarea className="flex justify-center items-center rounded" />*/}
               <RepsSetsDisplay
@@ -135,7 +141,10 @@ const Main = () => {
                 setCurrentExerciseData={setCurrentExerciseData}
                 currentExerciseData={currentExerciseData}
               />
-              <div onClick={submitExerciseData} className="flex justify-end mt-2">
+              <div
+                onClick={submitExerciseData}
+                className="flex justify-end mt-2"
+              >
                 {currentExerciseData.sets.length > 0 && <Correct />}
               </div>
             </CardBody>

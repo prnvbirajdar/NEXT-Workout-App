@@ -78,7 +78,7 @@ const RepsSetsModal = ({
           <div onClick={closeRepsSetsModal}>
             <Delete />
           </div>
-          <div onClick={handleSubmit} className={`${currentSet.reps > 0 && currentSet.weight >0 ? "pointer-events-auto" : "pointer-events-none"}`}>
+          <div onClick={handleSubmit} className={`${currentSet.reps > 0 && currentSet.weight > 0 ? "pointer-events-auto" : "pointer-events-none"}`}>
             <Correct />
           </div>
         </div>

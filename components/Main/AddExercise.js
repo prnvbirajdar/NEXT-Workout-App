@@ -15,7 +15,7 @@ const AddExercise = ({ openCard, showEmptyLog }) => {
         circleWidth={"w-10 md:w-14"}
       />
      
-      <p className="text-gray-600 dark:text-gray-300 m-2 mb-3">Add Exercise</p>
+      <p className="text-gray-600 dark:text-gray-300 mt-2">Add Exercise</p>
     </div>
   );
 };
