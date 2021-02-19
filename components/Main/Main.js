@@ -136,7 +136,7 @@ const Main = () => {
                 currentExerciseData={currentExerciseData}
               />
               <div onClick={submitExerciseData} className="flex justify-end mt-2">
-                <Correct />
+                {currentExerciseData.sets.length > 0 && <Correct />}
               </div>
             </CardBody>
           </Card>
