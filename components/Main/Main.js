@@ -67,7 +67,7 @@ const Main = () => {
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         profileId: user.uid,
         date: dateToday,
-        notes: currentExerciseData.notes
+        notes: currentExerciseData.notes,
       })
       .then(() => {
         console.log("Document successfully written!");
@@ -93,7 +93,8 @@ const Main = () => {
   };
 
   return (
-    <div className="flex items-center flex-col dark:bg-black">
+    <div className="flex items-center flex-col dark:bg-black bg-gray-50">
+    <p className="text-gray-600 dark:text-black bg-gray-300 sm:bg-red-300 md:bg-green-300 lg:bg-blue-300 xl:bg-pink-600 px-5">hi</p>
       <BodyPartsSelect
         closeCard={closeCard}
         openExerciseModal={openExerciseModal}
@@ -138,21 +139,23 @@ const Main = () => {
                 currentExerciseData={currentExerciseData}
                 setCurrentExerciseData={setCurrentExerciseData}
               />
-              <div>
-                <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
-                  Notes
-                </p>
-                <textarea
-                  onChange={(e) =>
-                    setCurrentExerciseData(
-                      produce(currentExerciseData, (draft) => {
-                        draft.notes = e.target.value;
-                      })
-                    )
-                  }
-                  className="p-2 flex justify-center items-center rounded w-full m-auto text-sm"
-                />
-              </div>
+              {currentExerciseData.sets.length > 0 && (
+                <div>
+                  <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+                    Notes
+                  </p>
+                  <textarea
+                    onChange={(e) =>
+                      setCurrentExerciseData(
+                        produce(currentExerciseData, (draft) => {
+                          draft.notes = e.target.value;
+                        })
+                      )
+                    }
+                    className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
+                  />
+                </div>
+              )}
               <RepsSetsModal
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
                 closeRepsSetsModal={closeRepsSetsModal}

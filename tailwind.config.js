@@ -11,7 +11,6 @@ module.exports = windmill({
       fontFamily: {
         sans: ["Inter", "sans-serif"],
       },
-  
     },
   },
   variants: {
