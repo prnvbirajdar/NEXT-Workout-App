@@ -42,7 +42,7 @@ const RepsSetsModal = ({
           {currentExerciseData.currentExer}
         </p>
         <ModalBody>
-          <div className="flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+          <div className="flex bg-gray-50 dark:bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
             <form>
               <div className="text-center pb-2 text-base font-semibold">
                 <label>Weight</label>
@@ -74,11 +74,18 @@ const RepsSetsModal = ({
           </div>
         </ModalBody>
 
-        <div className="flex justify-evenly">
+        <div className="flex justify-between">
           <div onClick={closeRepsSetsModal}>
             <Delete />
           </div>
-          <div onClick={handleSubmit} className={`${currentSet.reps > 0 && currentSet.weight > 0 ? "pointer-events-auto" : "pointer-events-none"}`}>
+          <div
+            onClick={handleSubmit}
+            className={`${
+              currentSet.reps > 0 && currentSet.weight > 0
+                ? "pointer-events-auto"
+                : "pointer-events-none"
+            }`}
+          >
             <Correct />
           </div>
         </div>

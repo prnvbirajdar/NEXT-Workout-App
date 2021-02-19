@@ -4,7 +4,7 @@ const AddSet = ({ openRepsSetsModal }) => {
   return (
     <div
       onClick={openRepsSetsModal}
-      className="flex flex-col items-center mt-2 mx-20 sm:mx-28 md:mx-36 lg:mx-48 xl:mx-64"
+      className="flex flex-col items-center mt-2 mx-20 sm:mx-24 md:mx-32 lg:mx-48 xl:mx-64"
     >
       <Add
         lineHeight={"w-4 md:w-6"}

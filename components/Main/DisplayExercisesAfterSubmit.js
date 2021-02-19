@@ -83,15 +83,15 @@ const DisplayExercisesAfterSubmit = () => {
                   Set {index + 1}
                 </p>
                 <div className="flex md:flex-row justify-around py-2 sm:mx-4  bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-                  <div className="flex flex-col sm:flex-row justify-between py-2 ml-2">
-                    <label className=" self-center sm:self-end  ">Weight</label>
-                    <p className="  sm:text-right font-semibold ">
+                  <div className="flex flex-col lg:flex-row justify-between py-2 ml-2">
+                    <label className=" self-center lg:self-end  ">Weight</label>
+                    <p className="  lg:text-right font-semibold ">
                       {s.weight} lbs
                     </p>
                   </div>
-                  <div className="flex flex-col sm:flex-row justify-between p-2 ml-2">
-                    <label className="sm:self-end  ">Reps</label>
-                    <p className=" text-center sm:text-right font-semibold  ">
+                  <div className="flex flex-col lg:flex-row justify-between p-2 ml-2">
+                    <label className="lg:self-end  ">Reps</label>
+                    <p className=" text-center lg:text-right font-semibold  ">
                       {s.reps}
                     </p>
                   </div>
