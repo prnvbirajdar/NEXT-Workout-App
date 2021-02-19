@@ -1,4 +1,4 @@
-import { Modal, ModalHeader, ModalBody } from "@windmill/react-ui";
+import { Modal, ModalBody } from "@windmill/react-ui";
 import { Correct, Delete } from "../Icons/Icons";
 import produce from "immer";
 

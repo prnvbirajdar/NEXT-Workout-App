@@ -1,7 +1,7 @@
 import { Card, CardBody } from "@windmill/react-ui";
 import { db } from "../data/firebase";
 import { useAuth } from "../data/authProvider";
-import { Edit } from "../Icons/Icons";
+import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 
 const DisplayExercisesAfterSubmit = () => {
@@ -66,9 +66,16 @@ const DisplayExercisesAfterSubmit = () => {
       <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
-              {e.exercise}
-            </p>
+            <div className="flex justify-between ">
+              <div className=" flex items-center ">
+                <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+                  {e.exercise}
+                </p>
+              </div>
+              <div onClick={() => deleteExercise(e.id)}>
+                <Delete />
+              </div>
+            </div>
             {e.sets.map((s, index) => (
               <div key={randomKey(index)}>
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
