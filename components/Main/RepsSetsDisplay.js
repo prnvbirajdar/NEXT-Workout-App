@@ -15,7 +15,7 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
   };
 
   return currentExerciseData.sets.map((s, index) => (
-    <Card key={randomKey(index)}>
+    <Card key={randomKey(index) + index}>
       <div>
         <div className="flex flex-col lg:flex-row lg:bg-gray-50 lg:dark:bg-black rounded lg:mt-3">
           <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
@@ -35,7 +35,10 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
             </div>
           </div>
 
-          <div onClick={handleDelete} className="self-center hidden lg:block lg:mr-3">
+          <div
+            onClick={handleDelete}
+            className="self-center hidden lg:block lg:mr-3"
+          >
             <Delete />
           </div>
         </div>

@@ -15,6 +15,8 @@ const RepsSetsModal = ({
     id: "",
   });
 
+  console.log(currentSet.reps, currentSet.weight);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCurrentSet(
@@ -26,11 +28,14 @@ const RepsSetsModal = ({
   };
 
   const handleSubmit = async () => {
-    setCurrentExerciseData(
-      produce(currentExerciseData, (draft) => {
-        draft.sets.push(currentSet);
-      })
-    );
+    if (currentSet.weight > 0 && currentSet.reps > 0)
+      setCurrentExerciseData(
+        produce(currentExerciseData, (draft) => {
+          draft.sets.push(currentSet);
+        })
+      );
+
+    setCurrentSet({ reps: 0, weight: 0 });
 
     closeRepsSetsModal();
   };
@@ -43,7 +48,7 @@ const RepsSetsModal = ({
         </p>
         <ModalBody>
           <div className="flex bg-gray-50 dark:bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
-            <form>
+            <div>
               <div className="text-center pb-2 text-base font-semibold">
                 <label>Weight</label>
               </div>
@@ -56,8 +61,8 @@ const RepsSetsModal = ({
                   required
                 />
               </div>
-            </form>
-            <form>
+            </div>
+            <div>
               <div className="text-center pb-2 text-base font-semibold">
                 <label>Reps</label>
               </div>
@@ -70,7 +75,7 @@ const RepsSetsModal = ({
                   required
                 />
               </div>
-            </form>
+            </div>
           </div>
         </ModalBody>
 

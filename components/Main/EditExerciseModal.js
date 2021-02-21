@@ -9,7 +9,7 @@ const EditExerciseModal = ({
   selected,
   setSelected,
 }) => {
-  console.log(selected?.sets);
+  //console.log(selected?.sets);
 
   const [currentId, setCurrentId] = React.useState("");
 
