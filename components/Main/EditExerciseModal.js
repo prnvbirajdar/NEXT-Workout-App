@@ -36,6 +36,10 @@ const EditExerciseModal = ({
     // );
   };
 
+  const handleNotesChange = ()=>{
+    
+  }
+
   console.log(selected?.sets);
 
   return (
@@ -84,6 +88,16 @@ const EditExerciseModal = ({
                     />
                   </div>
                 </form>
+              </div>
+              <div>
+                <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+                  Notes
+                </p>
+                <textarea
+                  value={selected.notes}
+                  onChange={handleNotesChange}
+                  className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
+                />
               </div>
             </div>
           ))}
