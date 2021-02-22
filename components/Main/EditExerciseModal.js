@@ -36,69 +36,68 @@ const EditExerciseModal = ({
     // );
   };
 
+  console.log(selected?.sets);
+
   return (
     selected && (
-        <Modal
-          isOpen={isEditExerciseModal}
-          onClose={() => closeEditExerciseModal(selected)}
-        >
-          <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-            {selected.exercise}
-          </p>
-          <ModalBody>
-            {selected.sets.map((set, index) => (
-              <div key={randomKey(index)}>
-                <p className=" text-gray-800 dark:text-gray-300 text-center m-2 text-base ">
-                  Set {index + 1}
-                </p>
-                <div className=" flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
-                  <form>
-                    <div className="text-center pb-2 text-base font-semibold">
-                      <label>Weight</label>
-                    </div>
-                    <div className="flex justify-center pb-2 ">
-                      <input
-                        className="py-2 rounded w-1/2 border text-black text-center"
-                        type="number"
-                        name="weight"
-                        onChange={handleChange}
-                        required
-                        value={set.weight}
-                      />
-                    </div>
-                  </form>
-                  <form>
-                    <div className="text-center pb-2 text-base font-semibold">
-                      <label>Reps</label>
-                    </div>
-                    <div className="flex justify-center ">
-                      <input
-                        className="py-2 rounded w-1/2 border text-black text-center	"
-                        type="number"
-                        name="reps"
-                        onChange={handleChange}
-                        required
-                        value={set.reps}
-                      />
-                    </div>
-                  </form>
-                </div>
+      <Modal
+        isOpen={isEditExerciseModal}
+        onClose={() => closeEditExerciseModal(selected)}
+      >
+        <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
+          {selected.exercise}
+        </p>
+        <ModalBody>
+          {selected.sets.map((set, index) => (
+            <div key={randomKey(index) + index}>
+              <p className=" text-gray-800 dark:text-gray-300 text-center m-2 text-base ">
+                Set {index + 1}
+              </p>
+              <div className=" flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+                <form>
+                  <div className="text-center pb-2 text-base font-semibold">
+                    <label>Weight</label>
+                  </div>
+                  <div className="flex justify-center pb-2 ">
+                    <input
+                      className="py-2 rounded w-1/2 border text-black text-center"
+                      type="number"
+                      name="weight"
+                      onChange={handleChange}
+                      required
+                      value={set.weight}
+                    />
+                  </div>
+                </form>
+                <form>
+                  <div className="text-center pb-2 text-base font-semibold">
+                    <label>Reps</label>
+                  </div>
+                  <div className="flex justify-center ">
+                    <input
+                      className="py-2 rounded w-1/2 border text-black text-center	"
+                      type="number"
+                      name="reps"
+                      onChange={handleChange}
+                      required
+                      value={set.reps}
+                    />
+                  </div>
+                </form>
               </div>
-            ))}
-          </ModalBody>
+            </div>
+          ))}
+        </ModalBody>
 
-          <div className="flex justify-evenly sm:justify-end ">
-            <div
-              onClick={() => deleteExercise(selected.id)}
-              className="sm:mx-3"
-            >
-              <Delete />
-            </div>
-            <div>
-              <Correct />
-            </div>
+        <div className="flex justify-between">
+          <div onClick={() => deleteExercise(selected.id)}>
+            <Delete />
           </div>
-        </Modal>
+          <div>
+            <Correct />
+          </div>
+        </div>
+      </Modal>
     )
   );
 };

@@ -98,6 +98,14 @@ const DisplayExercisesAfterSubmit = () => {
                 </div>
               </div>
             ))}
+            <div>
+              <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+                Notes
+              </p>
+              <p className="p-2 flex rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 ">
+                {e.notes}
+              </p>
+            </div>
             <div
               className="flex justify-end mt-2"
               onClick={() => openEditExerciseModal(e)}

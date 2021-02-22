@@ -15,7 +15,6 @@ const RepsSetsModal = ({
     id: "",
   });
 
-  console.log(currentSet.reps, currentSet.weight);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
