@@ -23,7 +23,6 @@ const EditExerciseModal = ({
   const [newNotes, setNewNotes] = React.useState(notes);
 
   //const [updatedSet, setUpdatedSet] = React.useState(sets);
-  console.log(exer);
 
   // exer.map((e) => console.log(e.id));
 
@@ -31,8 +30,19 @@ const EditExerciseModal = ({
   // console.log(rightSet);
 
   // if (rightSet) {
-  //   (reps = selected.reps), (weight = selected.weight);
+  //   [(reps = selected.reps), (weight = selected.weight)];
   // }
+
+  const ind = exer.findIndex((e) => e.id === selected?.id);
+  if (ind > 0) {
+    exer[ind] = {
+      id: selected?.id,
+      reps: selected?.reps,
+      weight: selected?.weight,
+    };
+  }
+
+  console.log(exer);
 
   const { user } = useAuth(); //context
 
@@ -42,11 +52,6 @@ const EditExerciseModal = ({
       produce(selected, (draft) => {
         draft[name] = value;
       })
-    );
-
-    Object.assign(
-      exer.find((b) => b.id === selected.id),
-      { reps: selected.reps, weight: selected.weight }
     );
 
     // setSelected(
@@ -67,6 +72,13 @@ const EditExerciseModal = ({
   //console.log(sets);
 
   const updateExercise = async () => {
+    // const newSets = Object?.assign(
+    //   exer.find((b) => b.id === selected.id),
+    //   { reps: selected.reps, weight: selected.weight }
+    // );
+
+    // console.log(newSets);
+
     await db
       .collection("profiles")
       .doc(user?.uid)
@@ -74,8 +86,12 @@ const EditExerciseModal = ({
       .doc(id)
       .update({
         notes: newNotes,
+        sets: exer,
       });
   };
+
+  // console.log(selected);
+  // console.log(exer);
 
   return (
     selected && (

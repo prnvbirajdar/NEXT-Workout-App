@@ -61,7 +61,7 @@ const DisplayExercisesAfterSubmit = () => {
 
   return (
     exerciseStats.length > 0 &&
-    exerciseStats.map((e) => (
+    exerciseStats?.map((e) => (
       <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
@@ -75,7 +75,7 @@ const DisplayExercisesAfterSubmit = () => {
                 <Delete />
               </div>
             </div>
-            {e.sets.map((s, index) => (
+            {e.sets && e.sets.map((s, index) => (
               <div key={index}>
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
                   Set {index + 1}
