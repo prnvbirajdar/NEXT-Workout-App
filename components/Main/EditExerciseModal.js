@@ -12,26 +12,10 @@ const EditExerciseModal = ({
   setSelected,
   notes,
   id,
-  reps,
-  weight,
   index,
-  name,
   exer,
 }) => {
-  const [currentId, setCurrentId] = React.useState("");
-
   const [newNotes, setNewNotes] = React.useState(notes);
-
-  //const [updatedSet, setUpdatedSet] = React.useState(sets);
-
-  // exer.map((e) => console.log(e.id));
-
-  // const rightSet = exer.map((e) => e.id === selected?.id);
-  // console.log(rightSet);
-
-  // if (rightSet) {
-  //   [(reps = selected.reps), (weight = selected.weight)];
-  // }
 
   const ind = exer.findIndex((e) => e.id === selected?.id);
   if (ind > 0) {
@@ -42,8 +26,6 @@ const EditExerciseModal = ({
     };
   }
 
-  console.log(exer);
-
   const { user } = useAuth(); //context
 
   const handleChange = (e) => {
@@ -53,32 +35,13 @@ const EditExerciseModal = ({
         draft[name] = value;
       })
     );
-
-    // setSelected(
-    //   produce(selected.sets, (draft) => {
-    //     const index = draft.findIndex((set) => {
-    //       setCurrentId(set.id);
-    //       set.id === currentId;
-    //     });
-    //     if (index !== -1) draft[name] = value;
-    //   })
-    // );
   };
 
   const handleNotesChange = (e) => {
     setNewNotes(e.target.value);
   };
 
-  //console.log(sets);
-
   const updateExercise = async () => {
-    // const newSets = Object?.assign(
-    //   exer.find((b) => b.id === selected.id),
-    //   { reps: selected.reps, weight: selected.weight }
-    // );
-
-    // console.log(newSets);
-
     await db
       .collection("profiles")
       .doc(user?.uid)
@@ -89,9 +52,6 @@ const EditExerciseModal = ({
         sets: exer,
       });
   };
-
-  // console.log(selected);
-  // console.log(exer);
 
   return (
     selected && (
@@ -104,9 +64,6 @@ const EditExerciseModal = ({
         </p>
         <ModalBody>
           <div key={index}>
-            {/*<p className=" text-gray-800 dark:text-gray-300 text-center m-2 text-base ">
-              Set {index + 1}
-    </p>*/}
             <div className=" flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
               <div>
                 <div className="text-center pb-2 text-base font-semibold">
