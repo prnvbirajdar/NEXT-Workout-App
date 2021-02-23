@@ -52,8 +52,7 @@ const DisplayExercisesAfterSubmit = () => {
       });
   };
 
-  const randomNum = Math.floor(Math.random() * 100);
-  const randomKey = (num) => (num + randomNum) * randomNum;
+ 
 
   React.useEffect(() => {
     if (user) {
@@ -78,7 +77,7 @@ const DisplayExercisesAfterSubmit = () => {
               </div>
             </div>
             {e.sets.map((s, index) => (
-              <div key={randomKey(index) + index}>
+              <div key={index}>
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
                   Set {index + 1}
                 </p>
@@ -112,13 +111,16 @@ const DisplayExercisesAfterSubmit = () => {
             >
               <Edit />
             </div>
-            <EditExerciseModal
-              isEditExerciseModal={isEditExerciseModal}
-              closeEditExerciseModal={closeEditExerciseModal}
-              selected={selected}
-              deleteExercise={deleteExercise}
-              setSelected={setSelected}
-            />
+            {selected && (
+              <EditExerciseModal
+                isEditExerciseModal={isEditExerciseModal}
+                closeEditExerciseModal={closeEditExerciseModal}
+                selected={selected}
+                notes={selected.notes}
+                deleteExercise={deleteExercise}
+                setSelected={setSelected}
+              />
+            )}
           </CardBody>
         </Card>
       </div>

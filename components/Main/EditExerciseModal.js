@@ -8,13 +8,13 @@ const EditExerciseModal = ({
   deleteExercise,
   selected,
   setSelected,
+  notes,
 }) => {
-  //console.log(selected?.sets);
-
   const [currentId, setCurrentId] = React.useState("");
 
-  const randomNum = Math.floor(Math.random() * 100);
-  const randomKey = (num) => (num + randomNum) * randomNum;
+  const [newNotes, setNewNotes] = React.useState(notes);
+
+
 
   //   React.useEffect(() => {
   //       effect
@@ -36,11 +36,11 @@ const EditExerciseModal = ({
     // );
   };
 
-  const handleNotesChange = ()=>{
-    
-  }
+  const handleNotesChange = (e) => {
+    setNewNotes(e.target.value);
+  };
 
-  console.log(selected?.sets);
+  console.log(newNotes);
 
   return (
     selected && (
@@ -53,12 +53,12 @@ const EditExerciseModal = ({
         </p>
         <ModalBody>
           {selected.sets.map((set, index) => (
-            <div key={randomKey(index) + index}>
+            <div key={index}>
               <p className=" text-gray-800 dark:text-gray-300 text-center m-2 text-base ">
                 Set {index + 1}
               </p>
               <div className=" flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
-                <form>
+                <div>
                   <div className="text-center pb-2 text-base font-semibold">
                     <label>Weight</label>
                   </div>
@@ -72,8 +72,8 @@ const EditExerciseModal = ({
                       value={set.weight}
                     />
                   </div>
-                </form>
-                <form>
+                </div>
+                <div>
                   <div className="text-center pb-2 text-base font-semibold">
                     <label>Reps</label>
                   </div>
@@ -87,15 +87,16 @@ const EditExerciseModal = ({
                       value={set.reps}
                     />
                   </div>
-                </form>
+                </div>
               </div>
               <div>
                 <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   Notes
                 </p>
                 <textarea
-                  value={selected.notes}
+                  type="text"
                   onChange={handleNotesChange}
+                  value={newNotes}
                   className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
                 />
               </div>
