@@ -3,6 +3,12 @@ import { useAuth } from "../components/data/authProvider";
 import { db } from "../components/data/firebase";
 import { useEffect } from "react";
 
+const sets = [
+  { weight: 213, reps: 12 },
+  { weight: 253, reps: 15 },
+  { weight: 268, reps: 18 },
+];
+
 const SideProg = () => {
   const [text, setText] = React.useState({ t1: "", t2: "" });
   // const [text2, setText2] = React.useState("");
@@ -35,23 +41,15 @@ const SideProg = () => {
     setText({ t1: "", t2: "" });
   };
 
-  // const getCityStats = async () => {
-  //   await db
-  //     .collection("cities")
-  //     .doc("LA")
-  //     .onSnapshot((querySnapshot) => {
-  //       console.log(querySnapshot.docs);
-  //       //setPhysicalStats(querySnapshot.docs[0].data());
-  //     });
-  // };
-
   useEffect(() => {
     db.collection("cities")
       .doc("LA")
       .onSnapshot((snap) => {
-        console.log(snap.docs);
+        //console.log(snap.docs);
       });
   }, []);
+
+  console.log(sets);
 
   return (
     <div className=" text-gray-600 dark:text-gray-400">
@@ -65,6 +63,17 @@ const SideProg = () => {
         <button type="submit">Send</button>
         <p>Hi</p>
       </form>
+
+      {sets.map((set, index) => (
+        <div key={index} className="flex justify-evenly my-4">
+          <p>{set.weight}</p>
+          <p>{set.reps}</p>
+          <button>Edit</button>
+        </div>
+      ))}
+
+
+      
     </div>
   );
 };
