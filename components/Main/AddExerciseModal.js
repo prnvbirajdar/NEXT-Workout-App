@@ -13,7 +13,9 @@ const AddExerciseModal = ({
   return (
     <Fragment>
       <Modal isOpen={isExerciseModalOpen} onClose={closeExerciseModal}>
-        <p className="mb-4 font-semibold  text-gray-600 dark:text-gray-300 md:text-xl">Select exercise</p>
+        <p className="mb-4 font-semibold  text-gray-600 dark:text-gray-300 md:text-xl">
+          Select exercise
+        </p>
         <ModalBody>
           <div className="sm:pt-2 flex justify-center flex-wrap ">
             {bodyPart &&

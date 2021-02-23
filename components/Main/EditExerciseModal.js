@@ -9,33 +9,46 @@ const EditExerciseModal = ({
   closeEditExerciseModal,
   deleteExercise,
   selected,
+  setSelected,
   notes,
   id,
   reps,
   weight,
   index,
   name,
-  exer
+  exer,
 }) => {
   const [currentId, setCurrentId] = React.useState("");
 
   const [newNotes, setNewNotes] = React.useState(notes);
 
   //const [updatedSet, setUpdatedSet] = React.useState(sets);
+  console.log(exer);
 
-console.log(exer);
+  // exer.map((e) => console.log(e.id));
+
+  // const rightSet = exer.map((e) => e.id === selected?.id);
+  // console.log(rightSet);
+
+  // if (rightSet) {
+  //   (reps = selected.reps), (weight = selected.weight);
+  // }
 
   const { user } = useAuth(); //context
 
-  //   React.useEffect(() => {
-  //       effect
-  //       return () => {
-  //           cleanup
-  //       }
-  //   }, [input])
-
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setSelected(
+      produce(selected, (draft) => {
+        draft[name] = value;
+      })
+    );
+
+    Object.assign(
+      exer.find((b) => b.id === selected.id),
+      { reps: selected.reps, weight: selected.weight }
+    );
+
     // setSelected(
     //   produce(selected.sets, (draft) => {
     //     const index = draft.findIndex((set) => {
@@ -43,14 +56,6 @@ console.log(exer);
     //       set.id === currentId;
     //     });
     //     if (index !== -1) draft[name] = value;
-    //   })
-    // );
-
-    // setUpdatedSet(
-    //   produce(updatedSet, (draft) => {
-    //     {
-    //       draft[name] = value;
-    //     }
     //   })
     // );
   };
@@ -78,8 +83,8 @@ console.log(exer);
         isOpen={isEditExerciseModal}
         onClose={() => closeEditExerciseModal(selected)}
       >
-        <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
-          {name}
+        <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+          Edit Set
         </p>
         <ModalBody>
           <div key={index}>

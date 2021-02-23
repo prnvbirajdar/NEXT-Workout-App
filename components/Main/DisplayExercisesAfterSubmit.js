@@ -20,8 +20,6 @@ const DisplayExercisesAfterSubmit = () => {
     setIsEditExerciseModal(false);
   }
 
-  console.log(selected);
-
   const deleteExercise = async (id) => {
     await db
       .collection("profiles")
@@ -102,7 +100,7 @@ const DisplayExercisesAfterSubmit = () => {
                 {e && (
                   <EditExerciseModal
                     isEditExerciseModal={isEditExerciseModal}
-                    exer={s}
+                    exer={e.sets}
                     reps={s.reps}
                     weight={s.weight}
                     index={index}
