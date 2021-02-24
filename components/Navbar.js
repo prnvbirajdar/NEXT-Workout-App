@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Transition } from "@headlessui/react";
 import { WindmillContext } from "@windmill/react-ui";
 import { useAuth } from "./data/authProvider";
-import { Moon, Sun } from "./Icons/Icons";
+import { Moon, Sun, Calender, Home } from "./Icons/Icons";
 import { useRouter } from "next/router";
 
 const Nav = () => {
@@ -57,7 +57,7 @@ const Nav = () => {
                         : "text-gray-300 hover:bg-gray-700 hover:text-white"
                     } px-3 py-2 rounded-md text-sm font-medium`}
                   >
-                    Home
+                    <Home />
                   </a>
 
                   <a
@@ -69,7 +69,7 @@ const Nav = () => {
                         : "text-gray-300 hover:bg-gray-700 hover:text-white"
                     } px-3 py-2 rounded-md text-sm font-medium`}
                   >
-                    Calender
+                    <Calender />
                   </a>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const Nav = () => {
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   onClick={toggleMode}
-                  className="bg-gray-200 focus:ring focus:ring-gray-500 dark:bg-gray-600 focus:outline-none rounded-md p-1.5"
+                  className="bg-gray-200 hover:bg-gray-100 focus:ring focus:ring-gray-500 transition dark:bg-gray-600 dark:hover:bg-gray-900 focus:outline-none rounded-md p-1.5"
                 >
                   {mode === "dark" ? (
                     <Moon aria-hidden="true" />
