@@ -66,8 +66,8 @@ const DisplayExercisesAfterSubmit = () => {
       <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <div className="flex justify-between">
-              <div className=" flex items-center ">
+            <div className="flex justify-between ">
+              <div className=" flex items-center  ">
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
                 </p>
@@ -90,9 +90,9 @@ const DisplayExercisesAfterSubmit = () => {
               e.sets.map(
                 (s, index) =>
                   s && (
-                    <div key={index}>
-                      <div>
-                        <div className="flex flex-col lg:flex-row lg:bg-gray-50 lg:dark:bg-black rounded lg:mt-3">
+                    <div key={index} className="lg:mt-4">
+                      <div className="lg:mx-4">
+                        <div className=" flex flex-col lg:flex-row lg:bg-gray-50 lg:dark:bg-black rounded lg:mt-3">
                           <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
                             Set {index + 1}
                           </p>
@@ -185,7 +185,6 @@ export default DisplayExercisesAfterSubmit;
 // </div>
 // </div>
 // </div>
-
 
 // const deleteSet = async (s) => {
 //   await db

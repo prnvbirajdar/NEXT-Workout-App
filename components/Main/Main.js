@@ -122,7 +122,7 @@ const Main = () => {
         <div
           className={`${
             isExerciseOpen ? "block" : "hidden"
-          } mt-6 w-11/12  sm:w-1/2`}
+          } mt-6 w-11/12 sm:w-2/3  lg:max-w-xl `}
         >
           <Card>
             <CardBody>
@@ -146,16 +146,18 @@ const Main = () => {
                   <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                     Notes
                   </p>
-                  <textarea
-                    onChange={(e) =>
-                      setCurrentExerciseData(
-                        produce(currentExerciseData, (draft) => {
-                          draft.notes = e.target.value;
-                        })
-                      )
-                    }
-                    className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
-                  />
+                  <div className=" sm:mx-4 ">
+                    <textarea
+                      onChange={(e) =>
+                        setCurrentExerciseData(
+                          produce(currentExerciseData, (draft) => {
+                            draft.notes = e.target.value;
+                          })
+                        )
+                      }
+                      className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
+                    />
+                  </div>
                 </div>
               )}
               <RepsSetsModal
@@ -166,7 +168,7 @@ const Main = () => {
               />
               <div
                 onClick={submitExerciseData}
-                className="flex justify-end mt-2"
+                className="flex justify-end mt-3"
               >
                 {currentExerciseData.sets.length > 0 && <Correct />}
               </div>
@@ -174,7 +176,7 @@ const Main = () => {
           </Card>
         </div>
       )}
-      <div className="mt-5 w-11/12  sm:w-1/2">
+      <div className="mt-5 w-11/12 sm:w-2/3  lg:max-w-xl">
         <DisplayExercisesAfterSubmit />
       </div>
     </div>
