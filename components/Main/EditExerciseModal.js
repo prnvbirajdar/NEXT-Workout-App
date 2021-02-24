@@ -48,10 +48,7 @@ const EditExerciseModal = ({
 
   return (
     selected && (
-      <Modal
-        isOpen={isEditExerciseModal}
-        onClose={() => closeEditExerciseModal(selected)}
-      >
+      <Modal isOpen={isEditExerciseModal} onClose={updateExercise}>
         <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
           Edit Set
         </p>

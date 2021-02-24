@@ -5,7 +5,6 @@ import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 
-
 const DisplayExercisesAfterSubmit = () => {
   const { user } = useAuth(); //context
 
@@ -67,7 +66,7 @@ const DisplayExercisesAfterSubmit = () => {
       <div key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <div className="flex justify-between ">
+            <div className="flex justify-between">
               <div className=" flex items-center ">
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
@@ -92,35 +91,41 @@ const DisplayExercisesAfterSubmit = () => {
                 (s, index) =>
                   s && (
                     <div key={index}>
-                      <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
-                        Set {index + 1}
-                      </p>
-                      <div className="flex md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-                        <div className="flex flex-col lg:flex-row justify-between py-2 ml-2">
-                          <label className=" self-center lg:self-end  ">
-                            Weight
-                          </label>
-                          <p className="  lg:text-right font-semibold ">
-                            {s.weight} lbs
+                      <div>
+                        <div className="flex flex-col lg:flex-row lg:bg-gray-50 lg:dark:bg-black rounded lg:mt-3">
+                          <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
+                            Set {index + 1}
                           </p>
-                        </div>
-                        <div className="flex flex-col lg:flex-row justify-between p-2 ml-2">
-                          <label className="lg:self-end">Reps</label>
-                          <p className=" text-center lg:text-right font-semibold">
-                            {s.reps}
-                          </p>
-                        </div>
-                        <div>
+                          <div className="flex flex-grow md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+                            <div className="flex flex-col  py-2 ml-2">
+                              <label className="self-center">Weight</label>
+                              <p className="font-semibold">{s.weight} lbs</p>
+                            </div>
+                            <div className="flex flex-col  p-2 ml-2">
+                              <label>Reps</label>
+                              <p className=" text-center  font-semibold  ">
+                                {s.reps}
+                              </p>
+                            </div>
+                            <div
+                              className="self-center lg:hidden "
+                              onClick={() => {
+                                console.log(s);
+                                openEditExerciseModal(s);
+                              }}
+                            >
+                              <Edit />
+                            </div>
+                          </div>
+
                           <div
+                            className="self-center hidden lg:block lg:mr-3"
                             onClick={() => {
                               console.log(s);
                               openEditExerciseModal(s);
                             }}
                           >
                             <Edit />
-                          </div>
-                          <div>
-                            <Delete />
                           </div>
                         </div>
                       </div>
@@ -151,30 +156,36 @@ const DisplayExercisesAfterSubmit = () => {
 
 export default DisplayExercisesAfterSubmit;
 
-//<div>
-// <div className="flex flex-col lg:flex-row lg:bg-gray-50 lg:dark:bg-black rounded lg:mt-3">
-// <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
-//   Set {index + 1}
+// <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
+// Set {index + 1}
 // </p>
-// <div className="flex flex-grow md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-//   <div className="flex flex-col  py-2 ml-2">
-//     <label className="self-center">Weight</label>
-//     <p className="font-semibold">{s.weight} lbs</p>
-//   </div>
-//   <div className="flex flex-col  p-2 ml-2">
-//     <label>Reps</label>
-//     <p className=" text-center  font-semibold  ">{s.reps}</p>
-//   </div>
-//   <div onClick={handleDelete} className="self-center lg:hidden ">
-//     <Delete />
-//   </div>
+// <div className="flex md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+// <div className="flex flex-col lg:flex-row justify-between py-2 ml-2">
+//   <label className=" self-center lg:self-end  ">
+//     Weight
+//   </label>
+//   <p className="  lg:text-right font-semibold ">
+//     {s.weight} lbs
+//   </p>
+// </div>
+// <div className="flex flex-col lg:flex-row justify-between p-2 ml-2">
+//   <label className="lg:self-end">Reps</label>
+//   <p className=" text-center lg:text-right font-semibold">
+//     {s.reps}
+//   </p>
+// </div>
+// <div>
+// <div
+//   onClick={() => {
+//     console.log(s);
+//     openEditExerciseModal(s);
+//   }}
+// >
+//   <Edit />
+// </div>
+// </div>
 // </div>
 
-// <div onClick={handleDelete} className="self-center hidden lg:block lg:mr-3">
-//   <Delete />
-// </div>
-// </div>
-// </div>
 
 // const deleteSet = async (s) => {
 //   await db
