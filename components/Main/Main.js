@@ -52,7 +52,7 @@ const Main = () => {
     sets: [],
   });
 
-  console.log(currentExerciseData);
+  //console.log(currentExerciseData);
 
   const dateToday = new Date().toLocaleString().split(",")[0];
 
@@ -94,7 +94,9 @@ const Main = () => {
 
   return (
     <div className="flex items-center flex-col dark:bg-black bg-gray-50">
-    <p className="text-gray-600 dark:text-black bg-gray-300 sm:bg-red-300 md:bg-green-300 lg:bg-blue-300 xl:bg-pink-600 px-5">hi</p>
+      <p className="text-gray-600 dark:text-black bg-gray-300 sm:bg-red-300 md:bg-green-300 lg:bg-blue-300 xl:bg-pink-600 px-5">
+        hi
+      </p>
       <BodyPartsSelect
         closeCard={closeCard}
         openExerciseModal={openExerciseModal}

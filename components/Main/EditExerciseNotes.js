@@ -20,6 +20,7 @@ const EditExerciseNotes = ({ value, id }) => {
     setTarget(e.target.value);
   };
 
+  //updates notes on submit
   const updateNotes = async () => {
     await db
       .collection("profiles")

@@ -3,8 +3,8 @@ import { db } from "../data/firebase";
 import { useAuth } from "../data/authProvider";
 import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
-import ExerciseNotes from "./EditExerciseNotes";
 import EditExerciseNotes from "./EditExerciseNotes";
+
 
 const DisplayExercisesAfterSubmit = () => {
   const { user } = useAuth(); //context
@@ -77,70 +77,71 @@ const DisplayExercisesAfterSubmit = () => {
                 <Delete />
               </div>
             </div>
+            {e.sets.length === 0 ? (
+              <div className="flex md:flex-row justify-around mt-2 py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+                <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
+                  No sets to display
+                </p>
+              </div>
+            ) : (
+              <div></div>
+            )}
+
             {e.sets &&
-              e.sets.map((s, index) => (
-                <div key={index}>
-                  <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
-                    Set {index + 1}
-                  </p>
-                  <div className="flex md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
-                    <div className="flex flex-col lg:flex-row justify-between py-2 ml-2">
-                      <label className=" self-center lg:self-end  ">
-                        Weight
-                      </label>
-                      <p className="  lg:text-right font-semibold ">
-                        {s.weight} lbs
+              e.sets.map(
+                (s, index) =>
+                  s && (
+                    <div key={index}>
+                      <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
+                        Set {index + 1}
                       </p>
-                    </div>
-                    <div className="flex flex-col lg:flex-row justify-between p-2 ml-2">
-                      <label className="lg:self-end">Reps</label>
-                      <p className=" text-center lg:text-right font-semibold">
-                        {s.reps}
-                      </p>
-                    </div>
-                    <div>
-                      <div onClick={() => openEditExerciseModal(s)}>
-                        <Edit />
+                      <div className="flex md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+                        <div className="flex flex-col lg:flex-row justify-between py-2 ml-2">
+                          <label className=" self-center lg:self-end  ">
+                            Weight
+                          </label>
+                          <p className="  lg:text-right font-semibold ">
+                            {s.weight} lbs
+                          </p>
+                        </div>
+                        <div className="flex flex-col lg:flex-row justify-between p-2 ml-2">
+                          <label className="lg:self-end">Reps</label>
+                          <p className=" text-center lg:text-right font-semibold">
+                            {s.reps}
+                          </p>
+                        </div>
+                        <div>
+                          <div
+                            onClick={() => {
+                              console.log(s);
+                              openEditExerciseModal(s);
+                            }}
+                          >
+                            <Edit />
+                          </div>
+                          <div>
+                            <Delete />
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <Delete />
-                      </div>
+
+                      {e && (
+                        <EditExerciseModal
+                          isEditExerciseModal={isEditExerciseModal}
+                          exer={e.sets}
+                          closeEditExerciseModal={closeEditExerciseModal}
+                          selected={selected}
+                          deleteExercise={deleteExercise}
+                          setSelected={setSelected}
+                          id={e.id}
+                        />
+                      )}
                     </div>
-                  </div>
-                  {e && (
-                    <EditExerciseModal
-                      isEditExerciseModal={isEditExerciseModal}
-                      exer={e.sets}
-                      closeEditExerciseModal={closeEditExerciseModal}
-                      selected={selected}
-                      deleteExercise={deleteExercise}
-                      setSelected={setSelected}
-                      id={e.id}
-                    />
-                  )}
-                </div>
-              ))}
+                  )
+              )}
             <div className=" mb-3 ">
-              <EditExerciseNotes value={e.notes} id={e.id}/>
+              <EditExerciseNotes value={e.notes} id={e.id} />
             </div>
-            {/* <div
-              className="flex justify-end mt-2"
-              onClick={() => openEditExerciseModal(e)}
-            >
-              <Edit />
-           </div>*/}
-            {/*selected && (
-              <EditExerciseModal
-                isEditExerciseModal={isEditExerciseModal}
-                closeEditExerciseModal={closeEditExerciseModal}
-                selected={selected}
-                notes={selected.notes}
-                sets={selected.sets}
-                deleteExercise={deleteExercise}
-                setSelected={setSelected}
-                id={e.id}
-              />
-            )*/}
           </CardBody>
         </Card>
       </div>
@@ -174,3 +175,88 @@ export default DisplayExercisesAfterSubmit;
 // </div>
 // </div>
 // </div>
+
+// const deleteSet = async (s) => {
+//   await db
+//     .collection("profiles")
+//     .doc(user?.uid)
+//     .collection("workouts")
+//     .doc(s?.docId)
+//     .update( {firebase.firestore.FieldValue.arrayRemove(s)} );
+// };
+
+// const deleteSet = async (id) => {
+//   await db
+//     .collection("profiles")
+//     .doc(user?.uid)
+//     .collection("workouts")
+//     .where("sets", "array-contains", id)
+//     .update({ sets: firebase.firestore.FieldValue.arrayRemove(s) });
+// };
+
+// onClick={async (s) => {
+//   await db
+//     .collection("profiles")
+//     .doc(user?.uid)
+//     .collection("workouts")
+//     .where("id", "in", [s.id])
+//     .update({
+//       sets: firebase.firestore.FieldValue.arrayRemove(
+//         s
+//       ),
+//     });
+// }}
+
+// const [id, setId] = React.useState("");
+// const [updatedSet, setUpdatedSet] = React.useState([]);
+
+// React.useEffect(() => {
+//   exerciseStats.map((ex) => setId(ex.id));
+//   return;
+// }, [exerciseStats]);
+
+// const handleDelete = (index) => {
+//   setExerciseStats(
+//     exerciseStats.map((ex) =>
+//       produce(ex, (draft) => {
+//         draft?.sets?.splice(index, 1);
+//       })
+//     )
+//   );
+
+//   const updateExerciseSet = async () => {
+//     await db
+//       .collection("profiles")
+//       .doc(user?.uid)
+//       .collection("workouts")
+//       .doc(id)
+//       .update({
+//         sets: exerciseStats,
+//       });
+//   };
+
+//   updateExerciseSet();
+// };
+
+// onClick={(index) => {
+//   setUpdatedSet(
+//     exerciseStats.map((ex) =>
+//       produce(ex, (draft) => {
+//         draft?.sets?.splice(index, 1);
+//       })
+//     )
+//   );
+
+//   const updateExerciseSet = async () => {
+//     await db
+//       .collection("profiles")
+//       .doc(user?.uid)
+//       .collection("workouts")
+//       .doc(id)
+//       .update({
+//         sets: updatedSet,
+//       });
+//   };
+
+//   updateExerciseSet();
+// }}

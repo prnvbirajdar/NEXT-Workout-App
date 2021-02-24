@@ -13,9 +13,6 @@ const EditExerciseModal = ({
   id,
   exer,
 }) => {
-  console.log(exer);
-  console.log(selected);
-
   const ind = exer.findIndex((e) => e.id === selected?.id);
   if (ind >= 0) {
     exer[ind] = {
