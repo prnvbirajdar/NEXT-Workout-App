@@ -114,7 +114,7 @@ const DisplayExercisesAfterSubmit = () => {
                   )}
                 </div>
               ))}
-            <div>
+            <div className=" mb-3 ">
               <ExerciseNotes value={e.notes} id={e.id} />
             </div>
             {/* <div
