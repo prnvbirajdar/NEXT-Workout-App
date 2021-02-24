@@ -57,7 +57,7 @@ const EditExerciseModal = ({
         </p>
         <ModalBody>
           <div key={selected?.id}>
-            <div className=" flex bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+            <div className=" flex bg-gray-50 dark:bg-black  p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
               <div>
                 <div className="text-center pb-2 text-base font-semibold">
                   <label>Weight</label>
@@ -93,9 +93,9 @@ const EditExerciseModal = ({
         </ModalBody>
 
         <div className="flex justify-between">
-          {/*  <div onClick={() => deleteExercise(selected.id)}>
+          <div>
             <Delete />
-          </div>*/}
+          </div>
           <div onClick={updateExercise}>
             <Correct />
           </div>
