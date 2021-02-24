@@ -3,7 +3,8 @@ import { db } from "../data/firebase";
 import { useAuth } from "../data/authProvider";
 import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
-import ExerciseNotes from "./ExerciseNotes";
+import ExerciseNotes from "./EditExerciseNotes";
+import EditExerciseNotes from "./EditExerciseNotes";
 
 const DisplayExercisesAfterSubmit = () => {
   const { user } = useAuth(); //context
@@ -97,8 +98,13 @@ const DisplayExercisesAfterSubmit = () => {
                         {s.reps}
                       </p>
                     </div>
-                    <div onClick={() => openEditExerciseModal(s)}>
-                      <Edit />
+                    <div>
+                      <div onClick={() => openEditExerciseModal(s)}>
+                        <Edit />
+                      </div>
+                      <div>
+                        <Delete />
+                      </div>
                     </div>
                   </div>
                   {e && (
@@ -115,7 +121,7 @@ const DisplayExercisesAfterSubmit = () => {
                 </div>
               ))}
             <div className=" mb-3 ">
-              <ExerciseNotes value={e.notes} id={e.id} />
+              <EditExerciseNotes value={e.notes} id={e.id}/>
             </div>
             {/* <div
               className="flex justify-end mt-2"

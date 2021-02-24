@@ -2,16 +2,19 @@ import { db } from "../data/firebase";
 import { useAuth } from "../data/authProvider";
 import { Correct, Edit } from "../Icons/Icons";
 
-const ExerciseNotes = ({ value, id }) => {
+const EditExerciseNotes = ({ value, id }) => {
+  //takes the initial value
   const [notesEdit, setNotesEdit] = React.useState(value);
 
+  //target is used to measure length of new input. length > 0 ? Correct button : Edit button
   const [target, setTarget] = React.useState("");
 
+  //onClick edit button, takes us to textarea
   const inputRef = React.useRef();
-  console.log(target);
 
   const { user } = useAuth(); //context
 
+  //handles changed notes
   const handleNotesChange = (e) => {
     setNotesEdit(e.target.value);
     setTarget(e.target.value);
@@ -27,6 +30,7 @@ const ExerciseNotes = ({ value, id }) => {
         notes: notesEdit,
       });
 
+    //length is zero, edit appears again
     setTarget("");
   };
 
@@ -46,7 +50,7 @@ const ExerciseNotes = ({ value, id }) => {
           </div>
         )}
       </div>
-      <div  className=" sm:mx-4 ">
+      <div className=" sm:mx-4 ">
         <textarea
           ref={inputRef}
           type="text"
@@ -59,4 +63,4 @@ const ExerciseNotes = ({ value, id }) => {
   );
 };
 
-export default ExerciseNotes;
+export default EditExerciseNotes;
