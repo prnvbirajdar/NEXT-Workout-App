@@ -4,9 +4,10 @@ import { WindmillContext } from "@windmill/react-ui";
 import { useAuth } from "./data/authProvider";
 import { Moon, Sun, Calender, Home } from "./Icons/Icons";
 import { useRouter } from "next/router";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const Nav = () => {
-  const [current, setCurrent] = useState("first"); //highlight nav options on large screens
+const Nav = ({ handleDateChange, selectedDate }) => {
   const [profileOpen, setProfileOpen] = useState(false); //profile toggle
 
   const { mode, toggleMode } = useContext(WindmillContext); //dark mode
@@ -34,7 +35,7 @@ const Nav = () => {
 
   return (
     user && (
-      <nav className=" bg-white shadow-bottom dark:bg-gray-800">
+      <nav className="transition bg-white shadow-bottom dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -49,25 +50,15 @@ const Nav = () => {
               <div className="md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    onClick={() => setCurrent("first")}
-                    href="#"
-                    className={`${
-                      current === "first"
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                    } px-3 py-2 rounded-md text-sm font-medium`}
+                    onClick={() => router.push("/home")}
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     <Home />
                   </a>
 
                   <a
-                    onClick={() => setCurrent("second")}
                     href="#"
-                    className={`${
-                      current === "second"
-                        ? "bg-gray-900 text-white"
-                        : "text-gray-300 hover:bg-gray-700 hover:text-white"
-                    } px-3 py-2 rounded-md text-sm font-medium`}
+                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     <Calender />
                   </a>
@@ -78,7 +69,7 @@ const Nav = () => {
               <div className="ml-4 flex items-center md:ml-6">
                 <button
                   onClick={toggleMode}
-                  className="bg-gray-200 hover:bg-gray-100 focus:ring focus:ring-gray-500 transition dark:bg-gray-600 dark:hover:bg-gray-900 focus:outline-none rounded-md p-1.5"
+                  className="bg-white hover:bg-gray-100 focus:ring focus:ring-gray-500 transition dark:bg-gray-800 dark:hover:bg-gray-900 focus:outline-none rounded-md p-1.5"
                 >
                   {mode === "dark" ? (
                     <Moon aria-hidden="true" />

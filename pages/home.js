@@ -3,12 +3,19 @@ import { useRouter } from "next/router";
 import Nav from "../components/Navbar";
 import Main from "../components/Main/Main";
 import { useAuth } from "../components/data/authProvider";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Home = () => {
   //if login credentials of user disappear, revert back to login page
   const router = useRouter();
-
   const { user } = useAuth();
+
+  const [startDate, setStartDate] = React.useState(new Date());
+
+  console.log(startDate);
+
+  const handleDateChange = (date) => setStartDate(date);
 
   useEffect(() => {
     if (!user) {
@@ -16,10 +23,27 @@ const Home = () => {
     }
   }, [user]);
 
+  const DateButton = ({ value, onClick }) => (
+    <button
+      onClick={onClick}
+      className="py-1 px-2 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+    >
+    {value}
+    </button>
+  );
+
   return (
     <div>
-      <Nav />
-      <Main />
+      <Nav selectedDate={startDate} handleDateChange={handleDateChange} />
+      <Main selectedDate={startDate} handleDateChange={handleDateChange} />
+      <DatePicker
+        selected={startDate}
+        onChange={handleDateChange}
+        name="startDate"
+        dateFormat="MMM dd, yyyy"
+        closeOnScroll={true}
+        customInput={<DateButton />}
+      />
     </div>
   );
 };

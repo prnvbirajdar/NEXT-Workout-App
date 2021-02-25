@@ -93,7 +93,7 @@ const Main = () => {
   };
 
   return (
-    <div className="flex items-center flex-col dark:bg-black bg-gray-50">
+    <main className="transition flex items-center flex-col dark:bg-black bg-gray-50">
       <p className="text-gray-600 dark:text-black bg-gray-300 sm:bg-red-300 md:bg-green-300 lg:bg-blue-300 xl:bg-pink-600 px-5">
         hi
       </p>
@@ -122,7 +122,7 @@ const Main = () => {
         <div
           className={`${
             isExerciseOpen ? "block" : "hidden"
-          } mt-6 w-11/12 sm:w-2/3  lg:max-w-xl `}
+          } mt-6 w-11/12 sm:w-2/3  lg:max-w-xl`}
         >
           <Card>
             <CardBody>
@@ -179,7 +179,7 @@ const Main = () => {
       <div className="mt-5 w-11/12 sm:w-2/3  lg:max-w-xl">
         <DisplayExercisesAfterSubmit />
       </div>
-    </div>
+    </main>
   );
 };
 

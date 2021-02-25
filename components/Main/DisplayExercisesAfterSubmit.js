@@ -63,7 +63,7 @@ const DisplayExercisesAfterSubmit = () => {
   return (
     exerciseStats.length > 0 &&
     exerciseStats?.map((e) => (
-      <div key={e.id} className="mb-4">
+      <section key={e.id} className="mb-4">
         <Card>
           <CardBody>
             <div className="flex justify-between ">
@@ -149,7 +149,7 @@ const DisplayExercisesAfterSubmit = () => {
             </div>
           </CardBody>
         </Card>
-      </div>
+      </section>
     ))
   );
 };

@@ -10,4 +10,11 @@ export default {
     base:
       "mb-6 max-h-64 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-900 text-sm rounded-t-lg scrollbar-thumb-rounded",
   },
+  card: {
+    base: "transition min-w-0 rounded-lg shadow-xs overflow-hidden",
+    default: "bg-white dark:bg-gray-800",
+  },
+  cardBody: {
+    base: "transition p-4",
+  },
 };
