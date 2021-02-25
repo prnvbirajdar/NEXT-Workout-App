@@ -48,20 +48,24 @@ const Nav = ({ handleDateChange, selectedDate }) => {
               </div>
 
               <div className="md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
+                <div className="ml-8 flex items-baseline space-x-4">
                   <a
                     onClick={() => router.push("/home")}
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     <Home />
                   </a>
 
-                  <a
-                    href="#"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    <Calender />
-                  </a>
+                  <div className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <DatePicker
+                      selected={ selectedDate}
+                      onChange={handleDateChange}
+                      name="startDate"
+                      dateFormat="MMM dd, yyyy"
+                      closeOnScroll={true}
+                      customInput={<Calender />}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -77,7 +81,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                     <Sun aria-hidden="true" />
                   )}
                 </button>
-                <div className="ml-3 relative" ref={wrapperRef}>
+                <div className="ml-6 relative" ref={wrapperRef}>
                   <div>
                     <button
                       className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -105,14 +109,14 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                     leaveTo="opacity-0 scale-95"
                   >
                     <div
-                      className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                      className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 text-gray-700 dark:text-gray-100  bg-white dark:bg-black ring-1 ring-black ring-opacity-5"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu"
                     >
                       <a
                         href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 "
                         role="menuitem"
                         tabIndex="0"
                         onClick={() => router.push("/profile")}
@@ -122,7 +126,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
 
                       <a
                         href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm  hover:bg-gray-100 dark:hover:bg-gray-800"
                         role="menuitem"
                         tabIndex="0"
                       >
@@ -131,7 +135,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
 
                       <a
                         href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        className="block px-4 py-2 text-sm  hover:bg-gray-100 dark:hover:bg-gray-800"
                         role="menuitem"
                         tabIndex="0"
                         onClick={logout}

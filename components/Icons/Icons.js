@@ -86,7 +86,7 @@ const Delete = () => {
 
 const Home = () => {
   return (
-    <button >
+    <button>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -106,9 +106,9 @@ const Home = () => {
   );
 };
 
-const Calender = () => {
+const Calender = ({ onClick }) => {
   return (
-    <button>
+    <button onClick={onClick}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
