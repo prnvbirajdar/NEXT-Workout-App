@@ -49,7 +49,6 @@ const SideProg = () => {
       });
   }, []);
 
-  console.log(sets);
 
   return (
     <div className=" text-gray-600 dark:text-gray-400">
@@ -64,14 +63,7 @@ const SideProg = () => {
         <p>Hi</p>
       </form>
 
-      {sets.map((set, index) => (
-        <div key={index} className="flex justify-evenly my-4">
-          <p>{set.weight}</p>
-          <p>{set.reps}</p>
-          <button>Edit</button>
-        </div>
-      ))}
-
+    
 
       
     </div>
@@ -79,3 +71,12 @@ const SideProg = () => {
 };
 
 export default SideProg;
+
+
+{sets.map((set, index) => (
+  <div key={index} className="flex justify-evenly my-4">
+    <p>{set.weight}</p>
+    <p>{set.reps}</p>
+    <button>Edit</button>
+  </div>
+))}

@@ -10,6 +10,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="Lift Icon" type="image/png" href="/calender.png" />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         </Head>
         <body>
