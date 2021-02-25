@@ -57,6 +57,11 @@ const DisplayExercisesAfterSubmit = ({ selectedDate }) => {
     if ((user, selectedDate)) {
       getExerciseStats();
     }
+
+    return () => {
+      getExerciseStats();
+      console.log("displayAfterSumbmit cleanup");
+    };
   }, [selectedDate]);
 
   return (

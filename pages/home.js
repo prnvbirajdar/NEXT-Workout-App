@@ -7,19 +7,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 
-// const DateValue = ({ value }) => {
-//   const [dateFormat, setDateFormat] = React.useState(null);
-
-//   useEffect(() => {
-//     setDateFormat(value);
-//   }, [value]);
-
-//   // console.log(dateFormat);
-//   return <div>{value}</div>;
-// };
-
-// export { DateValue };
-
 const Home = () => {
   //if login credentials of user disappear, revert back to login page
   const router = useRouter();
@@ -33,10 +20,6 @@ const Home = () => {
 
   const handleDateChange = (date) => setStartDate(date);
 
-  const dateToday = () => {
-    setStartDate(new Date());
-  };
-
   useEffect(() => {
     if (!user) {
       router.push("/");
@@ -44,14 +27,14 @@ const Home = () => {
   }, [user]);
 
   const DateButton = ({ value }) => (
-    <p className="py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
+    <p className="z-0 select-none py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
       {value}
     </p>
   );
 
   return (
     <div>
-      <Nav selectedDate={startDate} handleDateChange={handleDateChange} dateToday={dateToday}  />
+      <Nav selectedDate={startDate} handleDateChange={handleDateChange} />
       <DatePicker
         selected={startDate}
         onChange={handleDateChange}
@@ -66,6 +49,16 @@ const Home = () => {
 };
 
 export default Home;
+
+// Warning: Can't perform a React state update on an unmounted component.
+// This is a no-op, but it indicates a memory leak in your application.
+// To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+//     in DisplayExercisesAfterSubmit (at Main.js:193)
+//     in div (at Main.js:192)
+//     in main (at Main.js:94)
+//     in Main (at home.js:55)
+//     in div (at home.js:40)
+//     in Home (at _app.js:10)
 
 // import Autocomplete from "../components/Autocomplete";
 // import WorkoutList from "../components/WorkoutList";
