@@ -6,29 +6,31 @@ import { useAuth } from "../components/data/authProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DateValue = ({ value }) => {
-  const [dateFormat, setDateFormat] = React.useState("");
+// const DateValue = ({ value }) => {
+//   const [dateFormat, setDateFormat] = React.useState(null);
 
-  useEffect(() => {
-    setDateFormat(value);
-  }, [value]);
+//   useEffect(() => {
+//     setDateFormat(value);
+//   }, [value]);
 
-  console.log(dateFormat);
-  return <div>{value}</div>;
-};
+//   // console.log(dateFormat);
+//   return <div>{value}</div>;
+// };
 
-export { DateValue };
+// export { DateValue };
 
 const Home = () => {
   //if login credentials of user disappear, revert back to login page
   const router = useRouter();
   const { user } = useAuth();
 
+  //const formattedDate = format(new Date(), "P");
+
   const [startDate, setStartDate] = React.useState(new Date());
 
-  const [dateFormat, setDateFormat] = React.useState("");
-
   console.log(startDate);
+
+  // console.log(format(new Date(), "P"));
 
   const handleDateChange = (date) => setStartDate(date);
 
@@ -52,9 +54,9 @@ const Home = () => {
         selected={startDate}
         onChange={handleDateChange}
         name="startDate"
-        dateFormat="MMM dd, yyyy"
+        dateFormat="M/dd/yyyy"
         closeOnScroll={true}
-        customInput={<DateValue />}
+        customInput={<DateButton />}
       />
     </div>
   );

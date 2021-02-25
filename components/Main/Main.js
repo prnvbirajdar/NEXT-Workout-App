@@ -56,6 +56,8 @@ const Main = () => {
 
   const dateToday = new Date().toLocaleString().split(",")[0];
 
+  console.log(dateToday);
+
   const submitExerciseData = async () => {
     await db
       .collection("profiles")

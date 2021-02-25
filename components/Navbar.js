@@ -76,9 +76,9 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                   className="bg-white hover:bg-gray-100 focus:ring focus:ring-gray-500 transition dark:bg-gray-800 dark:hover:bg-gray-900 focus:outline-none rounded-md p-1.5"
                 >
                   {mode === "dark" ? (
-                    <Moon aria-hidden="true" />
-                  ) : (
                     <Sun aria-hidden="true" />
+                  ) : (
+                    <Moon aria-hidden="true" />
                   )}
                 </button>
                 <div className="ml-6 relative" ref={wrapperRef}>

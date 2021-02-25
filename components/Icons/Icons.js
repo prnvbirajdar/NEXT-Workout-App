@@ -196,12 +196,12 @@ const Google = () => {
 const Moon = () => {
   return (
     <svg
-      width="16"
-      height="16"
+      width="18"
+      height="18"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      className="fill-current text-gray-50"
+      className="fill-current text-gray-700"
     >
       <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
     </svg>
@@ -211,12 +211,12 @@ const Moon = () => {
 const Sun = () => {
   return (
     <svg
-      width="16"
-      height="16"
+      width="18"
+      height="18"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
       fill="currentColor"
-      className="fill-current text-gray-700"
+      className="fill-current text-gray-50"
     >
       <path
         fillRule="evenodd"
