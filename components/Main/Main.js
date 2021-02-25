@@ -155,7 +155,7 @@ const Main = () => {
                           })
                         )
                       }
-                      className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
+                      className="p-2 flex justify-center items-center rounded w-full m-auto text-base bg-gray-50 dark:bg-black dark:text-gray-100 "
                     />
                   </div>
                 </div>

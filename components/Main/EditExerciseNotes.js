@@ -57,7 +57,7 @@ const EditExerciseNotes = ({ value, id }) => {
           type="text"
           onChange={handleNotesChange}
           value={notesEdit}
-          className="p-2 flex justify-center items-center rounded w-full m-auto text-sm bg-gray-50 dark:bg-black dark:text-gray-100 "
+          className="p-2 text-base flex justify-center items-center rounded w-full m-auto  bg-gray-50 dark:bg-black dark:text-gray-100 "
         />
       </div>
     </div>
