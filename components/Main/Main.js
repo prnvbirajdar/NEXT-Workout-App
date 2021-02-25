@@ -190,7 +190,7 @@ const Main = ({selectedDate }) => {
         </div>
       )}
       <div className="mt-5 w-11/12 sm:w-2/3  lg:max-w-xl">
-        <DisplayExercisesAfterSubmit />
+        <DisplayExercisesAfterSubmit selectedDate ={selectedDate } />
       </div>
     </main>
   );

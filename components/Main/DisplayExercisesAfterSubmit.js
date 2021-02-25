@@ -5,7 +5,7 @@ import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 
-const DisplayExercisesAfterSubmit = () => {
+const DisplayExercisesAfterSubmit = ({ selectedDate }) => {
   const { user } = useAuth(); //context
 
   const [exerciseStats, setExerciseStats] = React.useState([]);
@@ -32,14 +32,13 @@ const DisplayExercisesAfterSubmit = () => {
     setIsEditExerciseModal(false);
   };
 
-  const dateToday = new Date().toLocaleString().split(",")[0];
-
+  //const dateToday = new Date().toLocaleString().split(",")[0];
   const getExerciseStats = async () => {
     await db
       .collection("profiles")
       .doc(user?.uid)
       .collection("workouts")
-      .where("date", "==", dateToday)
+      .where("date", "==", selectedDate)
       .orderBy("timeStamp", "asc")
       .onSnapshot((querySnapshot) => {
         setExerciseStats(
@@ -55,10 +54,10 @@ const DisplayExercisesAfterSubmit = () => {
   };
 
   React.useEffect(() => {
-    if (user) {
+    if ((user, selectedDate)) {
       getExerciseStats();
     }
-  }, []);
+  }, [selectedDate]);
 
   return (
     exerciseStats.length > 0 &&
