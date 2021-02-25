@@ -5,6 +5,7 @@ import Main from "../components/Main/Main";
 import { useAuth } from "../components/data/authProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
 
 // const DateValue = ({ value }) => {
 //   const [dateFormat, setDateFormat] = React.useState(null);
@@ -24,15 +25,17 @@ const Home = () => {
   const router = useRouter();
   const { user } = useAuth();
 
-  //const formattedDate = format(new Date(), "P");
-
   const [startDate, setStartDate] = React.useState(new Date());
 
-  console.log(startDate);
+  const formattedDate = format(startDate, "P");
 
-  // console.log(format(new Date(), "P"));
+  console.log(formattedDate);
 
   const handleDateChange = (date) => setStartDate(date);
+
+  const dateToday = () => {
+    setStartDate(new Date());
+  };
 
   useEffect(() => {
     if (!user) {
@@ -41,23 +44,23 @@ const Home = () => {
   }, [user]);
 
   const DateButton = ({ value }) => (
-    <p className="py-1 px-2 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+    <p className="py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
       {value}
     </p>
   );
 
   return (
     <div>
-      <Nav selectedDate={startDate} handleDateChange={handleDateChange} />
-      <Main selectedDate={startDate} handleDateChange={handleDateChange} />
+      <Nav selectedDate={startDate} handleDateChange={handleDateChange} dateToday={dateToday}  />
       <DatePicker
         selected={startDate}
         onChange={handleDateChange}
         name="startDate"
-        dateFormat="M/dd/yyyy"
+        dateFormat="PPPP"
         closeOnScroll={true}
         customInput={<DateButton />}
       />
+      <Main selectedDate={formattedDate} handleDateChange={handleDateChange} />
     </div>
   );
 };

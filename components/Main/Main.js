@@ -14,7 +14,7 @@ import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 import DisplayExercisesAfterSubmit from "./DisplayExercisesAfterSubmit";
 
-const Main = () => {
+const Main = ({selectedDate }) => {
   const { user } = useAuth(); //context
 
   //Body Part Card Component
@@ -52,11 +52,7 @@ const Main = () => {
     sets: [],
   });
 
-  //console.log(currentExerciseData);
-
-  const dateToday = new Date().toLocaleString().split(",")[0];
-
-  console.log(dateToday);
+  //const dateToday = new Date().toLocaleString().split(",")[0];
 
   const submitExerciseData = async () => {
     await db
@@ -68,7 +64,7 @@ const Main = () => {
         sets: currentExerciseData.sets,
         timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
         profileId: user.uid,
-        date: dateToday,
+        date: selectedDate,
         notes: currentExerciseData.notes,
       })
       .then(() => {
@@ -96,9 +92,24 @@ const Main = () => {
 
   return (
     <main className="transition flex items-center flex-col dark:bg-black bg-gray-50">
-      <p className="text-gray-600 dark:text-black bg-gray-300 sm:bg-red-300 md:bg-green-300 lg:bg-blue-300 xl:bg-pink-600 px-5">
-        hi
-      </p>
+      <div className="text-black px-5">
+        <p className="px-5 rounded py-1 bg-gray-300 block sm:hidden">Mobile</p>
+        <p className="px-5 rounded py-1 bg-red-300  hidden sm:block md:hidden">
+          Sm
+        </p>
+        <p className="px-5 rounded py-1 bg-green-300 hidden  sm:hidden md:block  lg:hidden">
+          Md
+        </p>
+        <p className="px-5 rounded py-1 bg-blue-300 hidden sm:hidden md:hidden lg:block xl:hidden">
+          Lg
+        </p>
+        <p className="px-5 rounded py-1 bg-yellow-300 hidden sm:hidden md:hidden lg:hidden xl:block 2xl:hidden">
+          xl
+        </p>
+        <p className="px-5 rounded py-1 bg-purple-300 hidden sm:hidden md:hidden lg:hidden xl:hidden 2xl:block">
+          2xl
+        </p>
+      </div>
       <BodyPartsSelect
         closeCard={closeCard}
         openExerciseModal={openExerciseModal}

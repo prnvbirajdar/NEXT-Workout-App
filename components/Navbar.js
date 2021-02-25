@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Nav = ({ handleDateChange, selectedDate }) => {
+const Nav = ({ handleDateChange, selectedDate, dateToday }) => {
   const [profileOpen, setProfileOpen] = useState(false); //profile toggle
 
   const { mode, toggleMode } = useContext(WindmillContext); //dark mode
@@ -50,7 +50,10 @@ const Nav = ({ handleDateChange, selectedDate }) => {
               <div className="md:block">
                 <div className="ml-8 flex items-baseline space-x-4">
                   <a
-                    onClick={() => router.push("/home")}
+                    onClick={() => {
+                      router.push("/home");
+                      dateToday();
+                    }}
                     className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     <Home />
@@ -58,7 +61,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
 
                   <div className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                     <DatePicker
-                      selected={ selectedDate}
+                      selected={selectedDate}
                       onChange={handleDateChange}
                       name="startDate"
                       dateFormat="MMM dd, yyyy"
