@@ -1,6 +1,6 @@
 import { Add } from "../Icons/Icons";
 
-const AddExercise = ({ openCard, showEmptyLog }) => {
+const AddExercise = ({ openCard, showEmptyLog, exerciseStats }) => {
   return (
     <div
       onClick={openCard}
@@ -18,6 +18,16 @@ const AddExercise = ({ openCard, showEmptyLog }) => {
       <p className="text-gray-600 dark:text-gray-300 mt-2 font-semibold">
         Add Exercise
       </p>
+
+      {exerciseStats.length === 0 ? (
+        <div className="bg-gray-900 h-auto p-5 px-10 rounded mt-20 max-w-xl mx-6 text-center">
+          <p className="text-gray-600 dark:text-gray-300  font-semibold">
+            No exercises recorded. <br className="block md:hidden"/> Click on Add Exercise to get started!
+          </p>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };
