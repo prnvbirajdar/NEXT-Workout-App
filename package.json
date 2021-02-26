@@ -21,7 +21,6 @@
     "react-datepicker": "^3.6.0",
     "react-dom": "^16.13.1",
     "react-firebaseui": "^4.1.0",
-    "react-hook-form": "^6.15.1",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {

@@ -1,9 +1,4 @@
-import {
-  Modal,
-  ModalBody,
-  Alert,
-} from "@windmill/react-ui";
-import { useForm } from "react-hook-form";
+import { Modal, ModalBody, Alert } from "@windmill/react-ui";
 import { db } from "../data/firebase";
 import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
@@ -11,8 +6,6 @@ import { Correct } from "../Icons/Icons";
 
 const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen }) => {
   const { user } = useAuth(); //context
-
-  const { register, handleSubmit, errors } = useForm();
 
   return (
     <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>

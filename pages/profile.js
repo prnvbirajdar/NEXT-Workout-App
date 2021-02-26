@@ -78,7 +78,7 @@ const Profile = () => {
   return (
     <div>
       <Navbar />
-      <div className="bg-black">
+      <div className="dark:bg-black transition-colors">
         <div className="flex justify-center mt-8 pt-5">
           <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
             <PersonalDetailsCard user={user} />
@@ -93,21 +93,21 @@ const Profile = () => {
                   Physical Stats
                 </p>
                 <div className="flex flex-col justify-around p-2 mx-4 mb-2">
-                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                  <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
                     <label className="self-end">Weight</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.weight ? physicalStats?.weight : "0"}{" "}
                       pounds
                     </p>
                   </div>
-                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                  <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
                     <label className="self-end">Height</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.height ? physicalStats?.height : "0"}{" "}
                       inches
                     </p>
                   </div>
-                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded mb-3">
+                  <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
                     <label className="self-end">Daily Calories</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.dailyCalories
@@ -117,7 +117,7 @@ const Profile = () => {
                     </p>
                   </div>
 
-                  <div className="flex justify-between p-2  bg-gray-50 dark:bg-black rounded">
+                  <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded">
                     <label className="self-end">Body Fat Percentage</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.bodyFatPercentage
