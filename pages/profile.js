@@ -43,8 +43,9 @@ const Profile = () => {
       .orderBy("timeStamp", "desc")
       .limit(1)
       .onSnapshot((querySnapshot) => {
-        console.log(querySnapshot.docs[0]?.data().stats);
-        setPhysicalStats(querySnapshot?.docs[0]?.data());
+        if (querySnapshot.docs[0]?.data().stats) {
+          setPhysicalStats(querySnapshot?.docs[0]?.data());
+        }
       });
   };
 
@@ -64,12 +65,8 @@ const Profile = () => {
 
   useEffect(() => {
     if (
-      user &&
-      physicalStats.weight !== 0 &&
-      physicalStats.height !== 0 &&
-      physicalStats.dailyCalories !== 0 &&
-      physicalStats.bodyFatPercentage !== 0 &&
-      physicalStats.timeStamp !== ""
+      user
+   
     ) {
       getPhysicalStats();
     }

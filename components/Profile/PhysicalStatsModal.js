@@ -40,94 +40,96 @@ const PhysicalStatsModal = ({
   };
 
   return (
-    <Modal isOpen={isProfileModalOpen} onClose={closeProfileModal}>
-      <form onSubmit={updateStats}>
-        <ModalHeader className="text-center sm:text-left">
-          Physical Stats
-        </ModalHeader>
-        <ModalBody>
-          <div className="flex flex-col  text-gray-600 dark:text-gray-200 ">
-            <div className="text-center text-base pb-2">
-              <label>Weight (pounds)</label>
+    physicalStats && (
+      <Modal isOpen={isProfileModalOpen} onClose={closeProfileModal}>
+        <form onSubmit={updateStats}>
+          <ModalHeader className="text-center sm:text-left">
+            Physical Stats
+          </ModalHeader>
+          <ModalBody>
+            <div className="flex flex-col  text-gray-600 dark:text-gray-200 ">
+              <div className="text-center text-base pb-2">
+                <label>Weight (pounds)</label>
+              </div>
+              <div className="flex justify-center ">
+                <input
+                  className="py-1 text-lg rounded w-1/3 border text-black text-center	"
+                  type="number"
+                  placeholder={
+                    physicalStats?.weight
+                      ? `${physicalStats?.weight} pounds`
+                      : "0"
+                  }
+                  name="weight"
+                  onChange={handleChange}
+                  value={physicalStats?.weight}
+                />
+              </div>
+              <div className="text-center text-base p-2">
+                <label>Height</label>
+              </div>
+              <div className="flex justify-center ">
+                <input
+                  className="py-1 text-lg rounded w-1/3 border text-black text-center	"
+                  placeholder={
+                    physicalStats?.height
+                      ? `${physicalStats?.height} inches`
+                      : "0"
+                  }
+                  name="height"
+                  onChange={handleChange}
+                  value={physicalStats?.height}
+                  type="number"
+                />
+              </div>
+              <div className="text-center text-base p-2">
+                <label>Daily Calories</label>
+              </div>
+              <div className="flex justify-center ">
+                <input
+                  className="py-1 text-lg rounded w-1/3 border text-black text-center	"
+                  placeholder={
+                    physicalStats?.dailyCalories
+                      ? `${physicalStats?.dailyCalories} calories`
+                      : "0"
+                  }
+                  name="dailyCalories"
+                  onChange={handleChange}
+                  value={physicalStats?.dailyCalories}
+                  type="number"
+                />
+              </div>
+              <div className="text-center text-base p-2">
+                <label>Body Fat Percentage</label>
+              </div>
+              <div className="flex justify-center ">
+                <input
+                  className="py-1 text-lg rounded w-1/3 border text-black text-center	"
+                  onChange={handleChange}
+                  value={physicalStats?.bodyFatPercentage}
+                  type="number"
+                  name="bodyFatPercentage"
+                  placeholder={
+                    physicalStats?.bodyFatPercentage
+                      ? `${physicalStats?.bodyFatPercentage} %`
+                      : "0"
+                  }
+                />
+              </div>
             </div>
-            <div className="flex justify-center ">
-              <input
-                className="py-1 text-lg rounded w-1/3 border text-black text-center	"
-                type="number"
-                placeholder={
-                  physicalStats?.weight
-                    ? `${physicalStats?.weight} pounds`
-                    : "0"
-                }
-                name="weight"
-                onChange={handleChange}
-                value={physicalStats?.weight}
-              />
+          </ModalBody>
+          <div className="flex justify-between">
+            <div layout="outline" onClick={closeProfileModal}>
+              <Delete />
             </div>
-            <div className="text-center text-base p-2">
-              <label>Height</label>
-            </div>
-            <div className="flex justify-center ">
-              <input
-                className="py-1 text-lg rounded w-1/3 border text-black text-center	"
-                placeholder={
-                  physicalStats?.height
-                    ? `${physicalStats?.height} inches`
-                    : "0"
-                }
-                name="height"
-                onChange={handleChange}
-                value={physicalStats?.height}
-                type="number"
-              />
-            </div>
-            <div className="text-center text-base p-2">
-              <label>Daily Calories</label>
-            </div>
-            <div className="flex justify-center ">
-              <input
-                className="py-1 text-lg rounded w-1/3 border text-black text-center	"
-                placeholder={
-                  physicalStats?.dailyCalories
-                    ? `${physicalStats?.dailyCalories} calories`
-                    : "0"
-                }
-                name="dailyCalories"
-                onChange={handleChange}
-                value={physicalStats?.dailyCalories}
-                type="number"
-              />
-            </div>
-            <div className="text-center text-base p-2">
-              <label>Body Fat Percentage</label>
-            </div>
-            <div className="flex justify-center ">
-              <input
-                className="py-1 text-lg rounded w-1/3 border text-black text-center	"
-                onChange={handleChange}
-                value={physicalStats?.bodyFatPercentage}
-                type="number"
-                name="bodyFatPercentage"
-                placeholder={
-                  physicalStats?.bodyFatPercentage
-                    ? `${physicalStats?.bodyFatPercentage} %`
-                    : "0"
-                }
-              />
-            </div>
-          </div>
-        </ModalBody>
-        <div className="flex justify-between">
-          <div layout="outline" onClick={closeProfileModal}>
-            <Delete />
-          </div>
 
-          <div type="submit">
-            <Correct />
+            <div type="submit">
+              <Correct />
+            </div>
           </div>
-        </div>
-      </form>
-    </Modal>
+        </form>
+      </Modal>
+    )
   );
 };
 
