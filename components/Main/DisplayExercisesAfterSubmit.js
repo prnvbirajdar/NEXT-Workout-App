@@ -81,7 +81,7 @@ const DisplayExercisesAfterSubmit = ({ selectedDate }) => {
               </div>
             </div>
             {e.sets.length === 0 ? (
-              <div className="flex md:flex-row justify-around mt-2 py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+              <div className="flex md:flex-row justify-around mt-2 py-2 sm:mx-4 transition bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
                   No sets to display
                 </p>
@@ -96,11 +96,11 @@ const DisplayExercisesAfterSubmit = ({ selectedDate }) => {
                   s && (
                     <div key={index} className="lg:mt-4">
                       <div className="lg:mx-4">
-                        <div className=" flex flex-col lg:flex-row lg:bg-gray-50 lg:dark:bg-black rounded lg:mt-3">
+                        <div className=" flex flex-col lg:flex-row lg:bg-gray-50 transition lg:dark:bg-black rounded lg:mt-3">
                           <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
                             Set {index + 1}
                           </p>
-                          <div className="flex flex-grow md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+                          <div className="flex flex-grow md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 transition dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
                             <div className="flex flex-col  py-2 ml-2">
                               <label className="self-center">Weight</label>
                               <p className="font-semibold">{s.weight} lbs</p>
@@ -163,7 +163,7 @@ export default DisplayExercisesAfterSubmit;
 // <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
 // Set {index + 1}
 // </p>
-// <div className="flex md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+// <div className="flex md:flex-row justify-around py-2 sm:mx-4 bg-gray-50 transition dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
 // <div className="flex flex-col lg:flex-row justify-between py-2 ml-2">
 //   <label className=" self-center lg:self-end  ">
 //     Weight

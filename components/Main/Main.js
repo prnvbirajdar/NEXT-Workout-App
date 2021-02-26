@@ -14,7 +14,7 @@ import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 import DisplayExercisesAfterSubmit from "./DisplayExercisesAfterSubmit";
 
-const Main = ({selectedDate }) => {
+const Main = ({ selectedDate }) => {
   const { user } = useAuth(); //context
 
   //Body Part Card Component
@@ -168,7 +168,7 @@ const Main = ({selectedDate }) => {
                           })
                         )
                       }
-                      className="p-2 flex justify-center items-center rounded w-full m-auto text-base bg-gray-50 dark:bg-black dark:text-gray-100 "
+                      className="p-2 flex justify-center items-center rounded w-full m-auto text-base bg-gray-50 transition dark:bg-black dark:text-gray-100 "
                     />
                   </div>
                 </div>
@@ -190,7 +190,7 @@ const Main = ({selectedDate }) => {
         </div>
       )}
       <div className="mt-5 w-11/12 sm:w-2/3  lg:max-w-xl">
-        <DisplayExercisesAfterSubmit selectedDate ={selectedDate } />
+        <DisplayExercisesAfterSubmit selectedDate={selectedDate} />
       </div>
     </main>
   );
