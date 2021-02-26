@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-      
         <link rel="Lift Icon" type="image/png" href="/calender.png" />
         <title>Lift Workout Tracker</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

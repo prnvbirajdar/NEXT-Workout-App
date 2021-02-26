@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const Nav = ({ handleDateChange, selectedDate, }) => {
+const Nav = ({ handleDateChange, selectedDate }) => {
   const [profileOpen, setProfileOpen] = useState(false); //profile toggle
 
   const { mode, toggleMode } = useContext(WindmillContext); //dark mode
@@ -23,7 +23,6 @@ const Nav = ({ handleDateChange, selectedDate, }) => {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setProfileOpen(false);
       }
-      
     };
 
     // Bind the event listener
@@ -33,6 +32,7 @@ const Nav = ({ handleDateChange, selectedDate, }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [wrapperRef]);
+
 
   return (
     user && (
@@ -50,6 +50,7 @@ const Nav = ({ handleDateChange, selectedDate, }) => {
                   className="h-8 w-8"
                   src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                   alt="Workflow"
+                  
                 />
               </div>
 

@@ -49,7 +49,6 @@ const SideProg = () => {
       });
   }, []);
 
-
   return (
     <div className=" text-gray-600 dark:text-gray-400">
       <Navbar />
@@ -57,26 +56,29 @@ const SideProg = () => {
         onSubmit={handleSubmit}
         className="flex justify-content items-center flex-col"
       >
+        <img
+          aria-hidden="true"
+          className="h-8 w-8"
+          src="/calender.webp"
+          alt="Workflow"
+        />
         <input className="mb-4" type="text" name="t1" onChange={handleChange} />
         <input type="text" name="t2" onChange={handleChange} />
         <button type="submit">Send</button>
         <p>Hi</p>
       </form>
-
-    
-
-      
     </div>
   );
 };
 
 export default SideProg;
 
-
-{sets.map((set, index) => (
-  <div key={index} className="flex justify-evenly my-4">
-    <p>{set.weight}</p>
-    <p>{set.reps}</p>
-    <button>Edit</button>
-  </div>
-))}
+{
+  sets.map((set, index) => (
+    <div key={index} className="flex justify-evenly my-4">
+      <p>{set.weight}</p>
+      <p>{set.reps}</p>
+      <button>Edit</button>
+    </div>
+  ));
+}
