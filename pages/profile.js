@@ -43,7 +43,9 @@ const Profile = () => {
       .orderBy("timeStamp", "desc")
       .limit(1)
       .onSnapshot((querySnapshot) => {
-        if (querySnapshot.docs[0]?.data().stats) {
+        if (querySnapshot?.docs[0]?.data() === undefined) {
+          setPhysicalStats(physicalStats);
+        } else {
           setPhysicalStats(querySnapshot?.docs[0]?.data());
         }
       });
@@ -64,10 +66,7 @@ const Profile = () => {
   }
 
   useEffect(() => {
-    if (
-      user
-   
-    ) {
+    if (user) {
       getPhysicalStats();
     }
   }, [user, physicalStats]);
@@ -145,6 +144,7 @@ const Profile = () => {
         <DeleteAccountModal
           isDeleteModalOpen={isDeleteModalOpen}
           closeDeleteModal={closeDeleteModal}
+          id={user?.uid}
         />
       </div>
     </div>

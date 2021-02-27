@@ -5,11 +5,17 @@ import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 
-const DisplayExercisesAfterSubmit = ({ selectedDate, exerciseStats, setExerciseStats }) => {
+const DisplayExercisesAfterSubmit = ({
+  selectedDate,
+  exerciseStats,
+  setExerciseStats,
+}) => {
   const { user } = useAuth(); //context
 
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
+
+  console.log(exerciseStats);
 
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
@@ -138,9 +144,11 @@ const DisplayExercisesAfterSubmit = ({ selectedDate, exerciseStats, setExerciseS
                           exer={e.sets}
                           closeEditExerciseModal={closeEditExerciseModal}
                           selected={selected}
-                          deleteExercise={deleteExercise}
                           setSelected={setSelected}
                           id={e.id}
+                          currentExer={e}
+                          exerciseStats={exerciseStats}
+                          setExerciseStats={setExerciseStats}
                         />
                       )}
                     </div>

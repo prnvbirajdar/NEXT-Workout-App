@@ -4,8 +4,32 @@ import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 import { Correct } from "../Icons/Icons";
 
-const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen }) => {
+const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen, id }) => {
   const { user } = useAuth(); //context
+
+  const deleteUser = async () => {
+    await db
+      .collection("profiles")
+      .doc(id)
+      .delete()
+      .then(function () {
+        console.log("firestore", deleted);
+        alert("Account successfully deleted");
+      })
+      .catch(function (error) {
+        console.log("firestore", error);
+      });
+
+    await user
+      .delete()
+      .then(function () {
+        console.log("auth", deleted);
+        alert("Account successfully deleted");
+      })
+      .catch(function (error) {
+        console.log("auth", error);
+      });
+  };
 
   return (
     <Modal isOpen={isDeleteModalOpen} onClose={closeDeleteModal}>
@@ -18,7 +42,7 @@ const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen }) => {
         </div>
       </ModalBody>
       <div className="flex justify-end">
-        <div type="submit">
+        <div onClick={deleteUser}>
           <Correct />
         </div>
       </div>

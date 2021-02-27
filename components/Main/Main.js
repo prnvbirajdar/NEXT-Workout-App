@@ -53,7 +53,6 @@ const Main = ({ selectedDate }) => {
   });
 
   const [exerciseStats, setExerciseStats] = React.useState([]);
-  console.log(exerciseStats);
 
   const submitExerciseData = async () => {
     await db

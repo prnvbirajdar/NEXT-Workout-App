@@ -7,13 +7,17 @@ import { useAuth } from "../data/authProvider";
 const EditExerciseModal = ({
   isEditExerciseModal,
   closeEditExerciseModal,
-  deleteExercise,
   selected,
   setSelected,
   id,
   exer,
+  currentExer,
+  exerciseStats,
+  setExerciseStats,
 }) => {
   const ind = exer.findIndex((e) => e.id === selected?.id);
+  //console.log(ind);
+
   if (ind >= 0) {
     exer[ind] = {
       id: selected?.id,
@@ -24,6 +28,7 @@ const EditExerciseModal = ({
 
   const { user } = useAuth(); //context
 
+ 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSelected(
@@ -89,10 +94,10 @@ const EditExerciseModal = ({
           </div>
         </ModalBody>
 
-        <div className="flex justify-between">
-          <div>
+        <div className="flex justify-end">
+          {/*<div onClick={clicked}>
             <Delete />
-          </div>
+    </div>*/}
           <div onClick={updateExercise}>
             <Correct />
           </div>
@@ -103,3 +108,102 @@ const EditExerciseModal = ({
 };
 
 export default EditExerciseModal;
+
+// const deleteSelectedSet = async () => {
+//   const filtered = exer.findIndex((e) => e.id === selected?.id);
+
+//   //console.log(filtered);
+
+//   if (ind >= 0) {
+//     exer.splice(exer[filtered], 1);
+//   }
+
+//   // await db
+//   //   .collection("profiles")
+//   //   .doc(user?.uid)
+//   //   .collection("workouts")
+//   //   .doc(id)
+//   //   .where("sets", "array-contains", setId );
+// };
+
+// const handleDelete = (setId) => {
+//   setExerciseStats(
+//     exerciseStats.map((ex) =>
+//       produce(ex, (draft) => {
+//         draft?.sets?.splice(setId, 1);
+//       })
+//     )
+//   );
+// };
+
+// const hope2 = exer.map((set) => set.id !== selected?.id);
+// //console.log(hope2);
+
+// const hope = exerciseStats.map((exer) =>
+//   exer.sets.filter((set) => set.id !== selected?.id)
+// );
+
+// //   exerciseStats.map((exer) =>
+
+// // )
+// const delSet = async () => {
+//   for (let index = 0; index < exer.length; index++) {
+//     const element = exer[index];
+//     console.log(element.id);
+
+//     if (element.id === selected?.id) {
+//       setExerciseStats(
+//         exerciseStats.map((ex) =>
+//           produce(ex, (draft) => {
+//             draft?.sets?.splice(element.id, 1);
+//           })
+//         )
+//       );
+//     }
+//   }
+
+//   await db
+//     .collection("profiles")
+//     .doc(user?.uid)
+//     .collection("workouts")
+//     .doc(id)
+//     .update({
+//       sets: exer,
+//     });
+
+//   closeEditExerciseModal(selected);
+// };
+
+// //console.log(hope);
+
+// const hope1 = exer.filter((set) => set.id !== selected?.id);
+
+// if (hope2 === false) {
+//   exer.map((set) =>
+//     produce(
+//       (set,
+//       (draft) => {
+//         draft.splice(hope2, 1);
+//       })
+//     )
+//   );
+// }
+
+// //console.log(exer);
+
+// //console.log(hope1);
+
+// //console.log(exer);
+
+// const deleteSet = async () => {
+//   await db
+//     .collection("profiles")
+//     .doc(user?.uid)
+//     .collection("workouts")
+//     .doc(id)
+//     .update({
+//       sets: hope1,
+//     });
+
+//   closeEditExerciseModal(selected);
+// };
