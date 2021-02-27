@@ -92,7 +92,7 @@ const Main = ({ selectedDate }) => {
 
 
     return (
-      <main className="transition flex items-center flex-col dark:bg-black bg-gray-50">
+      <main className="pb-8 transition flex items-center flex-col dark:bg-black bg-gray-50">
         <div className="text-black px-5 hidden">
           <p className="px-5 rounded py-1 bg-gray-300 block sm:hidden">
             Mobile

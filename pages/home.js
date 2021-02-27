@@ -6,6 +6,7 @@ import { useAuth } from "../components/data/authProvider";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
+import Footer from "../components/Footer";
 
 const Home = () => {
   //if login credentials of user disappear, revert back to login page
@@ -33,7 +34,7 @@ const Home = () => {
   );
 
   return (
-    <div>
+    <div className="relative min-h-screen	">
       <Nav selectedDate={startDate} handleDateChange={handleDateChange} />
       <DatePicker
         selected={startDate}
@@ -44,7 +45,8 @@ const Home = () => {
         customInput={<DateButton />}
       />
 
-      <Main selectedDate={formattedDate} handleDateChange={handleDateChange} />
+      <Main  selectedDate={formattedDate} handleDateChange={handleDateChange} />
+      <Footer />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 const Plus = () => {
   return (
-    <button className="inline-flex items-center justify-center w-10 h-10 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+    <button className="inline-flex items-center justify-center w-10 h-10 text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
       <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
         <path
           d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
@@ -14,7 +14,7 @@ const Plus = () => {
 
 const Minus = () => {
   return (
-    <button className="inline-flex items-center justify-center w-10 h-10  text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+    <button className="inline-flex items-center justify-center w-10 h-10  text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
       <svg className="w-3 h-3 fill-current" viewBox="0 0 298.7 298.7">
         <path d="M0 128h299v43H0z" clipRule="evenodd" fillRule="evenodd"></path>
       </svg>
@@ -25,7 +25,7 @@ const Minus = () => {
 const Add = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
   return (
     <button
-      className={`inline-flex items-center justify-center ${circleHeight} ${circleWidth} mr-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800`}
+      className={`inline-flex items-center justify-center ${circleHeight} ${circleWidth} mr-2 text-indigo-100 transition-colors bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800`}
     >
       <svg
         className={`${lineHeight} ${lineWidth} fill-current`}
@@ -43,7 +43,7 @@ const Add = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
 
 const Correct = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-white transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+    <button className=" inline-flex items-center justify-center w-10 h-10 text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -64,7 +64,7 @@ const Correct = () => {
 
 const Delete = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors duration-150 rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white">
+    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -79,6 +79,61 @@ const Delete = () => {
           strokeWidth={2}
           d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
         />
+      </svg>
+    </button>
+  );
+};
+
+const Github = () => {
+  return (
+    <button className=" inline-flex items-center justify-center w-10 h-10 transition rounded-lg focus:shadow-outline dark:hover:bg-gray-900 hover:bg-gray-200">
+      <svg
+        height="24"
+        width="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        className="fill-current transition text-gray-800 dark:text-gray-400 "
+      >
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+      </svg>
+    </button>
+  );
+};
+
+const Mail = () => {
+  return (
+    <button className=" inline-flex items-center justify-center w-10 h-10 transition rounded-lg focus:shadow-outline dark:hover:bg-gray-900 hover:bg-gray-200">
+      <svg
+        height="26"
+        width="26"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        className="fill-current transition text-gray-800 dark:text-gray-400 "
+      >
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
+      </svg>
+    </button>
+  );
+};
+
+const LinkedIn = () => {
+  return (
+    <button className=" inline-flex items-center justify-center w-10 h-10 transition rounded-lg focus:shadow-outline dark:hover:bg-gray-900 hover:bg-gray-200">
+      <svg
+        id="Bold"
+        enable-background="new 0 0 24 24"
+        height="24"
+        width="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        className="fill-current transition text-gray-800 dark:text-gray-400 "
+      >
+        <path d="m23.994 24v-.001h.006v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07v-2.185h-4.773v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243v7.801z" />
+        <path d="m.396 7.977h4.976v16.023h-4.976z" />
+        <path d="m2.882 0c-1.591 0-2.882 1.291-2.882 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909c-.001-1.591-1.292-2.882-2.882-2.882z" />
       </svg>
     </button>
   );
@@ -109,21 +164,21 @@ const Home = () => {
 const Calender = ({ onClick }) => {
   return (
     <button onClick={onClick}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          height="24"
-          width="24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        height="24"
+        width="24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+        />
+      </svg>
     </button>
   );
 };
@@ -131,7 +186,7 @@ const Calender = ({ onClick }) => {
 const Close = () => {
   return (
     <button
-      className="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors duration-150 rounded dark:hover:text-gray-200 hover: hover:text-gray-700"
+      className="inline-flex items-center justify-center w-6 h-6 text-gray-400 transition-colors rounded dark:hover:text-gray-200 hover: hover:text-gray-700"
       aria-label="close"
     >
       <svg
@@ -229,7 +284,7 @@ const Sun = () => {
 
 const Edit = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors duration-150 rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white">
+    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -260,4 +315,7 @@ export {
   Sun,
   Moon,
   Edit,
+  Github,
+  Mail,
+  LinkedIn,
 };

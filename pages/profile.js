@@ -90,21 +90,21 @@ const Profile = () => {
                 </p>
                 <div className="flex flex-col justify-around p-2 mx-4 mb-2">
                   <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
-                    <label className="self-end">Weight</label>
+                    <label>Weight</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.weight ? physicalStats?.weight : "0"}{" "}
                       pounds
                     </p>
                   </div>
                   <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
-                    <label className="self-end">Height</label>
+                    <label>Height</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.height ? physicalStats?.height : "0"}{" "}
                       inches
                     </p>
                   </div>
                   <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
-                    <label className="self-end">Daily Calories</label>
+                    <label>Daily Calories</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.dailyCalories
                         ? physicalStats?.dailyCalories
@@ -114,7 +114,7 @@ const Profile = () => {
                   </div>
 
                   <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded">
-                    <label className="self-end">Body Fat Percentage</label>
+                    <label>Body Fat Percentage</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.bodyFatPercentage
                         ? physicalStats?.bodyFatPercentage
@@ -136,7 +136,7 @@ const Profile = () => {
           physicalStats={physicalStats}
           setPhysicalStats={setPhysicalStats}
         />
-        <div className="flex justify-end pb-4 pr-4">
+        <div className="flex justify-end mt-10 pb-4 pr-4">
           <Button layout="outline" onClick={openDeleteModal}>
             DELETE ACCOUNT
           </Button>

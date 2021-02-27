@@ -33,7 +33,6 @@ const Nav = ({ handleDateChange, selectedDate }) => {
     };
   }, [wrapperRef]);
 
-
   return (
     user && (
       <nav className="transition bg-white shadow-bottom dark:bg-gray-800">
@@ -50,7 +49,6 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                   className="h-8 w-8"
                   src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
                   alt="Workflow"
-                  
                 />
               </div>
 
