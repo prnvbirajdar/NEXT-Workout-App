@@ -16,7 +16,6 @@ const EditExerciseModal = ({
   setExerciseStats,
 }) => {
   const ind = exer.findIndex((e) => e.id === selected?.id);
-  //console.log(ind);
 
   if (ind >= 0) {
     exer[ind] = {
@@ -28,7 +27,6 @@ const EditExerciseModal = ({
 
   const { user } = useAuth(); //context
 
- 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSelected(
@@ -94,10 +92,10 @@ const EditExerciseModal = ({
           </div>
         </ModalBody>
 
-        <div className="flex justify-end">
-          {/*<div onClick={clicked}>
+        <div className="flex justify-between">
+          <div onClick={deleteSelectedSet}>
             <Delete />
-    </div>*/}
+          </div>
           <div onClick={updateExercise}>
             <Correct />
           </div>

@@ -15,7 +15,7 @@ const DisplayExercisesAfterSubmit = ({
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
-  console.log(exerciseStats);
+  //console.log(exerciseStats);
 
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
@@ -64,7 +64,7 @@ const DisplayExercisesAfterSubmit = ({
 
     return () => {
       getExerciseStats();
-      console.log("displayAfterSumbmit cleanup");
+      //console.log("displayAfterSumbmit cleanup");
     };
   }, [user, selectedDate]);
 
@@ -118,7 +118,7 @@ const DisplayExercisesAfterSubmit = ({
                             <div
                               className="self-center lg:hidden "
                               onClick={() => {
-                                console.log(s);
+                                //console.log(s);
                                 openEditExerciseModal(s);
                               }}
                             >
@@ -129,7 +129,7 @@ const DisplayExercisesAfterSubmit = ({
                           <div
                             className="self-center hidden lg:block lg:mr-3"
                             onClick={() => {
-                              console.log(s);
+                              //console.log(s);
                               openEditExerciseModal(s);
                             }}
                           >
@@ -141,8 +141,8 @@ const DisplayExercisesAfterSubmit = ({
                       {e && (
                         <EditExerciseModal
                           isEditExerciseModal={isEditExerciseModal}
-                          exer={e.sets}
                           closeEditExerciseModal={closeEditExerciseModal}
+                          exer={e.sets}
                           selected={selected}
                           setSelected={setSelected}
                           id={e.id}

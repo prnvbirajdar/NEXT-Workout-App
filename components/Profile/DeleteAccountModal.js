@@ -1,24 +1,24 @@
 import { Modal, ModalBody, Alert } from "@windmill/react-ui";
 import { db } from "../data/firebase";
-import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 import { Correct } from "../Icons/Icons";
 
-const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen, id }) => {
+const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen }) => {
   const { user } = useAuth(); //context
 
+
   const deleteUser = async () => {
-    await db
-      .collection("profiles")
-      .doc(id)
-      .delete()
-      .then(function () {
-        console.log("firestore", deleted);
-        alert("Account successfully deleted");
-      })
-      .catch(function (error) {
-        console.log("firestore", error);
-      });
+    // await db
+    //   .collection("profiles")
+    //   .doc(user?.uid)
+    //   .delete()
+    //   .then(function () {
+    //     console.log("firestore", deleted);
+    //     alert("Account successfully deleted");
+    //   })
+    //   .catch(function (error) {
+    //     console.log("firestore", error);
+    //   });
 
     await user
       .delete()

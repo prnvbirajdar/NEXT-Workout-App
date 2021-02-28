@@ -17,8 +17,6 @@ const Home = () => {
 
   const formattedDate = format(startDate, "P");
 
-  console.log(formattedDate);
-
   const handleDateChange = (date) => setStartDate(date);
 
   useEffect(() => {

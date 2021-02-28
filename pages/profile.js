@@ -8,6 +8,7 @@ import DeleteAccountModal from "../components/Profile/DeleteAccountModal";
 import { useRouter } from "next/router";
 import PersonalDetailsCard from "../components/Profile/PersonalDetailsCard";
 import { Edit } from "../components/Icons/Icons";
+import Footer from "../components/Footer";
 
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -72,9 +73,9 @@ const Profile = () => {
   }, [user, physicalStats]);
 
   return (
-    <div>
+    <div className="relative min-h-screen">
       <Navbar />
-      <div className="dark:bg-black transition-colors">
+      <div className="pb-10 dark:bg-black transition-colors">
         <div className="flex justify-center mt-8 pt-5">
           <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
             <PersonalDetailsCard user={user} />
@@ -136,7 +137,7 @@ const Profile = () => {
           physicalStats={physicalStats}
           setPhysicalStats={setPhysicalStats}
         />
-        <div className="flex justify-end mt-10 pb-4 pr-4">
+        <div className="flex justify-end mt-24 pr-2">
           <Button layout="outline" onClick={openDeleteModal}>
             DELETE ACCOUNT
           </Button>
@@ -144,9 +145,9 @@ const Profile = () => {
         <DeleteAccountModal
           isDeleteModalOpen={isDeleteModalOpen}
           closeDeleteModal={closeDeleteModal}
-          id={user?.uid}
         />
       </div>
+      <Footer />
     </div>
   );
 };
