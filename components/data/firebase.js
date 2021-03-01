@@ -3,16 +3,14 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD250hJjDTgufbmVlO3Y1w0IaMdirJlBy8",
-  authDomain: "workout-app-a829e.firebaseapp.com",
-  projectId: "workout-app-a829e",
-  storageBucket: "workout-app-a829e.appspot.com",
-  messagingSenderId: "769673552474",
-  appId: "1:769673552474:web:782bee071ecfb3a8586e63",
-  measurementId: "G-NP4K8MLQ4W",
+  apiKey:process.env.NEXT_PUBLIC_API_KEY,
+  authDomain:process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+  projectId:process.env.NEXT_PUBLIC_PROJECT_ID,
+  storageBucket:process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+  messagingSenderId:process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
+  appId:process.env.NEXT_PUBLIC_APP_ID,
+  measurementId:process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
-
-console.log(process.env.NEXT_PUBLIC_API_KEY);
 
 if (firebase.apps.length === 0) {
   // Initialize Firebase
