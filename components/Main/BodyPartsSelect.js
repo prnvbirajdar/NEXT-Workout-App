@@ -20,8 +20,8 @@ const BodyPartsSelect = ({
             <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300">
               Select body part
             </p>
-            <div onClick={closeCard}>
-              <Close />
+            <div onClick={closeCard} aria-label="Close">
+              <Close aria-label="Close" />
             </div>
           </div>
 
@@ -29,6 +29,7 @@ const BodyPartsSelect = ({
             {exerciseList1.map((e) => (
               <div key={e.id} onClick={openExerciseModal}>
                 <button
+                  aria-label="Muscle Select"
                   onClick={() => setBodyPart(e)}
                   className="text-sm md:text-base shadow-lg m-1.5 h-10 px-5 sm:m-2 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800"
                 >

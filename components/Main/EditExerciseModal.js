@@ -96,8 +96,8 @@ const EditExerciseModal = ({
           {/*<div onClick={deleteSelectedSet}>
             <Delete />
     </div>*/}
-          <div onClick={updateExercise}>
-            <Correct />
+          <div onClick={updateExercise} aria-label="correct">
+            <Correct aria-label="correct" />
           </div>
         </div>
       </Modal>

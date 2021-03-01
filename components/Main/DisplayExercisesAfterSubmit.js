@@ -15,8 +15,6 @@ const DisplayExercisesAfterSubmit = ({
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
-  //console.log(exerciseStats);
-
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
     setIsEditExerciseModal(true);
@@ -64,7 +62,6 @@ const DisplayExercisesAfterSubmit = ({
 
     return () => {
       getExerciseStats();
-      //console.log("displayAfterSumbmit cleanup");
     };
   }, [user, selectedDate]);
 
@@ -80,8 +77,8 @@ const DisplayExercisesAfterSubmit = ({
                   {e.exercise}
                 </p>
               </div>
-              <div onClick={() => deleteExercise(e.id)}>
-                <Delete />
+              <div aria-label="Delete" onClick={() => deleteExercise(e.id)}>
+                <Delete aria-label="Delete" />
               </div>
             </div>
             {e.sets.length === 0 ? (
@@ -116,24 +113,24 @@ const DisplayExercisesAfterSubmit = ({
                               </p>
                             </div>
                             <div
+                              aria-label="Edit Exercise Modal"
                               className="self-center lg:hidden "
                               onClick={() => {
-                                //console.log(s);
                                 openEditExerciseModal(s);
                               }}
                             >
-                              <Edit />
+                              <Edit aria-label="Edit Exercise Modal" />
                             </div>
                           </div>
 
                           <div
+                            aria-label="Edit Exercise Modal"
                             className="self-center hidden lg:block lg:mr-3"
                             onClick={() => {
-                              //console.log(s);
                               openEditExerciseModal(s);
                             }}
                           >
-                            <Edit />
+                            <Edit aria-label="Edit Exercise Modal" />
                           </div>
                         </div>
                       </div>

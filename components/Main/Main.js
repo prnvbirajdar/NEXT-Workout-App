@@ -143,8 +143,8 @@ const Main = ({ selectedDate }) => {
                 <p className="self-center font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {currentExerciseData.currentExer}
                 </p>
-                <div onClick={handleDeleteCurrentExercise}>
-                  <Delete />
+                <div onClick={handleDeleteCurrentExercise} aria-label="delete">
+                  <Delete aria-label="delete" />
                 </div>
               </div>
 
@@ -161,6 +161,7 @@ const Main = ({ selectedDate }) => {
                   </p>
                   <div className=" sm:mx-4 ">
                     <textarea
+                      aria-label="notes"
                       onChange={(e) =>
                         setCurrentExerciseData(
                           produce(currentExerciseData, (draft) => {

@@ -78,18 +78,19 @@ const RepsSetsModal = ({
         </ModalBody>
 
         <div className="flex justify-between">
-          <div onClick={closeRepsSetsModal}>
-            <Delete />
+          <div onClick={closeRepsSetsModal} aria-label="delete">
+            <Delete aria-label="delete" />
           </div>
           <div
             onClick={handleSubmit}
+            aria-label="correct"
             className={`${
               currentSet.reps > 0 && currentSet.weight > 0
                 ? "pointer-events-auto"
                 : "pointer-events-none"
             }`}
           >
-            <Correct />
+            <Correct aria-label="correct" />
           </div>
         </div>
       </Modal>

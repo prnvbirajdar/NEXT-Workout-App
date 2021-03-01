@@ -6,7 +6,6 @@ import { Correct } from "../Icons/Icons";
 const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen }) => {
   const { user } = useAuth(); //context
 
-
   const deleteUser = async () => {
     // await db
     //   .collection("profiles")
@@ -42,8 +41,8 @@ const DeleteAccountModal = ({ closeDeleteModal, isDeleteModalOpen }) => {
         </div>
       </ModalBody>
       <div className="flex justify-end">
-        <div onClick={deleteUser}>
-          <Correct />
+        <div onClick={deleteUser} aria-label="correct">
+          <Correct aria-label="correct" />
         </div>
       </div>
     </Modal>

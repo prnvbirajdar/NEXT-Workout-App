@@ -42,17 +42,18 @@ const EditExerciseNotes = ({ value, id }) => {
           Notes
         </p>
         {target.length > 0 ? (
-          <div onClick={updateNotes}>
-            <Correct />
+          <div onClick={updateNotes} aria-label="correct">
+            <Correct aria-label="correct" />
           </div>
         ) : (
-          <div onClick={() => inputRef.current.focus()}>
-            <Edit />
+          <div onClick={() => inputRef.current.focus()} aria-label="edit">
+            <Edit aria-label="edit" />
           </div>
         )}
       </div>
       <div className=" sm:mx-4 ">
         <textarea
+          aria-label="notes"
           ref={inputRef}
           type="text"
           onChange={handleNotesChange}

@@ -4,10 +4,12 @@ const AddExercise = ({ openCard, exerciseStats }) => {
   return (
     <div>
       <div
+        aria-label="Add Exercise"
         onClick={openCard}
         className="flex flex-col items-center mt-10"
       >
         <Add
+          aria-label="Add Exercise"
           lineHeight={"w-6 md:w-7"}
           lineWidth={"h-6  md:h-7"}
           circleHeight={"h-10 md:h-14"}

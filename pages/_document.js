@@ -8,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <title>Lift Workout App</title>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />

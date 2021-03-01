@@ -66,7 +66,7 @@ const PhysicalStatsModal = ({
                 />
               </div>
               <div className="text-center text-base p-2">
-                <label>Height</label>
+                <label>Height (inches)</label>
               </div>
               <div className="flex justify-center ">
                 <input
@@ -83,7 +83,7 @@ const PhysicalStatsModal = ({
                 />
               </div>
               <div className="text-center text-base p-2">
-                <label>Daily Calories</label>
+                <label>Daily Calories (kCal)</label>
               </div>
               <div className="flex justify-center ">
                 <input
@@ -100,7 +100,7 @@ const PhysicalStatsModal = ({
                 />
               </div>
               <div className="text-center text-base p-2">
-                <label>Body Fat Percentage</label>
+                <label>Body Fat Percentage (%)</label>
               </div>
               <div className="flex justify-center ">
                 <input
@@ -119,12 +119,16 @@ const PhysicalStatsModal = ({
             </div>
           </ModalBody>
           <div className="flex justify-between">
-            <div layout="outline" onClick={closeProfileModal}>
-              <Delete />
+            <div
+              aria-label="delete"
+              layout="outline"
+              onClick={closeProfileModal}
+            >
+              <Delete aria-label="delete" />
             </div>
 
-            <div type="submit">
-              <Correct />
+            <div aria-label="correct" type="submit">
+              <Correct aria-label="correct" />
             </div>
           </div>
         </form>

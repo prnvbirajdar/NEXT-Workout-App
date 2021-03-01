@@ -35,8 +35,9 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
           <div
             onClick={handleDelete}
             className="self-center hidden lg:block lg:mr-3"
+            aria-label="delete"
           >
-            <Delete />
+            <Delete aria-label="delete" />
           </div>
         </div>
       </div>

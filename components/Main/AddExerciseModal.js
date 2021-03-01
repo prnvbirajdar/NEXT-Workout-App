@@ -21,6 +21,7 @@ const AddExerciseModal = ({
               bodyPart.exercises.map((e) => (
                 <div key={e.id} onClick={closeExerciseModal}>
                   <button
+                    aria-label="Exercise options"
                     onClick={() =>
                       setCurrentExerciseData(
                         produce(currentExerciseData, (draft) => {
