@@ -13,6 +13,8 @@ const Login = () => {
                 className="object-cover w-full h-full dark:hidden"
                 src="/final.webp"
                 alt="Office"
+                height="640px"
+                width="426px"
               />
 
               <img
@@ -20,6 +22,8 @@ const Login = () => {
                 className="hidden object-cover w-full h-full dark:block "
                 src="/fitness1.webp"
                 alt="Office"
+                height="640px"
+                width="426px"
               />
             </div>
             <main className="flex items-center justify-center md:p-6 mt-2 py-6 md:mt-0 md:w-1/2">

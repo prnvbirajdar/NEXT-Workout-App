@@ -67,9 +67,10 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                     name="startDate"
                     dateFormat="MMM dd, yyyy"
                     closeOnScroll={true}
+                    withPortal
                     customInput={
                       <div className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                        <Calender />{" "}
+                        <Calender />
                       </div>
                     }
                   />
