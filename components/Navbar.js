@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Transition } from "@headlessui/react";
 import { WindmillContext } from "@windmill/react-ui";
 import { useAuth } from "./data/authProvider";
-import { Moon, Sun, Calender, Home } from "./Icons/Icons";
+import { Moon, Sun, Calender, Home, CalenderLogo } from "./Icons/Icons";
 import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -45,11 +45,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                   router.push("/home");
                 }}
               >
-                <img
-                  className="h-8 w-8"
-                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                  alt="Workflow"
-                />
+                <CalenderLogo />
               </div>
 
               <div className="md:block">
@@ -103,7 +99,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
 
                       <img
                         className="h-8 w-8 rounded-full"
-                        src={user.photoURL}
+                        src={user?.photoURL}
                         alt="User profile picture"
                       />
                     </button>
@@ -131,15 +127,6 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                         onClick={() => router.push("/profile")}
                       >
                         Profile
-                      </a>
-
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm  hover:bg-gray-100 dark:hover:bg-gray-800"
-                        role="menuitem"
-                        tabIndex="0"
-                      >
-                        Settings
                       </a>
 
                       <a

@@ -1,13 +1,11 @@
 import { Add } from "../Icons/Icons";
 
-const AddExercise = ({ openCard, showEmptyLog, exerciseStats }) => {
+const AddExercise = ({ openCard, exerciseStats }) => {
   return (
     <div>
       <div
         onClick={openCard}
-        className={`${
-          showEmptyLog ? "hidden" : "block"
-        } flex flex-col items-center mt-10`}
+        className="flex flex-col items-center mt-10"
       >
         <Add
           lineHeight={"w-6 md:w-7"}

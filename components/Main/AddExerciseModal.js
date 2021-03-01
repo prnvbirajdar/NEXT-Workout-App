@@ -1,6 +1,5 @@
 import { Modal, ModalBody } from "@windmill/react-ui";
 import { Fragment } from "react";
-import ExerciseLog from "./EmptyLog";
 import produce from "immer";
 
 const AddExerciseModal = ({
@@ -38,8 +37,6 @@ const AddExerciseModal = ({
           </div>
         </ModalBody>
       </Modal>
-
-      <ExerciseLog />
     </Fragment>
   );
 };

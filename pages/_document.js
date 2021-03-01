@@ -11,6 +11,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+          <link rel="Lift Icon" type="image/png" href="/calender.png" />
         </Head>
         <body>
           <Main />

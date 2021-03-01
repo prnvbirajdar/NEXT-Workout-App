@@ -92,10 +92,10 @@ const EditExerciseModal = ({
           </div>
         </ModalBody>
 
-        <div className="flex justify-between">
-          <div onClick={deleteSelectedSet}>
+        <div className="flex justify-end">
+          {/*<div onClick={deleteSelectedSet}>
             <Delete />
-          </div>
+    </div>*/}
           <div onClick={updateExercise}>
             <Correct />
           </div>

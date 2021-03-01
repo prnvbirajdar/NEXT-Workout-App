@@ -1,27 +1,3 @@
-const Plus = () => {
-  return (
-    <button className="inline-flex items-center justify-center w-10 h-10 text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-      <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-        <path
-          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-          clipRule="evenodd"
-          fillRule="evenodd"
-        ></path>
-      </svg>
-    </button>
-  );
-};
-
-const Minus = () => {
-  return (
-    <button className="inline-flex items-center justify-center w-10 h-10  text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
-      <svg className="w-3 h-3 fill-current" viewBox="0 0 298.7 298.7">
-        <path d="M0 128h299v43H0z" clipRule="evenodd" fillRule="evenodd"></path>
-      </svg>
-    </button>
-  );
-};
-
 const Add = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
   return (
     <button
@@ -79,61 +55,6 @@ const Delete = () => {
           strokeWidth={2}
           d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
         />
-      </svg>
-    </button>
-  );
-};
-
-const Github = () => {
-  return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 transition rounded-lg focus:shadow-outline dark:hover:bg-gray-900 hover:bg-gray-200">
-      <svg
-        height="24"
-        width="24"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        className="fill-current transition text-gray-800 dark:text-gray-400 "
-      >
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-      </svg>
-    </button>
-  );
-};
-
-const Mail = () => {
-  return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 transition rounded-lg focus:shadow-outline dark:hover:bg-gray-900 hover:bg-gray-200">
-      <svg
-        height="26"
-        width="26"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        className="fill-current transition text-gray-800 dark:text-gray-400 "
-      >
-        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
-      </svg>
-    </button>
-  );
-};
-
-const LinkedIn = () => {
-  return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 transition rounded-lg focus:shadow-outline dark:hover:bg-gray-900 hover:bg-gray-200">
-      <svg
-        id="Bold"
-        enable-background="new 0 0 24 24"
-        height="24"
-        width="24"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        className="fill-current transition text-gray-800 dark:text-gray-400 "
-      >
-        <path d="m23.994 24v-.001h.006v-8.802c0-4.306-.927-7.623-5.961-7.623-2.42 0-4.044 1.328-4.707 2.587h-.07v-2.185h-4.773v16.023h4.97v-7.934c0-2.089.396-4.109 2.983-4.109 2.549 0 2.587 2.384 2.587 4.243v7.801z" />
-        <path d="m.396 7.977h4.976v16.023h-4.976z" />
-        <path d="m2.882 0c-1.591 0-2.882 1.291-2.882 2.882s1.291 2.909 2.882 2.909 2.882-1.318 2.882-2.909c-.001-1.591-1.292-2.882-2.882-2.882z" />
       </svg>
     </button>
   );
@@ -206,48 +127,6 @@ const Close = () => {
   );
 };
 
-const Facebook = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      className="fill-current text-gray-500"
-    >
-      <path fill="none" d="M0 0h24v24H0z" />
-      <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
-    </svg>
-  );
-};
-
-const Gmail = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      className="fill-current text-gray-500"
-    >
-      <path d="M0 0h24v24H0z" fill="none" />
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z" />
-    </svg>
-  );
-};
-
-const Google = () => {
-  return (
-    <svg
-      width="16"
-      height="16"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      className="fill-current text-gray-500"
-    >
-      <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z" />
-    </svg>
-  );
-};
-
 const Moon = () => {
   return (
     <svg
@@ -300,22 +179,48 @@ const Edit = () => {
   );
 };
 
+const Logo = () => {
+  return (
+    <button className=" inline-flex items-center justify-center w-10 h-10 text-black transition-colors rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="32"
+        viewBox="0 0 512 512"
+        width="32"
+        stroke="currentColor"
+        className="fill-current"
+      >
+        <path d="m289.9 52.7h31c8.9 0 17 3.7 22.9 9.5 5.8 5.9 9.5 14 9.5 22.9v24.3c0 4.1-3.4 7.5-7.5 7.5s-7.5-3.3-7.5-7.5v-24.3c0-4.8-1.9-9.1-5.1-12.2-3.1-3.1-7.5-5.1-12.2-5.1h-31c-1.4 6.3-4.6 12-9.1 16.4-6.2 6.2-14.6 9.9-23.9 9.9h-137.1c-9.3 0-17.8-3.8-23.9-9.9-4.4-4.4-7.7-10.1-9.1-16.4h-31c-4.8 0-9.1 2-12.2 5.1-3.1 3.1-5.1 7.5-5.1 12.2v336.4c0 4.1-3.3 7.5-7.5 7.5s-7.5-3.3-7.5-7.5v-336.4c0-8.9 3.6-17 9.5-22.9 5.9-5.8 13.9-9.5 22.8-9.5h31c1.4-6.3 4.7-12 9.1-16.4 6.1-6.2 14.6-10 23.9-10h11.7c1.4-6.3 4.7-12 9.1-16.4 6.1-6.2 14.6-9.9 23.9-9.9h47.7c9.3 0 17.8 3.8 23.9 9.9 4.4 4.4 7.7 10.1 9.1 16.4h11.7c9.3 0 17.8 3.8 23.9 10 4.4 4.4 7.6 10.1 9.1 16.4zm19.8 266.7c4.2 0 7.5 3.4 7.5 7.5s-3.3 7.5-7.5 7.5h-156.4c-4.1 0-7.5-3.3-7.5-7.5 0-4.1 3.4-7.5 7.5-7.5zm0-81.5c4.2 0 7.5 3.3 7.5 7.5 0 4.1-3.3 7.5-7.5 7.5h-156.4c-4.1 0-7.5-3.4-7.5-7.5s3.4-7.5 7.5-7.5zm0-81.6c4.2 0 7.5 3.3 7.5 7.5 0 4.1-3.3 7.5-7.5 7.5h-156.4c-4.1 0-7.5-3.3-7.5-7.5 0-4.2 3.4-7.5 7.5-7.5zm-235.1 223.3h42.7c4.2 0 7.5 3.4 7.5 7.5v42.7c0 4.1-3.3 7.5-7.5 7.5h-42.7c-4.1 0-7.5-3.3-7.5-7.5v-42.7c0-4.1 3.4-7.5 7.5-7.5zm35.2 15h-27.7v27.7h27.7zm-35.2-96.5h42.7c4.2 0 7.5 3.3 7.5 7.5v42.7c0 4.1-3.3 7.5-7.5 7.5h-42.7c-4.1 0-7.5-3.4-7.5-7.5v-42.7c0-4.1 3.4-7.5 7.5-7.5zm35.2 15h-27.7v27.7h27.7zm-35.2-96.6h42.7c4.2 0 7.5 3.4 7.5 7.5v42.7c0 4.2-3.3 7.5-7.5 7.5h-42.7c-4.1 0-7.5-3.3-7.5-7.5v-42.7c0-4.1 3.4-7.5 7.5-7.5zm35.2 15h-27.7v27.7h27.7zm-35.2-96.5h42.7c4.2 0 7.5 3.3 7.5 7.5v42.7c0 4.1-3.3 7.5-7.5 7.5h-42.7c-4.1 0-7.5-3.4-7.5-7.5v-42.7c0-4.1 3.4-7.5 7.5-7.5zm35.2 15h-27.7v27.7h27.7zm218.2 270.5c-4.1 0-7.5-3.3-7.5-7.5 0-4.1 3.4-7.5 7.5-7.5h10.2v-262.1c0-4.1 3.4-7.5 7.5-7.5s7.5 3.3 7.5 7.5v262.1h28.7v-47.5c0-4.1 3.4-7.5 7.5-7.5h45.8c4.1 0 7.5 3.3 7.5 7.5v26.4h38.3c4.1 0 7.5 3.3 7.5 7.5v78.8c0 4.1-3.3 7.5-7.5 7.5h-38.3v26.4c0 4.1-3.3 7.5-7.5 7.5h-45.8c-4.1 0-7.5-3.3-7.5-7.5v-47.5h-28.7v22.6c0 8.9-3.7 17-9.5 22.8-5.9 5.9-13.9 9.5-22.9 9.5-88.4 0-176.7 0-265.1 0-8.9 0-17-3.6-22.8-9.5-5.9-5.8-9.5-13.9-9.5-22.8v-24.3c0-4.1 3.4-7.5 7.5-7.5s7.5 3.4 7.5 7.5v24.3c0 4.8 2 9.1 5.1 12.2 3.1 3.1 7.5 5.1 12.2 5.1h165.9v-18.9h-38.3c-4.1 0-7.5-3.4-7.5-7.5v-78.8c0-4.1 3.4-7.5 7.5-7.5h38.3v-26.4c0-4.1 3.4-7.5 7.5-7.5h45.8c4.1 0 7.5 3.3 7.5 7.5v47.5h11.6c4.1 0 7.5 3.3 7.5 7.5 0 4.2-3.4 7.5-7.5 7.5h-11.6v21.7h99.5v-21.7h-53.9zm10.2 36.7h-55.8v40h38.4c4.8 0 9.1-2 12.2-5.1 3.2-3.1 5.1-7.5 5.1-12.2zm104.5 6.1h30.8v-63.8h-30.8zm-251.9 0h30.8v-63.8h-30.8zm206.1 33.9h30.8v-131.6h-30.8zm-129.5 0c0-43.9 0-87.7 0-131.6h-30.8v131.6zm-55.3-482h-47.7c-5.2 0-9.9 2.1-13.3 5.6-3.4 3.4-5.5 8.1-5.5 13.3 0 4.1-3.4 7.5-7.5 7.5h-18.4c-5.2 0-9.9 2.1-13.3 5.6-3.4 3.4-5.5 8.1-5.5 13.3 0 5.2 2.1 9.9 5.5 13.3 3.4 3.4 8.1 5.6 13.3 5.6h137.1c5.2 0 9.9-2.1 13.3-5.6 3.4-3.4 5.6-8.1 5.6-13.3 0-5.2-2.1-9.9-5.6-13.3-3.4-3.4-8.1-5.6-13.3-5.6h-18.4c-4.2 0-7.5-3.3-7.5-7.5 0-5.2-2.1-9.9-5.5-13.3-3.4-3.4-8.1-5.6-13.3-5.6z" />
+      </svg>
+    </button>
+  );
+};
+
+const CalenderLogo = () => {
+  return (
+    <button className=" inline-flex items-center justify-center w-12 h-12 text-gray-800 dark:text-gray-100 transition rounded-lg focus:shadow-outline hover:bg-indigo-200 dark:hover:bg-indigo-800   ">
+      <svg
+        viewBox="0 0 500.03 500.03"
+        xmlns="http://www.w3.org/2000/svg"
+        stroke="currentColor"
+        className="fill-current h-8 w-8 md:h-9 md:w-9"
+      >
+        <path d="M252.581 395.053c15.688 15.708 15.591 40.979 0 56.57l-35.28 35.28c-15.461 15.5-40.874 15.696-56.57 0l-147.61-147.61c-15.59-15.6-15.59-40.98 0-56.57l35.28-35.28c15.591-15.592 40.862-15.688 56.57 0zM19.068 377.737c-3.609-3.609-9.609-2.946-12.395 1.331-11.067 16.986-7.654 37.463 5.028 50.146l59.11 59.11c12.572 12.572 33.034 16.189 50.14 5.034 4.278-2.79 4.949-8.788 1.338-12.4zm257.773-209.024c-6.25-6.24-16.38-6.24-22.63 0l-85.5 85.5c-6.25 6.25-6.25 16.38 0 22.63l54.47 54.47c6.229 6.229 16.359 6.251 22.63 0l85.5-85.5c6.25-6.25 6.25-16.38 0-22.63zm204.132-46.442c3.612 3.612 9.613 2.939 12.402-1.341 11.146-17.11 7.485-37.577-5.054-50.117l-59.11-59.11C416.56-.939 396.096-4.423 379.088 6.654c-4.278 2.786-4.944 8.787-1.334 12.397zM339.291 13.123c-15.6-15.59-40.98-15.6-56.57 0l-35.28 35.28c-15.591 15.59-15.688 40.861 0 56.57l147.61 147.61c15.723 15.703 40.996 15.575 56.57 0l35.28-35.28c15.59-15.59 15.59-40.97 0-56.57z" />
+      </svg>
+    </button>
+  );
+};
+
 export {
   Home,
   Calender,
   Add,
-  Plus,
-  Minus,
   Correct,
   Delete,
   Close,
-  Facebook,
-  Gmail,
-  Google,
   Sun,
   Moon,
   Edit,
-  Github,
-  Mail,
-  LinkedIn,
+  Logo,
+  CalenderLogo,
 };
