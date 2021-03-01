@@ -12,6 +12,8 @@ const firebaseConfig = {
   measurementId: "G-NP4K8MLQ4W",
 };
 
+console.log(process.env.NEXT_PUBLIC_API_KEY);
+
 if (firebase.apps.length === 0) {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
