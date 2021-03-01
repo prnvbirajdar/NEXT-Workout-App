@@ -10,8 +10,13 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>Lift Workout App</title>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-          <link rel="Lift Icon" type="image/png" href="/calender.png" />
+          <link rel="Lift Icon" type="image/ico" href="/db.ico" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
         </Head>
         <body>
           <Main />

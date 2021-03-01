@@ -8,7 +8,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <React.Fragment>
       <Head>
-        <title>Lift Workout Tracker</title>
+        <title>Lift Workout App</title>
+        <link rel="Lift Icon" type="image/ico" href="/db.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <AuthProvider>
