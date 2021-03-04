@@ -1,5 +1,5 @@
 import { Modal, ModalBody, Alert } from "@windmill/react-ui";
-import { db } from "../data/firebase";
+// import { db } from "../data/firebase";
 import { useAuth } from "../data/authProvider";
 import { Correct } from "../Icons/Icons";
 

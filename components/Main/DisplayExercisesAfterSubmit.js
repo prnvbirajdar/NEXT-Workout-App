@@ -4,6 +4,7 @@ import { useAuth } from "../data/authProvider";
 import { Delete, Edit } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
+import DeleteExerciseModal from "./DeleteExerciseModal";
 
 const DisplayExercisesAfterSubmit = ({
   selectedDate,
@@ -20,12 +21,24 @@ const DisplayExercisesAfterSubmit = ({
     setBoolean: false,
   });
 
+  const [
+    isDeleteExerciseModalOpen,
+    setIsDeleteExerciseModalOpen,
+  ] = React.useState(false);
+
+  function openDeleteExerciseModal() {
+    setIsDeleteExerciseModalOpen(true);
+  }
+  function closeDeleteExerciseModal() {
+    setIsDeleteExerciseModalOpen(false);
+  }
+
   const isSelected = (id) => {
     exerciseStats.map((ex) => {
       if (ex.id === id) {
         setIsHidden({
           setId: ex.id,
-          setBoolean: !isHidden.setBoolean,
+          setBoolean: !isHidden?.setBoolean,
         });
       }
     });
@@ -96,7 +109,7 @@ const DisplayExercisesAfterSubmit = ({
               <div className=" flex items-center ">
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
-                  {isHidden.setBoolean && isHidden.setId === e.id ? (
+                  {isHidden?.setBoolean && isHidden?.setId === e.id ? (
                     <span className="mx-1"> 🞃 </span>
                   ) : (
                     <span className="mx-1"> 🞂 </span>
@@ -105,18 +118,16 @@ const DisplayExercisesAfterSubmit = ({
                 </p>
               </div>
 
-              <div
-                aria-label="Delete"
-                onClick={() => {
-                  setIsHidden({
-                    setId: "",
-                    setBoolean: false,
-                  });
-                  deleteExercise(e.id);
-                }}
-              >
+              <div aria-label="Delete" onClick={openDeleteExerciseModal}>
                 <Delete aria-label="Delete" />
               </div>
+              <DeleteExerciseModal
+                id={e?.id}
+                deleteExercise={deleteExercise}
+                setIsHidden={setIsHidden}
+                isDeleteExerciseModalOpen={isDeleteExerciseModalOpen}
+                closeDeleteExerciseModal={closeDeleteExerciseModal}
+              />
             </div>
             {/*e.sets.length === 0 ? (
               <div className="flex md:flex-row justify-around mt-2 py-2 sm:mx-4 transition bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
@@ -135,7 +146,7 @@ const DisplayExercisesAfterSubmit = ({
                     <div
                       key={index}
                       className={`${
-                        isHidden.setBoolean && isHidden.setId === e.id
+                        isHidden?.setBoolean && isHidden?.setId === e.id
                           ? "block"
                           : "hidden"
                       } lg:mt-4`}
