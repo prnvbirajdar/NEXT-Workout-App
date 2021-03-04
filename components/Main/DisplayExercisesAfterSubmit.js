@@ -15,41 +15,23 @@ const DisplayExercisesAfterSubmit = ({
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
-  const [isShown, setIsShown] = React.useState([]);
-
   const [isHidden, setIsHidden] = React.useState({
     setId: "",
     setBoolean: false,
   });
-  const [showId, setShowId] = React.useState("");
-
-  // const isSelected = (i) => {
-  //   if (isShown.indexOf(i) === -1) {
-  //     setIsShown(...isShown, [isShown.push(i)]);
-  //   } else {
-  //     setIsShown(...isShown, [isShown.filter((index) => index !== i)]);
-  //   }
-  // };
-
-  // console.log(isShown);
 
   const isSelected = (id) => {
     exerciseStats.map((ex) => {
       if (ex.id === id) {
-        setIsHidden({ setId: ex.id, setBoolean: !isHidden.setBoolean });
+        setIsHidden({
+          setId: ex.id,
+          setBoolean: !isHidden.setBoolean,
+        });
       }
     });
   };
 
   console.log(isHidden);
-
-  // const toggleHidden = (id) => {
-  //   if (id === showId) {
-  //     setIsHidden(!isHidden);
-  //   }
-  // };
-
-  // console.log(isShown);
 
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
@@ -103,7 +85,7 @@ const DisplayExercisesAfterSubmit = ({
 
   return (
     exerciseStats.length > 0 &&
-    exerciseStats?.map((e, index) => (
+    exerciseStats?.map((e) => (
       <section key={e.id} className="mb-4">
         <Card>
           <CardBody>
@@ -111,19 +93,28 @@ const DisplayExercisesAfterSubmit = ({
               className="cursor-pointer flex justify-between "
               onClick={() => isSelected(e.id)}
             >
-              <div className=" flex items-center  ">
+              <div className=" flex items-center ">
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
                   {isHidden.setBoolean && isHidden.setId === e.id ? (
-                    <React.Fragment> 🞃 </React.Fragment>
+                    <span className="mx-1"> 🞃 </span>
                   ) : (
-                    <React.Fragment> 🞂 </React.Fragment>
+                    <span className="mx-1"> 🞂 </span>
                   )}
-                  {e.sets.length} sets {e.id}
+                  {e.sets.length} sets
                 </p>
               </div>
 
-              <div aria-label="Delete" onClick={() => deleteExercise(e.id)}>
+              <div
+                aria-label="Delete"
+                onClick={() => {
+                  setIsHidden({
+                    setId: "",
+                    setBoolean: false,
+                  });
+                  deleteExercise(e.id);
+                }}
+              >
                 <Delete aria-label="Delete" />
               </div>
             </div>
@@ -141,7 +132,14 @@ const DisplayExercisesAfterSubmit = ({
               e.sets.map(
                 (s, index) =>
                   s && (
-                    <div key={index} className="lg:mt-4 hidden">
+                    <div
+                      key={index}
+                      className={`${
+                        isHidden.setBoolean && isHidden.setId === e.id
+                          ? "block"
+                          : "hidden"
+                      } lg:mt-4`}
+                    >
                       <div className="lg:mx-4">
                         <div className=" flex flex-col lg:flex-row lg:bg-gray-50 transition lg:dark:bg-black rounded lg:mt-3">
                           <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
@@ -208,6 +206,19 @@ const DisplayExercisesAfterSubmit = ({
 };
 
 export default DisplayExercisesAfterSubmit;
+
+//const [showId, setShowId] = React.useState("");
+// const [isShown, setIsShown] = React.useState([]);
+
+// const isSelected = (i) => {
+//   if (isShown.indexOf(i) === -1) {
+//     setIsShown(...isShown, [isShown.push(i)]);
+//   } else {
+//     setIsShown(...isShown, [isShown.filter((index) => index !== i)]);
+//   }
+// };
+
+// console.log(isShown);
 
 //⯈⯆
 
