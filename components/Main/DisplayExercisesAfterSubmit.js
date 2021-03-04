@@ -15,6 +15,42 @@ const DisplayExercisesAfterSubmit = ({
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
+  const [isShown, setIsShown] = React.useState([]);
+
+  const [isHidden, setIsHidden] = React.useState({
+    setId: "",
+    setBoolean: false,
+  });
+  const [showId, setShowId] = React.useState("");
+
+  // const isSelected = (i) => {
+  //   if (isShown.indexOf(i) === -1) {
+  //     setIsShown(...isShown, [isShown.push(i)]);
+  //   } else {
+  //     setIsShown(...isShown, [isShown.filter((index) => index !== i)]);
+  //   }
+  // };
+
+  // console.log(isShown);
+
+  const isSelected = (id) => {
+    exerciseStats.map((ex) => {
+      if (ex.id === id) {
+        setIsHidden({ setId: ex.id, setBoolean: !isHidden.setBoolean });
+      }
+    });
+  };
+
+  console.log(isHidden);
+
+  // const toggleHidden = (id) => {
+  //   if (id === showId) {
+  //     setIsHidden(!isHidden);
+  //   }
+  // };
+
+  // console.log(isShown);
+
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
     setIsEditExerciseModal(true);
@@ -67,21 +103,31 @@ const DisplayExercisesAfterSubmit = ({
 
   return (
     exerciseStats.length > 0 &&
-    exerciseStats?.map((e) => (
+    exerciseStats?.map((e, index) => (
       <section key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <div className="flex justify-between ">
+            <div
+              className="cursor-pointer flex justify-between "
+              onClick={() => isSelected(e.id)}
+            >
               <div className=" flex items-center  ">
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
+                  {isHidden.setBoolean && isHidden.setId === e.id ? (
+                    <React.Fragment> 🞃 </React.Fragment>
+                  ) : (
+                    <React.Fragment> 🞂 </React.Fragment>
+                  )}
+                  {e.sets.length} sets {e.id}
                 </p>
               </div>
+
               <div aria-label="Delete" onClick={() => deleteExercise(e.id)}>
                 <Delete aria-label="Delete" />
               </div>
             </div>
-            {e.sets.length === 0 ? (
+            {/*e.sets.length === 0 ? (
               <div className="flex md:flex-row justify-around mt-2 py-2 sm:mx-4 transition bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
                   No sets to display
@@ -89,13 +135,13 @@ const DisplayExercisesAfterSubmit = ({
               </div>
             ) : (
               <div></div>
-            )}
+            )*/}
 
             {e.sets &&
               e.sets.map(
                 (s, index) =>
                   s && (
-                    <div key={index} className="lg:mt-4">
+                    <div key={index} className="lg:mt-4 hidden">
                       <div className="lg:mx-4">
                         <div className=" flex flex-col lg:flex-row lg:bg-gray-50 transition lg:dark:bg-black rounded lg:mt-3">
                           <p className="self-center text-gray-800 dark:text-gray-300 text-center m-2 lg:ml-4">
@@ -151,7 +197,7 @@ const DisplayExercisesAfterSubmit = ({
                     </div>
                   )
               )}
-            <div className=" mb-3 ">
+            <div className="hidden mb-3 ">
               <EditExerciseNotes value={e.notes} id={e.id} />
             </div>
           </CardBody>
@@ -162,6 +208,8 @@ const DisplayExercisesAfterSubmit = ({
 };
 
 export default DisplayExercisesAfterSubmit;
+
+//⯈⯆
 
 // <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
 // Set {index + 1}

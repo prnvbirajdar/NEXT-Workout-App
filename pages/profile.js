@@ -85,14 +85,14 @@ const Profile = () => {
                   <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
                     <label>Weight</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
-                      {physicalStats?.weight ? physicalStats?.weight : "0"}{" "}
+                      {physicalStats?.weight ? physicalStats?.weight : "0"}
                       pounds
                     </p>
                   </div>
                   <div className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
                     <label>Height</label>
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
-                      {physicalStats?.height ? physicalStats?.height : "0"}{" "}
+                      {physicalStats?.height ? physicalStats?.height : "0"}
                       inches
                     </p>
                   </div>
@@ -101,7 +101,7 @@ const Profile = () => {
                     <p className=" text-gray-800 font-medium ml-3 uppercase text-right dark:text-gray-100">
                       {physicalStats?.dailyCalories
                         ? physicalStats?.dailyCalories
-                        : "0"}{" "}
+                        : "0"}
                       calories
                     </p>
                   </div>
