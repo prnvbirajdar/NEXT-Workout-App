@@ -6,9 +6,18 @@ import { Moon, Sun, Calender, Home, CalenderLogo } from "./Icons/Icons";
 import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import DeleteAccountModal from "./Profile/DeleteAccountModal";
 
 const Nav = ({ handleDateChange, selectedDate }) => {
   const [profileOpen, setProfileOpen] = useState(false); //profile toggle
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  function openDeleteModal() {
+    setIsDeleteModalOpen(true);
+  }
+  function closeDeleteModal() {
+    setIsDeleteModalOpen(false);
+  }
 
   const { mode, toggleMode } = useContext(WindmillContext); //dark mode
 
@@ -143,8 +152,21 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                       >
                         Sign out
                       </a>
+                      <a
+                        href="#"
+                        className="block px-4 py-2 text-sm  hover:bg-gray-100 dark:hover:bg-gray-800"
+                        role="menuitem"
+                        tabIndex="0"
+                        onClick={openDeleteModal}
+                      >
+                        Delete account
+                      </a>
                     </div>
                   </Transition>
+                  <DeleteAccountModal
+                    isDeleteModalOpen={isDeleteModalOpen}
+                    closeDeleteModal={closeDeleteModal}
+                  />
                 </div>
               </div>
             </div>

@@ -12,7 +12,6 @@ import Footer from "../components/Footer";
 
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [physicalStats, setPhysicalStats] = useState({
     weight: 0,
@@ -59,13 +58,6 @@ const Profile = () => {
     setIsProfileModalOpen(false);
   }
 
-  function openDeleteModal() {
-    setIsDeleteModalOpen(true);
-  }
-  function closeDeleteModal() {
-    setIsDeleteModalOpen(false);
-  }
-
   useEffect(() => {
     if (user) {
       getPhysicalStats();
@@ -75,7 +67,7 @@ const Profile = () => {
   return (
     <div className="relative min-h-screen">
       <Navbar />
-      <div className="pb-10 dark:bg-black transition-colors">
+      <div className="pb-20 dark:bg-black transition-colors">
         <div className="flex justify-center mt-8 pt-5">
           <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
             <PersonalDetailsCard user={user} />
@@ -136,15 +128,6 @@ const Profile = () => {
           closeProfileModal={closeProfileModal}
           physicalStats={physicalStats}
           setPhysicalStats={setPhysicalStats}
-        />
-        <div className="flex justify-end mt-24 pr-2">
-          <Button layout="outline" onClick={openDeleteModal}>
-            DELETE ACCOUNT
-          </Button>
-        </div>
-        <DeleteAccountModal
-          isDeleteModalOpen={isDeleteModalOpen}
-          closeDeleteModal={closeDeleteModal}
         />
       </div>
       <Footer />
