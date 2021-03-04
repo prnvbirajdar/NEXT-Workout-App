@@ -114,7 +114,15 @@ const DisplayExercisesAfterSubmit = ({
                   ) : (
                     <span className="mx-1"> 🞂 </span>
                   )}
-                  {e.sets.length} sets
+                  <span
+                    className={`${
+                      isHidden?.setBoolean && isHidden?.setId === e.id
+                        ? "hidden"
+                        : "inline-block"
+                    }`}
+                  >
+                    {e.sets.length} sets
+                  </span>
                 </p>
               </div>
 
