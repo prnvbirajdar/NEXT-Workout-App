@@ -47,6 +47,7 @@ const exerciseList1 = [
       { id: 107, exercise: "Pushups" },
       { id: 108, exercise: "Cables Flyes" },
       { id: 109, exercise: "Chest Dips" },
+      { id: 110, exercise: "Machine Chest Press" },
     ],
   },
   {
@@ -73,10 +74,11 @@ const exerciseList1 = [
       { id: 305, exercise: "Lat Pulldown" },
       { id: 306, exercise: "Seated Cable Row" },
       { id: 307, exercise: "Single Arm Dumbell Row" },
-      { id: 308, exercise: "Good Morning" },
-      { id: 309, exercise: "Incline Dumbbell Row" },
-      { id: 310, exercise: "Chinups" },
-      { id: 311, exercise: "Deficit Deadlift" },
+      { id: 308, exercise: "Incline Dumbbell Row" },
+      { id: 309, exercise: "Chinups" },
+      { id: 310, exercise: "Deficit Deadlift" },
+      { id: 311, exercise: "Chest Supported Row" },
+
     ],
   },
   {
@@ -148,6 +150,7 @@ const exerciseList1 = [
       { id: 714, exercise: "Goblet Squat" },
       { id: 715, exercise: "Single Leg Deadlift" },
       { id: 716, exercise: "Hack Squat" },
+      { id: 717, exercise: "Good Mornings" },
     ],
   },
   {
