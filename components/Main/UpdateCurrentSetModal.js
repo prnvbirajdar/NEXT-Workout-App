@@ -13,11 +13,12 @@ const UpdateCurrentSetModal = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
     setCurrSet(
-      produce(selected, (draft) => {
+      produce(currSet, (draft) => {
         draft[name] = value;
       })
     );
   };
+
   console.log(currentExerciseData);
 
   const handleDelete = () => {
@@ -71,7 +72,7 @@ const UpdateCurrentSetModal = ({
         </div>
       </ModalBody>
 
-      <div className="flex justify-end">
+      <div className="flex justify-between">
         <div onClick={handleDelete} aria-label="delete">
           <Delete aria-label="delete" />
         </div>
