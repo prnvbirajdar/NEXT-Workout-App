@@ -156,7 +156,7 @@ const Main = ({ selectedDate }) => {
                 currentExerciseData={currentExerciseData}
                 setCurrentExerciseData={setCurrentExerciseData}
               />
-              {currentExerciseData.sets.length > 0 && (
+              {currentExerciseData?.sets?.length > 0 && (
                 <div>
                   <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                     Notes
@@ -186,7 +186,7 @@ const Main = ({ selectedDate }) => {
                 onClick={submitExerciseData}
                 className="flex justify-end mt-3"
               >
-                {currentExerciseData.sets.length > 0 && <Correct />}
+                {currentExerciseData?.sets?.length > 0 && <Correct />}
               </div>
             </CardBody>
           </Card>

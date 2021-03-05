@@ -18,10 +18,7 @@ const UpdateCurrentSetModal = ({
   //       })
   //     );
   //   };
-
-  console.log(sets);
-
-  console.log(currId);
+  console.log(currentExerciseData);
 
   const handleDelete = (id) => {
     const filArr = produce(sets, (draft) => {
@@ -92,7 +89,11 @@ const UpdateCurrentSetModal = ({
       <div className="flex justify-end">
         <div
           onClick={() => {
-            const newArr = sets.filter((set) => set.id !== currId);
+            const newArr = currentExerciseData.sets.filter(
+              (set) => set.id !== currId
+            );
+
+            setCurrentExerciseData({ ...currentExerciseData, sets: newArr });
             console.log(newArr);
           }}
           aria-label="delete"
