@@ -216,7 +216,7 @@ const RightArrow = () => {
     <button className=" w-5 h-5 text-gray-600 dark:text-gray-300">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 18"
+        viewBox="0 0 20 16"
         fill="currentColor"
       >
         <path
@@ -234,7 +234,7 @@ const DownArrow = () => {
     <button className=" w-5 h-5 text-gray-600 dark:text-gray-300">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 16"
+        viewBox="0 0 20 14"
         fill="currentColor"
       >
         <path
