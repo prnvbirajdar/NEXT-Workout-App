@@ -7,50 +7,35 @@ const UpdateCurrentSetModal = ({
   setCurrentExerciseData,
   isModalOpen,
   closeModal,
-  sets,
-  currId,
+  currSet,
+  setCurrSet,
 }) => {
-  //   const handleChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setSelected(
-  //       produce(selected, (draft) => {
-  //         draft[name] = value;
-  //       })
-  //     );
-  //   };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setCurrSet(
+      produce(selected, (draft) => {
+        draft[name] = value;
+      })
+    );
+  };
   console.log(currentExerciseData);
 
-  const handleDelete = (id) => {
-    const filArr = produce(sets, (draft) => {
-      draft.filter((set) => set.id !== id);
-    });
+  const handleDelete = () => {
+    const newArr = currentExerciseData.sets.filter(
+      (set) => set.id !== currSet?.id
+    );
 
-    console.log(filArr);
-
-    // const filteredArr = produce(myArr, (draft) =>
-    //   draft.filter((set) => set.id !== id)
-    // );
-
-    // setMyArr(filteredArr);
+    setCurrentExerciseData({ ...currentExerciseData, sets: newArr });
+    closeModal();
   };
-
-  //   const handleDelete = (id) => {
-  //     const deletedExerciseArray = produce(currentExerciseData, (draft) => {
-  //       draft.sets.splice(id, 1);
-  //     });
-
-  //     setCurrentExerciseData(deletedExerciseArray);
-
-  //     closeModal();
-  //   };
 
   return (
     <Modal isOpen={isModalOpen} onClose={closeModal}>
       <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
         Edit Set
       </p>
-      {/*<ModalBody>
-        <div key={selected?.id}>
+      <ModalBody>
+        <div key={currSet?.id}>
           <div className=" flex bg-gray-50 dark:bg-black  p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
             <div>
               <div className="text-center pb-2 text-base font-semibold">
@@ -63,7 +48,7 @@ const UpdateCurrentSetModal = ({
                   name="weight"
                   onChange={handleChange}
                   required
-                  value={selected.weight}
+                  value={currSet?.weight}
                 />
               </div>
             </div>
@@ -78,26 +63,16 @@ const UpdateCurrentSetModal = ({
                   name="reps"
                   onChange={handleChange}
                   required
-                  value={selected.reps}
+                  value={currSet?.reps}
                 />
               </div>
             </div>
           </div>
         </div>
-     </ModalBody>*/}
+      </ModalBody>
 
       <div className="flex justify-end">
-        <div
-          onClick={() => {
-            const newArr = currentExerciseData.sets.filter(
-              (set) => set.id !== currId
-            );
-
-            setCurrentExerciseData({ ...currentExerciseData, sets: newArr });
-            console.log(newArr);
-          }}
-          aria-label="delete"
-        >
+        <div onClick={handleDelete} aria-label="delete">
           <Delete aria-label="delete" />
         </div>
         <div

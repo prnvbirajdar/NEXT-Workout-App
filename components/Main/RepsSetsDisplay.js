@@ -4,32 +4,16 @@ import { Delete, Edit } from "../Icons/Icons";
 import UpdateCurrentSetModal from "./UpdateCurrentSetModal";
 
 const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
-  // const handleDelete = (index) => {
-  //   // const deletedExerciseArray = produce(currentExerciseData, (draft) => {
-  //   //   draft.sets.splice(index, 1);
-  //   // });
-
-  //   // setCurrentExerciseData(deletedExerciseArray);
-
-  // };
-
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-  const [currId, setCurrId] = React.useState("");
+  const [currSet, setCurrSet] = React.useState({});
 
-  //console.log(currId);
+  console.log(currSet);
 
   function closeModal() {
     setIsModalOpen(false);
-    setCurrId("");
+    setCurrSet({});
   }
-
-  //currentExerciseData.sets.map((set) => console.log(set.id));
-
-  //   // update by index
-  // const updatedTodosArray = produce(todosArray, draft => {
-  //   draft[3].done = true
-  // })
 
   return currentExerciseData.sets.map((s, index) => (
     <Card key={s?.id}>
@@ -50,7 +34,7 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
             <div
               onClick={() => {
                 setIsModalOpen(true);
-                setCurrId(s.id);
+                setCurrSet(s);
               }}
               className="self-center lg:hidden "
               aria-label="edit"
@@ -75,8 +59,8 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
             closeModal={closeModal}
             currentExerciseData={currentExerciseData}
             setCurrentExerciseData={setCurrentExerciseData}
-            currId={currId}
-            sets={currentExerciseData.sets}
+            currSet={currSet}
+            setCurrSet={setCurrSet}
           />
         </div>
       </div>
