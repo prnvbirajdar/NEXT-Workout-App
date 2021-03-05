@@ -212,7 +212,13 @@ const DisplayExercisesAfterSubmit = ({
                     </div>
                   )
               )}
-            <div className="hidden mb-3 ">
+            <div
+              className={`${
+                isHidden?.setBoolean && isHidden?.setId === e.id
+                  ? "block"
+                  : "hidden"
+              } mb-3`}
+            >
               <EditExerciseNotes value={e.notes} id={e.id} />
             </div>
           </CardBody>
