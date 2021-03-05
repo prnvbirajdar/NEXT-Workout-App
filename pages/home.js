@@ -32,7 +32,7 @@ const Home = () => {
   );
 
   return (
-    <div className="relative min-h-screen	">
+    <div className="relative min-h-screen w-screen	">
       <Nav selectedDate={startDate} handleDateChange={handleDateChange} />
       <DatePicker
         selected={startDate}
@@ -43,7 +43,7 @@ const Home = () => {
         customInput={<DateButton />}
       />
 
-      <Main  selectedDate={formattedDate} handleDateChange={handleDateChange} />
+      <Main selectedDate={formattedDate} handleDateChange={handleDateChange} />
       <Footer />
     </div>
   );
