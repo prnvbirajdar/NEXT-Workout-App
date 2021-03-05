@@ -1,7 +1,7 @@
 import { Card, CardBody } from "@windmill/react-ui";
 import { db } from "../data/firebase";
 import { useAuth } from "../data/authProvider";
-import { Delete, Edit } from "../Icons/Icons";
+import { Delete, DownArrow, Edit, RightArrow } from "../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 import DeleteExerciseModal from "./DeleteExerciseModal";
@@ -108,10 +108,19 @@ const DisplayExercisesAfterSubmit = ({
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
                   {isHidden?.setBoolean && isHidden?.setId === e.id ? (
+                    <span>
+                      <DownArrow />
+                    </span>
+                  ) : (
+                    <span>
+                      <RightArrow />
+                    </span>
+                  )}
+                  {/*isHidden?.setBoolean && isHidden?.setId === e.id ? (
                     <span className="mx-1"> ⯆ </span>
                   ) : (
                     <span className="mx-1"> ⯈ </span>
-                  )}
+                  )*/}
                   <span
                     className={`${
                       isHidden?.setBoolean && isHidden?.setId === e.id
