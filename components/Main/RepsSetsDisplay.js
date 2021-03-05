@@ -8,14 +8,14 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
 
   const [currSet, setCurrSet] = React.useState({});
 
-  console.log(currSet);
+  //console.log(currSet);
 
   function closeModal() {
     setIsModalOpen(false);
     setCurrSet({});
   }
 
-  return currentExerciseData.sets.map((s, index) => (
+  return currentExerciseData?.sets?.map((s, index) => (
     <Card key={s?.id}>
       <div className="lg:mx-4">
         <div className="flex flex-col lg:flex-row lg:bg-gray-50 transition lg:dark:bg-black rounded lg:mt-3">

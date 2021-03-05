@@ -152,10 +152,12 @@ const Main = ({ selectedDate }) => {
 
               <AddSet openRepsSetsModal={openRepsSetsModal} />
 
-              <RepsSetsDisplay
-                currentExerciseData={currentExerciseData}
-                setCurrentExerciseData={setCurrentExerciseData}
-              />
+              {currentExerciseData?.sets?.length > 0 && (
+                <RepsSetsDisplay
+                  currentExerciseData={currentExerciseData}
+                  setCurrentExerciseData={setCurrentExerciseData}
+                />
+              )}
               {currentExerciseData?.sets?.length > 0 && (
                 <div>
                   <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">

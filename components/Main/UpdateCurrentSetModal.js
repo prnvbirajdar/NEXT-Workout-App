@@ -19,6 +19,21 @@ const UpdateCurrentSetModal = ({
     );
   };
 
+  const handleUpdate = () => {
+    const index = currentExerciseData.sets.findIndex(
+      (el) => el.id === currSet?.id
+    );
+
+    const updated = produce(currentExerciseData, (draft) => {
+      draft.sets[index].weight = currSet?.weight;
+      draft.sets[index].reps = currSet?.reps;
+    });
+
+    setCurrentExerciseData(updated);
+
+    closeModal();
+  };
+
   console.log(currentExerciseData);
 
   const handleDelete = () => {
@@ -76,10 +91,7 @@ const UpdateCurrentSetModal = ({
         <div onClick={handleDelete} aria-label="delete">
           <Delete aria-label="delete" />
         </div>
-        <div
-          //onClick={updateExercise}
-          aria-label="correct"
-        >
+        <div onClick={handleUpdate} aria-label="correct">
           <Correct aria-label="correct" />
         </div>
       </div>
