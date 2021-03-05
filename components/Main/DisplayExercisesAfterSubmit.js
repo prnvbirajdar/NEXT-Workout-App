@@ -44,8 +44,6 @@ const DisplayExercisesAfterSubmit = ({
     });
   };
 
-  console.log(isHidden);
-
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
     setIsEditExerciseModal(true);

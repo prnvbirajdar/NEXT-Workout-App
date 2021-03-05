@@ -24,11 +24,13 @@ const Main = ({ selectedDate }) => {
 
   //Selected Body Part
   const [bodyPart, setBodyPart] = useState();
+
   //Exercise Modal Component
   const [isExerciseModalOpen, setIsExerciseModalOpen] = useState(false);
 
   //Selected Exercise Card Component
   const [isExerciseOpen, setIsExerciseOpen] = useState(false);
+
   const openExerciseModal = () => setIsExerciseModalOpen(true);
   const closeExerciseModal = () => {
     setIsExerciseModalOpen(false);
