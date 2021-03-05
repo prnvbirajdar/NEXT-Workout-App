@@ -19,12 +19,9 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
 
   console.log(currId);
 
-  function openModal() {
-    setIsModalOpen(true);
-    setCurrId(s.id);
-  }
   function closeModal() {
     setIsModalOpen(false);
+    setCurrId("");
   }
 
   //currentExerciseData.sets.map((set) => console.log(set.id));
