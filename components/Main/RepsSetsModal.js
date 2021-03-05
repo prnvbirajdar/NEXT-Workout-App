@@ -26,6 +26,7 @@ const RepsSetsModal = ({
   };
 
   const handleSubmit = async () => {
+    //if (currentSet.reps > 0)
     setCurrentExerciseData(
       produce(currentExerciseData, (draft) => {
         draft.sets.push(currentSet);
@@ -80,7 +81,15 @@ const RepsSetsModal = ({
           <div onClick={closeRepsSetsModal} aria-label="delete">
             <Delete aria-label="delete" />
           </div>
-          <div onClick={handleSubmit} aria-label="correct">
+          <div
+            onClick={handleSubmit}
+            aria-label="correct"
+            // className={`${
+            //   currentSet.reps > 0
+            //     ? "pointer-events-auto"
+            //     : "pointer-events-none"
+            // }`}
+          >
             <Correct aria-label="correct" />
           </div>
         </div>

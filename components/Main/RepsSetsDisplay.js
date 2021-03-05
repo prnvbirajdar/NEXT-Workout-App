@@ -1,14 +1,11 @@
 import { Card } from "@windmill/react-ui";
-import produce from "immer";
-import { Delete, Edit } from "../Icons/Icons";
+import { Edit } from "../Icons/Icons";
 import UpdateCurrentSetModal from "./UpdateCurrentSetModal";
 
 const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const [currSet, setCurrSet] = React.useState({});
-
-  //console.log(currSet);
 
   function closeModal() {
     setIsModalOpen(false);

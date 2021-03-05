@@ -108,9 +108,9 @@ const DisplayExercisesAfterSubmit = ({
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
                   {isHidden?.setBoolean && isHidden?.setId === e.id ? (
-                    <span className="mx-1"> 🞃 </span>
+                    <span className="mx-1"> ⯆ </span>
                   ) : (
-                    <span className="mx-1"> 🞂 </span>
+                    <span className="mx-1"> ⯈ </span>
                   )}
                   <span
                     className={`${
@@ -236,6 +236,8 @@ export default DisplayExercisesAfterSubmit;
 // };
 
 // console.log(isShown);
+
+//🞃🞂 prob on phone
 
 //⯈⯆
 
