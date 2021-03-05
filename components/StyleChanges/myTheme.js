@@ -17,4 +17,10 @@ export default {
   cardBody: {
     base: "transition p-4",
   },
+  alert: {
+    danger: "bg-red-200 text-red-900 dark:bg-red-500 dark:text-white",
+    icon: {
+      danger: "text-red-700 dark:text-white",
+    },
+  },
 };
