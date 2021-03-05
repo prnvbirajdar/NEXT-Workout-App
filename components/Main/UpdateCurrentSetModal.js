@@ -7,8 +7,8 @@ const UpdateCurrentSetModal = ({
   setCurrentExerciseData,
   isModalOpen,
   closeModal,
-  set,
-  id,
+  sets,
+  currId,
 }) => {
   //   const handleChange = (e) => {
   //     const { name, value } = e.target;
@@ -19,10 +19,12 @@ const UpdateCurrentSetModal = ({
   //     );
   //   };
 
- // console.log(set);
+  console.log(sets);
+
+  console.log(currId);
 
   const handleDelete = (id) => {
-    const filArr = produce(currentExerciseData.sets, (draft) => {
+    const filArr = produce(sets, (draft) => {
       draft.filter((set) => set.id !== id);
     });
 
@@ -88,7 +90,13 @@ const UpdateCurrentSetModal = ({
      </ModalBody>*/}
 
       <div className="flex justify-end">
-        <div onClick={() => handleDelete(id)} aria-label="delete">
+        <div
+          onClick={() => {
+            const newArr = sets.filter((set) => set.id !== currId);
+            console.log(newArr);
+          }}
+          aria-label="delete"
+        >
           <Delete aria-label="delete" />
         </div>
         <div

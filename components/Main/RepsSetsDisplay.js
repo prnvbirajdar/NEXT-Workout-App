@@ -17,7 +17,7 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
 
   const [currId, setCurrId] = React.useState("");
 
-  console.log(currId);
+  //console.log(currId);
 
   function closeModal() {
     setIsModalOpen(false);
@@ -75,8 +75,8 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
             closeModal={closeModal}
             currentExerciseData={currentExerciseData}
             setCurrentExerciseData={setCurrentExerciseData}
-            id={s.id}
-            set={s}
+            currId={currId}
+            sets={currentExerciseData.sets}
           />
         </div>
       </div>

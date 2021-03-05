@@ -24,7 +24,7 @@ const UpdateDelete = () => {
           <span className="mr-5">{el.weight}</span>
           <span className="mr-5">{el.reps}</span>
           <span className="mr-5">{el.id}</span>
-          <button onClick={() => console.log(el.id)}>del</button>
+          <button onClick={() => handleDelete(el.id)}>del</button>
         </div>
       ))}
     </div>
