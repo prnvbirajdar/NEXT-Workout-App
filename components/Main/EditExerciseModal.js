@@ -15,7 +15,35 @@ const EditExerciseModal = ({
   exerciseStats,
   setExerciseStats,
 }) => {
+  const { user } = useAuth(); //context
+
   const ind = exer.findIndex((e) => e.id === selected?.id);
+
+  const handleDelete = () => {
+    // const ind2 = exer.filter((e) => e.id !== selected?.id);
+    // console.log(ind2);
+
+    // const newArr = exer.map((set) => set.id !== selected?.id);
+    // console.log(newArr);
+
+    // const blah = exerciseStats.map((exer) =>
+    //   exer.sets.filter((set) => set.id !== selected.id)
+    // );
+
+    // console.log(blah);
+
+    const newset = exer.splice(ind, 1);
+    console.log(newset);
+
+    // if (newArr[i] === false) [newArr.splice(i, 1)];
+
+    // const ind = exer.findIndex((e) => e.id === selected?.id);
+
+    // console.log(ind);
+
+    //   setCurrentExerciseData({ ...currentExerciseData, sets: newArr });
+    //   closeModal();
+  };
 
   if (ind >= 0) {
     exer[ind] = {
@@ -24,8 +52,6 @@ const EditExerciseModal = ({
       weight: selected?.weight,
     };
   }
-
-  const { user } = useAuth(); //context
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,9 +119,9 @@ const EditExerciseModal = ({
         </ModalBody>
 
         <div className="flex justify-end">
-          {/*<div onClick={deleteSelectedSet}>
+          <div onClick={handleDelete}>
             <Delete />
-    </div>*/}
+          </div>
           <div onClick={updateExercise} aria-label="correct">
             <Correct aria-label="correct" />
           </div>

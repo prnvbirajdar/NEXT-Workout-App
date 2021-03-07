@@ -54,6 +54,7 @@ const Main = ({ selectedDate }) => {
     sets: [],
   });
 
+  //Array list of all submitted exercises on that day
   const [exerciseStats, setExerciseStats] = React.useState([]);
 
   const submitExerciseData = async () => {

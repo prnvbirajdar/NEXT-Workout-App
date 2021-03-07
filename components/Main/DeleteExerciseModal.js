@@ -28,6 +28,7 @@ const DeleteExerciseModal = ({
               setBoolean: false,
             });
             deleteExercise(id);
+            closeDeleteExerciseModal();
           }}
           aria-label="correct"
         >

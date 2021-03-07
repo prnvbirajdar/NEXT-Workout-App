@@ -13,15 +13,16 @@ const DisplayExercisesAfterSubmit = ({
 }) => {
   const { user } = useAuth(); //context
 
-  const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
-  const [selected, setSelected] = React.useState(null);
-
-  //DELETE EXERCISE MODAL STATE ------------ start
+  //Expand exercise info
   const [isHidden, setIsHidden] = React.useState({
     setId: "",
     setBoolean: false,
   });
 
+  const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
+  const [selected, setSelected] = React.useState(null);
+
+  //DELETE EXERCISE MODAL STATE ------------ start
   const [
     isDeleteExerciseModalOpen,
     setIsDeleteExerciseModalOpen,
@@ -95,6 +96,7 @@ const DisplayExercisesAfterSubmit = ({
       getExerciseStats();
     };
   }, [user, selectedDate]);
+
 
   return (
     exerciseStats.length > 0 &&
