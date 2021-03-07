@@ -18,57 +18,34 @@ const EditExerciseModal = ({
 }) => {
   const { user } = useAuth(); //context
 
-  const ind = exer.findIndex((e) => e.id === selected?.id);
-
-  console.log(selected);
 
   const selectedSet = exerciseStats.filter(
     (exer) => exer.id === isHidden?.setId
   );
 
-  const blah = selectedSet[0]?.sets?.filter((set) => set?.id !== selected?.id);
-  const blahId = selectedSet[0]?.id;
+  const filteredSet = selectedSet[0]?.sets?.filter(
+    (set) => set?.id !== selected?.id
+  );
+  const filteredSetId = selectedSet[0]?.id;
 
-  console.log(blah);
-  //console.log(blahId);
+  for (let i = 0; i < selectedSet[0]?.sets?.length; i++) {
+    if (selectedSet[0]?.sets[i]?.id === selected?.id) {
+      selectedSet[0]?.sets?.splice(i, 1, selected);
+    }
+  }
 
-  //console.log(selectedSet);
-
+  console.log(selectedSet);
   const handleDelete = async () => {
-    // const ind2 = exer.filter((e) => e.id !== selected?.id);
-    // console.log(ind2);
-
-    // const newArr = exer.map((set) => set.id !== selected?.id);
-    // console.log(newArr);
-
     await db
       .collection("profiles")
       .doc(user?.uid)
       .collection("workouts")
-      .doc(blahId)
+      .doc(filteredSetId)
       .update({
-        sets: blah,
+        sets: filteredSet,
       });
-
-    //console.log(ind);
-
-    // if (newArr[i] === false) [newArr.splice(i, 1)];
-
-    // const ind = exer.findIndex((e) => e.id === selected?.id);
-
-    // console.log(ind);
-
-    //   setCurrentExerciseData({ ...currentExerciseData, sets: newArr });
     closeEditExerciseModal();
   };
-
-  if (ind >= 0) {
-    exer[ind] = {
-      id: selected?.id,
-      reps: selected?.reps,
-      weight: selected?.weight,
-    };
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,12 +61,12 @@ const EditExerciseModal = ({
       .collection("profiles")
       .doc(user?.uid)
       .collection("workouts")
-      .doc(id)
+      .doc(filteredSetId)
       .update({
-        sets: exer,
+        sets: selectedSet[0]?.sets,
       });
 
-    closeEditExerciseModal(selected);
+    closeEditExerciseModal();
   };
 
   return (
@@ -149,102 +126,3 @@ const EditExerciseModal = ({
 };
 
 export default EditExerciseModal;
-
-// const deleteSelectedSet = async () => {
-//   const filtered = exer.findIndex((e) => e.id === selected?.id);
-
-//   //console.log(filtered);
-
-//   if (ind >= 0) {
-//     exer.splice(exer[filtered], 1);
-//   }
-
-//   // await db
-//   //   .collection("profiles")
-//   //   .doc(user?.uid)
-//   //   .collection("workouts")
-//   //   .doc(id)
-//   //   .where("sets", "array-contains", setId );
-// };
-
-// const handleDelete = (setId) => {
-//   setExerciseStats(
-//     exerciseStats.map((ex) =>
-//       produce(ex, (draft) => {
-//         draft?.sets?.splice(setId, 1);
-//       })
-//     )
-//   );
-// };
-
-// const hope2 = exer.map((set) => set.id !== selected?.id);
-// //console.log(hope2);
-
-// const hope = exerciseStats.map((exer) =>
-//   exer.sets.filter((set) => set.id !== selected?.id)
-// );
-
-// //   exerciseStats.map((exer) =>
-
-// // )
-// const delSet = async () => {
-//   for (let index = 0; index < exer.length; index++) {
-//     const element = exer[index];
-//     console.log(element.id);
-
-//     if (element.id === selected?.id) {
-//       setExerciseStats(
-//         exerciseStats.map((ex) =>
-//           produce(ex, (draft) => {
-//             draft?.sets?.splice(element.id, 1);
-//           })
-//         )
-//       );
-//     }
-//   }
-
-//   await db
-//     .collection("profiles")
-//     .doc(user?.uid)
-//     .collection("workouts")
-//     .doc(id)
-//     .update({
-//       sets: exer,
-//     });
-
-//   closeEditExerciseModal(selected);
-// };
-
-// //console.log(hope);
-
-// const hope1 = exer.filter((set) => set.id !== selected?.id);
-
-// if (hope2 === false) {
-//   exer.map((set) =>
-//     produce(
-//       (set,
-//       (draft) => {
-//         draft.splice(hope2, 1);
-//       })
-//     )
-//   );
-// }
-
-// //console.log(exer);
-
-// //console.log(hope1);
-
-// //console.log(exer);
-
-// const deleteSet = async () => {
-//   await db
-//     .collection("profiles")
-//     .doc(user?.uid)
-//     .collection("workouts")
-//     .doc(id)
-//     .update({
-//       sets: hope1,
-//     });
-
-//   closeEditExerciseModal(selected);
-// };
