@@ -19,6 +19,8 @@ const DisplayExercisesAfterSubmit = ({
     setBoolean: false,
   });
 
+  console.log(isHidden);
+
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
@@ -45,7 +47,6 @@ const DisplayExercisesAfterSubmit = ({
     setSelected(null);
     setIsEditExerciseModal(false);
   };
-  //DELETE EXERCISE MODAL STATE ------------ end
 
   const isSelected = (id) => {
     exerciseStats.map((ex) => {
@@ -57,6 +58,7 @@ const DisplayExercisesAfterSubmit = ({
       }
     });
   };
+  //DELETE EXERCISE MODAL STATE ------------ end
 
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
@@ -96,7 +98,6 @@ const DisplayExercisesAfterSubmit = ({
       getExerciseStats();
     };
   }, [user, selectedDate]);
-
 
   return (
     exerciseStats.length > 0 &&
@@ -216,6 +217,7 @@ const DisplayExercisesAfterSubmit = ({
                           currentExer={e}
                           exerciseStats={exerciseStats}
                           setExerciseStats={setExerciseStats}
+                          isHidden={isHidden}
                         />
                       )}
                     </div>

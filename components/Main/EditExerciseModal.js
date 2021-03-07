@@ -14,26 +14,43 @@ const EditExerciseModal = ({
   currentExer,
   exerciseStats,
   setExerciseStats,
+  isHidden,
 }) => {
   const { user } = useAuth(); //context
 
   const ind = exer.findIndex((e) => e.id === selected?.id);
 
-  const handleDelete = () => {
+  console.log(selected);
+
+  const selectedSet = exerciseStats.filter(
+    (exer) => exer.id === isHidden?.setId
+  );
+
+  const blah = selectedSet[0]?.sets?.filter((set) => set?.id !== selected?.id);
+  const blahId = selectedSet[0]?.id;
+
+  console.log(blah);
+  //console.log(blahId);
+
+  //console.log(selectedSet);
+
+  const handleDelete = async () => {
     // const ind2 = exer.filter((e) => e.id !== selected?.id);
     // console.log(ind2);
 
     // const newArr = exer.map((set) => set.id !== selected?.id);
     // console.log(newArr);
 
-    // const blah = exerciseStats.map((exer) =>
-    //   exer.sets.filter((set) => set.id !== selected.id)
-    // );
+    await db
+      .collection("profiles")
+      .doc(user?.uid)
+      .collection("workouts")
+      .doc(blahId)
+      .update({
+        sets: blah,
+      });
 
-    // console.log(blah);
-
-    const newset = exer.splice(ind, 1);
-    console.log(newset);
+    //console.log(ind);
 
     // if (newArr[i] === false) [newArr.splice(i, 1)];
 
