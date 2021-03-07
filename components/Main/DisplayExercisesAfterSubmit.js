@@ -16,6 +16,7 @@ const DisplayExercisesAfterSubmit = ({
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
 
+  //DELETE EXERCISE MODAL STATE ------------ start
   const [isHidden, setIsHidden] = React.useState({
     setId: "",
     setBoolean: false,
@@ -32,6 +33,18 @@ const DisplayExercisesAfterSubmit = ({
   function closeDeleteExerciseModal() {
     setIsDeleteExerciseModalOpen(false);
   }
+
+  const deleteExercise = async (id) => {
+    await db
+      .collection("profiles")
+      .doc(user?.uid)
+      .collection("workouts")
+      .doc(id)
+      .delete();
+    setSelected(null);
+    setIsEditExerciseModal(false);
+  };
+  //DELETE EXERCISE MODAL STATE ------------ end
 
   const isSelected = (id) => {
     exerciseStats.map((ex) => {
@@ -52,17 +65,6 @@ const DisplayExercisesAfterSubmit = ({
     setSelected(null);
     setIsEditExerciseModal(false);
   }
-
-  const deleteExercise = async (id) => {
-    await db
-      .collection("profiles")
-      .doc(user?.uid)
-      .collection("workouts")
-      .doc(id)
-      .delete();
-    setSelected(null);
-    setIsEditExerciseModal(false);
-  };
 
   const getExerciseStats = async () => {
     await db
@@ -116,14 +118,10 @@ const DisplayExercisesAfterSubmit = ({
                       <RightArrow />
                     </span>
                   )}
-                  {/*isHidden?.setBoolean && isHidden?.setId === e.id ? (
-                    <span className="mx-1"> ⯆ </span>
-                  ) : (
-                    <span className="mx-1"> ⯈ </span>
-                  )*/}
+
                   <span
                     className={`${
-                      isHidden?.setBoolean && isHidden?.setId === e.id
+                      isHidden.setBoolean && isHidden.setId === e.id
                         ? "hidden"
                         : "inline-block"
                     }`}
@@ -161,7 +159,7 @@ const DisplayExercisesAfterSubmit = ({
                     <div
                       key={index}
                       className={`${
-                        isHidden?.setBoolean && isHidden?.setId === e.id
+                        isHidden.setBoolean && isHidden.setId === e.id
                           ? "block"
                           : "hidden"
                       } lg:mt-4`}
@@ -223,7 +221,7 @@ const DisplayExercisesAfterSubmit = ({
               )}
             <div
               className={`${
-                isHidden?.setBoolean && isHidden?.setId === e.id
+                isHidden.setBoolean && isHidden.setId === e.id
                   ? "block"
                   : "hidden"
               } mb-3`}

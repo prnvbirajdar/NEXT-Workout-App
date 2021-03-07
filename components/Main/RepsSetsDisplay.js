@@ -43,7 +43,7 @@ const RepsSetsDisplay = ({ currentExerciseData, setCurrentExerciseData }) => {
           <div
             onClick={() => {
               setIsModalOpen(true);
-              setCurrId(s.id);
+              setCurrId(s?.id);
             }}
             className="self-center hidden lg:block lg:mr-3"
             aria-label="edit"

@@ -34,8 +34,6 @@ const UpdateCurrentSetModal = ({
     closeModal();
   };
 
-  console.log(currentExerciseData);
-
   const handleDelete = () => {
     const newArr = currentExerciseData.sets.filter(
       (set) => set.id !== currSet?.id
