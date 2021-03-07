@@ -59,7 +59,7 @@ const EditExerciseModal = ({
     // console.log(ind);
 
     //   setCurrentExerciseData({ ...currentExerciseData, sets: newArr });
-    //   closeModal();
+    closeEditExerciseModal();
   };
 
   if (ind >= 0) {

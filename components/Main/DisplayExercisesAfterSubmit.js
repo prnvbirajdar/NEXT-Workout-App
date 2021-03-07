@@ -145,16 +145,21 @@ const DisplayExercisesAfterSubmit = ({
                 closeDeleteExerciseModal={closeDeleteExerciseModal}
               />
             </div>
-            {/*e.sets.length === 0 ? (
-              <div className="flex md:flex-row justify-around mt-2 py-2 sm:mx-4 transition bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 ">
+            {e.sets.length === 0 ? (
+              <div
+                className={`${
+                  isHidden.setBoolean && isHidden.setId === e.id
+                    ? "inline-block"
+                    : "hidden"
+                } flex md:flex-row justify-around mt-2 py-2 sm:mx-4 transition bg-gray-50 dark:bg-black rounded text-gray-800 dark:text-gray-100 `}
+              >
                 <p className=" text-gray-800 dark:text-gray-300 text-center m-2 ">
                   No sets to display
                 </p>
               </div>
             ) : (
               <div></div>
-            )*/}
-
+            )}
             {e.sets &&
               e.sets.map(
                 (s, index) =>
