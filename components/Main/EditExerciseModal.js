@@ -9,32 +9,30 @@ const EditExerciseModal = ({
   closeEditExerciseModal,
   selected,
   setSelected,
-  id,
-  exer,
-  currentExer,
   exerciseStats,
-  setExerciseStats,
   isHidden,
 }) => {
   const { user } = useAuth(); //context
 
-
-  const selectedSet = exerciseStats.filter(
+  //isHidden gives us the current active exercise set
+  //we filter through all the submitted exercise array and show the
+  //current active excercise in selectedExercise
+  const selectedExercise = exerciseStats.filter(
     (exer) => exer.id === isHidden?.setId
   );
 
-  const filteredSet = selectedSet[0]?.sets?.filter(
+  //gives the sets array
+  const selectedExerSets = selectedExercise[0]?.sets;
+
+  //this filters the deleted set and presents a new array
+  const filteredSet = selectedExerSets?.filter(
     (set) => set?.id !== selected?.id
   );
-  const filteredSetId = selectedSet[0]?.id;
 
-  for (let i = 0; i < selectedSet[0]?.sets?.length; i++) {
-    if (selectedSet[0]?.sets[i]?.id === selected?.id) {
-      selectedSet[0]?.sets?.splice(i, 1, selected);
-    }
-  }
+  //gives id of exercise we wish to update
+  const filteredSetId = selectedExercise[0]?.id;
 
-  console.log(selectedSet);
+  //delete that set
   const handleDelete = async () => {
     await db
       .collection("profiles")
@@ -48,14 +46,23 @@ const EditExerciseModal = ({
   };
 
   const handleChange = (e) => {
+    //handles weight and reps changes in seleted set
     const { name, value } = e.target;
     setSelected(
       produce(selected, (draft) => {
         draft[name] = value;
       })
     );
+
+    //loops over the arrayy and updates it with new updated set
+    for (let i = 0; i < selectedExerSets?.length; i++) {
+      if (selectedExerSets[i]?.id === selected?.id) {
+        selectedExerSets?.splice(i, 1, selected);
+      }
+    }
   };
 
+  //updates selected exercise with new updates sets array
   const updateExercise = async () => {
     await db
       .collection("profiles")
@@ -63,7 +70,7 @@ const EditExerciseModal = ({
       .collection("workouts")
       .doc(filteredSetId)
       .update({
-        sets: selectedSet[0]?.sets,
+        sets: selectedExerSets,
       });
 
     closeEditExerciseModal();

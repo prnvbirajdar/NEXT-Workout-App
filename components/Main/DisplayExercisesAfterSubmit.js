@@ -215,13 +215,9 @@ const DisplayExercisesAfterSubmit = ({
                         <EditExerciseModal
                           isEditExerciseModal={isEditExerciseModal}
                           closeEditExerciseModal={closeEditExerciseModal}
-                          exer={e.sets}
                           selected={selected}
                           setSelected={setSelected}
-                          id={e.id}
-                          currentExer={e}
                           exerciseStats={exerciseStats}
-                          setExerciseStats={setExerciseStats}
                           isHidden={isHidden}
                         />
                       )}
