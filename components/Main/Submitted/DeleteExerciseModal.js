@@ -1,5 +1,5 @@
 import { Modal, ModalBody, Alert } from "@windmill/react-ui";
-import { Correct } from "../Icons/Icons";
+import { Correct } from "../../Icons/Icons";
 
 const DeleteExerciseModal = ({
   closeDeleteExerciseModal,

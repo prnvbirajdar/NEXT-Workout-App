@@ -1,8 +1,7 @@
 import { Modal, ModalBody } from "@windmill/react-ui";
-import { Correct, Delete } from "../Icons/Icons";
+import { Correct, Delete } from "../../Icons/Icons";
 import produce from "immer";
-import { db } from "../data/firebase";
-import { useAuth } from "../data/authProvider";
+import { useAuth } from "../../data/authProvider";
 
 const EditExerciseModal = ({
   isEditExerciseModal,

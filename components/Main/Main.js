@@ -12,7 +12,7 @@ import produce from "immer";
 import { db } from "../data/firebase";
 import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
-import DisplayExercisesAfterSubmit from "./DisplayExercisesAfterSubmit";
+import DisplayExercisesAfterSubmit from "./Submitted/DisplayExercisesAfterSubmit";
 
 const Main = ({ selectedDate }) => {
   const { user } = useAuth(); //context

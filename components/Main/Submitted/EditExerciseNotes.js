@@ -1,6 +1,6 @@
-import { db } from "../data/firebase";
-import { useAuth } from "../data/authProvider";
-import { Correct, Edit } from "../Icons/Icons";
+import { db } from "../../data/firebase";
+import { useAuth } from "../../data/authProvider";
+import { Correct, Edit } from "../../Icons/Icons";
 
 const EditExerciseNotes = ({ value, id }) => {
   //takes the initial value

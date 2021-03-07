@@ -1,7 +1,7 @@
 import { Card, CardBody } from "@windmill/react-ui";
-import { db } from "../data/firebase";
-import { useAuth } from "../data/authProvider";
-import { Delete, DownArrow, Edit, RightArrow } from "../Icons/Icons";
+import { db } from "../../data/firebase";
+import { useAuth } from "../../data/authProvider";
+import { Delete, DownArrow, Edit, RightArrow } from "../../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 import DeleteExerciseModal from "./DeleteExerciseModal";
@@ -18,8 +18,6 @@ const DisplayExercisesAfterSubmit = ({
     setId: "",
     setBoolean: false,
   });
-
-  console.log(isHidden);
 
   const [isEditExerciseModal, setIsEditExerciseModal] = React.useState(false);
   const [selected, setSelected] = React.useState(null);
