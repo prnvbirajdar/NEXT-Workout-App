@@ -8,7 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import DeleteAccountModal from "./Profile/DeleteAccountModal";
 
-const Nav = ({ handleDateChange, selectedDate }) => {
+const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
   const [profileOpen, setProfileOpen] = useState(false); //profile toggle
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
@@ -42,7 +42,6 @@ const Nav = ({ handleDateChange, selectedDate }) => {
     };
   }, [wrapperRef]);
 
-
   return (
     user && (
       <nav className="transition bg-white shadow-bottom dark:bg-gray-800">
@@ -74,6 +73,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
                     aria-label="Calender"
                     selected={selectedDate}
                     onChange={handleDateChange}
+                    highlightDates={highlightDates}
                     name="startDate"
                     dateFormat="MMM dd, yyyy"
                     closeOnScroll={true}
