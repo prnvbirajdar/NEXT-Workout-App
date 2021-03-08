@@ -24,12 +24,11 @@ const RepsSetsModal = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setCurrentSet(
-      produce(currentSet, (draft) => {
-        draft[name] = value;
-        draft.id = nanoid();
-      })
-    );
+    const setObj = produce(currentSet, (draft) => {
+      draft[name] = value;
+    });
+
+    setCurrentSet(setObj);
   };
 
   const closeRepsSetsModal = () => {
@@ -37,13 +36,24 @@ const RepsSetsModal = ({
     setIsRepsSetsModalOpen(false);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
+    let setArray = Array.from({ length: numOfSets }, () => ({
+      reps: currentSet?.reps,
+      weight: currentSet?.weight,
+      id: nanoid(),
+    }));
+
     if (currentSet.reps > 0 || currentSet.weight > 0)
+      // setCurrentExerciseData((prevstate) => {
+      //   return {
+      //     ...prevstate,
+      //     sets: [...prevstate.sets, ...setArray],
+      //   };
+      // });
+
       setCurrentExerciseData(
         produce(currentExerciseData, (draft) => {
-          for (let i = 0; i < numOfSets; i++) {
-            draft.sets.push(currentSet);
-          }
+          draft.sets.push(...setArray);
         })
       );
 
