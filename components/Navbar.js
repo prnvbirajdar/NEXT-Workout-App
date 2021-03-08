@@ -42,6 +42,7 @@ const Nav = ({ handleDateChange, selectedDate }) => {
     };
   }, [wrapperRef]);
 
+
   return (
     user && (
       <nav className="transition bg-white shadow-bottom dark:bg-gray-800">
