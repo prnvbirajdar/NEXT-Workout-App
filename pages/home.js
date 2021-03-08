@@ -9,25 +9,25 @@ import { format } from "date-fns";
 import Footer from "../components/Footer";
 
 import { db } from "../components/data/firebase";
-import firebase from "firebase/app";
 
 const Home = () => {
   //if login credentials of user disappear, revert back to login page
   const router = useRouter();
   const { user } = useAuth();
 
+  //grabs today's date
   const [startDate, setStartDate] = React.useState(new Date());
+  //grabs an array of all the workout dates
   const [exerciseDates, setExerciseDates] = React.useState([]);
+  //displays an array of unique dates only
   const uniq = [...new Set(exerciseDates)];
-
-  const dataArr = uniq.map((date) => new Date(date));
-
-  console.log(dataArr);
-
+  //date is formated to desired output
   const formattedDate = format(startDate, "P");
 
+  //on select a specific date, it sets it as today's date and shows all info on that date
   const handleDateChange = (date) => setStartDate(date);
 
+  //gets a list of dates from firebase
   const getExerciseDates = async () => {
     await db
       .collection("profiles")
@@ -49,14 +49,13 @@ const Home = () => {
     };
   }, [user]);
 
-  console.log(uniq);
-
   useEffect(() => {
     if (!user) {
       router.push("/");
     }
   }, [user]);
 
+  //the strip of date seen on home page
   const DateButton = ({ value }) => (
     <p className="z-0 select-none py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
       {value}
@@ -69,7 +68,7 @@ const Home = () => {
         <Navbar
           selectedDate={startDate}
           handleDateChange={handleDateChange}
-          highlightDates={uniq.map((date) => new Date(date))}
+          highlightDates={uniq.map((date) => new Date(date))} //maps the uniq array according to desired output
         />
         <DatePicker
           selected={startDate}
