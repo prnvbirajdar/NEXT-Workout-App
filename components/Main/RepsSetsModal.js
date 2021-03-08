@@ -9,18 +9,17 @@ const RepsSetsModal = ({
   currentExerciseData,
   setIsRepsSetsModalOpen,
 }) => {
+  //set currently being updated
   const [currentSet, setCurrentSet] = React.useState({
     reps: 0,
     weight: 0,
     id: "",
   });
 
+  //number of sets of same reps and weight
   const [numOfSets, setNumOfSets] = React.useState(1);
 
-  const handleSetChange = (e) => {
-    setNumOfSets(e.target.value);
-  };
-
+  //handles weight and reps input
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -31,29 +30,26 @@ const RepsSetsModal = ({
     setCurrentSet(setObj);
   };
 
+  //closes modal and sets number of set to 1
   const closeRepsSetsModal = () => {
     setNumOfSets(1);
     setIsRepsSetsModalOpen(false);
   };
 
+  //submits the set
   const handleSubmit = () => {
+    //setArray takes all the data from currentSet object and pushes on itself,
+    //with new ID for every set with same reps and weight
     let setArray = Array.from({ length: numOfSets }, () => ({
       reps: currentSet?.reps,
       weight: currentSet?.weight,
-      id: nanoid(),
+      id: nanoid(), //different id for every set that has same weight and reps
     }));
 
     if (currentSet.reps > 0 || currentSet.weight > 0)
-      // setCurrentExerciseData((prevstate) => {
-      //   return {
-      //     ...prevstate,
-      //     sets: [...prevstate.sets, ...setArray],
-      //   };
-      // });
-
       setCurrentExerciseData(
         produce(currentExerciseData, (draft) => {
-          draft.sets.push(...setArray);
+          draft.sets.push(...setArray); //pushes and spread the setArray data in currentExerciseData object
         })
       );
 
@@ -75,12 +71,12 @@ const RepsSetsModal = ({
               </div>
               <div className="flex justify-center pb-2 ">
                 <input
-                  className="py-2 rounded w-1/2 border text-black text-center"
+                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
                   type="number"
                   name="weight"
                   required
                   value={numOfSets}
-                  onChange={handleSetChange}
+                  onChange={(e) => setNumOfSets(e.target.value)}
                 />
               </div>
             </div>
@@ -90,7 +86,7 @@ const RepsSetsModal = ({
               </div>
               <div className="flex justify-center pb-2 ">
                 <input
-                  className="py-2 rounded w-1/2 border text-black text-center"
+                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
                   type="number"
                   name="weight"
                   onChange={handleChange}
@@ -104,7 +100,7 @@ const RepsSetsModal = ({
               </div>
               <div className="flex justify-center ">
                 <input
-                  className="py-2 rounded w-1/2 border text-black text-center	"
+                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center	"
                   type="number"
                   name="reps"
                   onChange={handleChange}
@@ -137,3 +133,12 @@ const RepsSetsModal = ({
 };
 
 export default RepsSetsModal;
+
+//alternate way to update setCurrentExerciseData
+
+// setCurrentExerciseData((prevstate) => {
+//   return {
+//     ...prevstate,
+//     sets: [...prevstate.sets, ...setArray],
+//   };
+// });
