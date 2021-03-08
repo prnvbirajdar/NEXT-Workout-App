@@ -2,6 +2,7 @@ import { Modal, ModalBody } from "@windmill/react-ui";
 import { Correct, Delete } from "../../Icons/Icons";
 import produce from "immer";
 import { useAuth } from "../../data/authProvider";
+import { db } from "../../data/firebase";
 
 const EditExerciseModal = ({
   isEditExerciseModal,
@@ -16,8 +17,8 @@ const EditExerciseModal = ({
   //isHidden gives us the current active exercise set
   //we filter through all the submitted exercise array and show the
   //current active excercise in selectedExercise
-  const selectedExercise = exerciseStats.filter(
-    (exer) => exer.id === isHidden?.setId
+  const selectedExercise = exerciseStats?.filter(
+    (exer) => exer?.id === isHidden?.setId
   );
 
   //gives the sets array
@@ -47,19 +48,20 @@ const EditExerciseModal = ({
   const handleChange = (e) => {
     //handles weight and reps changes in seleted set
     const { name, value } = e.target;
-    setSelected(
-      produce(selected, (draft) => {
-        draft[name] = value;
-      })
-    );
 
-    //loops over the arrayy and updates it with new updated set
-    for (let i = 0; i < selectedExerSets?.length; i++) {
-      if (selectedExerSets[i]?.id === selected?.id) {
-        selectedExerSets?.splice(i, 1, selected);
-      }
-    }
+    const setObj = produce(selected, (draft) => {
+      draft[name] = value;
+    });
+
+    setSelected(setObj);
   };
+
+  //loops over the arrayy and updates it with new updated set
+  for (let i = 0; i < selectedExerSets?.length; i++) {
+    if (selectedExerSets[i]?.id === selected?.id) {
+      selectedExerSets?.splice(i, 1, selected);
+    }
+  }
 
   //updates selected exercise with new updates sets array
   const updateExercise = async () => {
@@ -95,7 +97,7 @@ const EditExerciseModal = ({
                     name="weight"
                     onChange={handleChange}
                     required
-                    value={selected.weight}
+                    value={selected?.weight}
                   />
                 </div>
               </div>
@@ -110,7 +112,7 @@ const EditExerciseModal = ({
                     name="reps"
                     onChange={handleChange}
                     required
-                    value={selected.reps}
+                    value={selected?.reps}
                   />
                 </div>
               </div>
@@ -118,7 +120,7 @@ const EditExerciseModal = ({
           </div>
         </ModalBody>
 
-        <div className="flex justify-end">
+        <div className="flex justify-between">
           <div onClick={handleDelete}>
             <Delete />
           </div>

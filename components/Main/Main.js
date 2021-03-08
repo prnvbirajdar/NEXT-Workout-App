@@ -52,8 +52,12 @@ const Main = ({ selectedDate }) => {
     sets: [],
   });
 
+  //console.log(currentExerciseData);
+
   //Array list of all submitted exercises on that day
   const [exerciseStats, setExerciseStats] = React.useState([]);
+
+  //console.log(exerciseStats);
 
   const submitExerciseData = async () => {
     await db
@@ -99,25 +103,6 @@ const Main = ({ selectedDate }) => {
         isCardOpen={isCardOpen}
         setBodyPart={setBodyPart}
       />
-
-      <div className="text-black px-5">
-        <p className="px-5 rounded py-1 bg-gray-300 block sm:hidden">Mobile</p>
-        <p className="px-5 rounded py-1 bg-red-300 hidden sm:block md:hidden">
-          Sm
-        </p>
-        <p className="px-5 rounded py-1 bg-green-300 hidden sm:hidden md:block lg:hidden">
-          Md
-        </p>
-        <p className="px-5 rounded py-1 bg-blue-300 hidden sm:hidden md:hidden lg:block xl:hidden">
-          Lg
-        </p>
-        <p className="px-5 rounded py-1 bg-yellow-300 hidden sm:hidden md:hidden lg:hidden xl:block 2xl:hidden">
-          xl
-        </p>
-        <p className="px-5 rounded py-1 bg-purple-300 hidden sm:hidden md:hidden lg:hidden xl:hidden 2xl:block">
-          2xl
-        </p>
-      </div>
 
       {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
         <div></div>
@@ -195,6 +180,7 @@ const Main = ({ selectedDate }) => {
           </Card>
         </div>
       )}
+
       <div className="mt-5 w-11/12 sm:w-2/3  lg:max-w-xl">
         <DisplayExercisesAfterSubmit
           selectedDate={selectedDate}

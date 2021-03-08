@@ -13,6 +13,8 @@ const DisplayExercisesAfterSubmit = ({
 }) => {
   const { user } = useAuth(); //context
 
+  //console.log(exerciseStats);
+
   //Expand exercise info
   const [isHidden, setIsHidden] = React.useState({
     setId: "",
@@ -47,7 +49,7 @@ const DisplayExercisesAfterSubmit = ({
   };
 
   const isSelected = (id) => {
-    exerciseStats.map((ex) => {
+    exerciseStats?.map((ex) => {
       if (ex.id === id) {
         setIsHidden({
           setId: ex.id,
