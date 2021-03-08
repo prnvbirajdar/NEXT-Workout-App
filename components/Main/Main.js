@@ -40,11 +40,9 @@ const Main = ({ selectedDate }) => {
 
   //Set and Reps Modal Component
   const [isRepsSetsModalOpen, setIsRepsSetsModalOpen] = useState(false);
+
   function openRepsSetsModal() {
     setIsRepsSetsModalOpen(true);
-  }
-  function closeRepsSetsModal() {
-    setIsRepsSetsModalOpen(false);
   }
 
   //Selected exercise to be added to Firestore
@@ -139,6 +137,7 @@ const Main = ({ selectedDate }) => {
                 <RepsSetsDisplay
                   currentExerciseData={currentExerciseData}
                   setCurrentExerciseData={setCurrentExerciseData}
+                  setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
                 />
               )}
               {currentExerciseData?.sets?.length > 0 && (
@@ -163,9 +162,9 @@ const Main = ({ selectedDate }) => {
               )}
               <RepsSetsModal
                 isRepsSetsModalOpen={isRepsSetsModalOpen}
-                closeRepsSetsModal={closeRepsSetsModal}
                 setCurrentExerciseData={setCurrentExerciseData}
                 currentExerciseData={currentExerciseData}
+                setIsRepsSetsModalOpen={setIsRepsSetsModalOpen}
               />
               <div
                 onClick={submitExerciseData}
