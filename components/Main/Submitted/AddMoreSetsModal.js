@@ -27,14 +27,10 @@ const RepsSetsModal = ({
 
   const selectedExerciseObj = selectedExercise[0];
 
-  //const lmaoArr = selectedExerciseObj?.sets;
-
   React.useEffect(() => {
     setCurrentExerciseData(selectedExerciseObj);
     setCurrentArray(selectedExerciseObj?.sets);
   }, [selectedExerciseObj]);
-
-  console.log(currentExerciseData);
 
   //set currently being updated
   const [currentSet, setCurrentSet] = React.useState({
@@ -90,77 +86,79 @@ const RepsSetsModal = ({
   };
 
   return (
-    <div className=" text-gray-600 dark:text-gray-400 flex justify-center">
-      <Modal isOpen={isAddMoreSetsOpen} onClose={closeAddMoreSetsModal}>
-        <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
-          {currentExerciseData?.exercise}
-        </p>
-        <ModalBody>
-          <div className="flex bg-gray-50 dark:bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
-            <div>
-              <div className="text-center pb-2 text-base font-semibold">
-                <label>Set</label>
+    exerciseStats && (
+      <div className=" text-gray-600 dark:text-gray-400 flex justify-center">
+        <Modal isOpen={isAddMoreSetsOpen} onClose={closeAddMoreSetsModal}>
+          <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+            {currentExerciseData?.exercise}
+          </p>
+          <ModalBody>
+            <div className="flex bg-gray-50 dark:bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
+              <div>
+                <div className="text-center pb-2 text-base font-semibold">
+                  <label>Set</label>
+                </div>
+                <div className="flex justify-center pb-2 ">
+                  <input
+                    className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
+                    type="number"
+                    name="weight"
+                    required
+                    value={numOfSets}
+                    onChange={(e) => setNumOfSets(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className="flex justify-center pb-2 ">
-                <input
-                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
-                  type="number"
-                  name="weight"
-                  required
-                  value={numOfSets}
-                  onChange={(e) => setNumOfSets(e.target.value)}
-                />
+              <div>
+                <div className="text-center pb-2 text-base font-semibold">
+                  <label>Weight</label>
+                </div>
+                <div className="flex justify-center pb-2 ">
+                  <input
+                    className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
+                    type="number"
+                    name="weight"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="text-center pb-2 text-base font-semibold">
+                  <label>Reps</label>
+                </div>
+                <div className="flex justify-center ">
+                  <input
+                    className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center	"
+                    type="number"
+                    name="reps"
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
               </div>
             </div>
-            <div>
-              <div className="text-center pb-2 text-base font-semibold">
-                <label>Weight</label>
-              </div>
-              <div className="flex justify-center pb-2 ">
-                <input
-                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center"
-                  type="number"
-                  name="weight"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-            <div>
-              <div className="text-center pb-2 text-base font-semibold">
-                <label>Reps</label>
-              </div>
-              <div className="flex justify-center ">
-                <input
-                  className="py-2 rounded w-10/12 sm:w-7/12 border text-black text-center	"
-                  type="number"
-                  name="reps"
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-            </div>
-          </div>
-        </ModalBody>
+          </ModalBody>
 
-        <div className="flex justify-between">
-          <div onClick={closeAddMoreSetsModal} aria-label="delete">
-            <Delete aria-label="delete" />
+          <div className="flex justify-between">
+            <div onClick={closeAddMoreSetsModal} aria-label="delete">
+              <Delete aria-label="delete" />
+            </div>
+            <div
+              onClick={handleSubmit}
+              aria-label="correct"
+              className={`${
+                currentSet.reps > 0 || currentSet.weight > 0
+                  ? "pointer-events-auto"
+                  : "pointer-events-none"
+              }`}
+            >
+              <Correct aria-label="correct" />
+            </div>
           </div>
-          <div
-            onClick={handleSubmit}
-            aria-label="correct"
-            className={`${
-              currentSet.reps > 0 || currentSet.weight > 0
-                ? "pointer-events-auto"
-                : "pointer-events-none"
-            }`}
-          >
-            <Correct aria-label="correct" />
-          </div>
-        </div>
-      </Modal>
-    </div>
+        </Modal>
+      </div>
+    )
   );
 };
 
