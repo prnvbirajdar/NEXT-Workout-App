@@ -72,47 +72,10 @@ const RepsSetsModal = ({
         weight: currentSet?.weight,
         id: nanoid(), //different id for every set that has same weight and reps
       });
-
-    // if (arr1.length> 0 && arr1?.length === numOfSets - 1) {
-    //   setCurrentArray((prevstate) => [...prevstate, ...arr1]);
-    // }
   }
-
-  //   React.useEffect(() => {
-  //     if (currentArray) setCurrentArray((prevstate) => [...prevstate, ...arr1]);
-  //   }, []);
-
-  console.log(arr1.length);
-  console.log(currentArray);
-
-  //   React.useEffect(() => {
-  //     setCurrentExerciseData(
-  //       produce(currentExerciseData, (draft) => {
-  //         draft?.sets?.push(...arr1); //pushes and spread the setArray data in currentExerciseData object
-  //       })
-  //     );
-  //     //return () => {};
-  //   }, [arr1]);
 
   //submits the set
   const handleSubmit = async () => {
-    //console.log(currentExerciseData);
-    //setArray takes all the data from currentSet object and pushes on itself,
-    //with new ID for every set with same reps and weight
-    // let setArray = Array.from({ length: numOfSets }, () => ({
-    //   reps: currentSet?.reps,
-    //   weight: currentSet?.weight,
-    //   id: nanoid(), //different id for every set that has same weight and reps
-    // }));
-
-    // if (currentSet.reps > 0 || currentSet.weight > 0) {
-    //   setCurrentExerciseData(
-    //     produce(currentExerciseData, (draft) => {
-    //       draft.sets.push(...arr1); //pushes and spread the setArray data in currentExerciseData object
-    //     })
-    //   );
-    // }
-
     await db
       .collection("profiles")
       .doc(user?.uid)
