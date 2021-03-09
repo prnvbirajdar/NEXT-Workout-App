@@ -21,9 +21,6 @@ const EditExerciseModal = ({
     (exer) => exer?.id === isHidden?.setId
   );
 
-  // const selectedExerciseObj = selectedExercise[0];
-
-  // console.log(selectedExerciseObj?.sets);
   //gives the sets array
   const selectedExerSets = selectedExercise[0]?.sets;
 
