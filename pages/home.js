@@ -79,7 +79,6 @@ const Home = () => {
           customInput={<DateButton />}
           highlightDates={uniq.map((date) => new Date(date))}
         />
-
         <Main
           selectedDate={formattedDate}
           handleDateChange={handleDateChange}

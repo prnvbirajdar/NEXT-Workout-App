@@ -1,22 +1,47 @@
 import { Modal, ModalBody } from "@windmill/react-ui";
-import { Correct, Delete } from "../Icons/Icons";
+import { Correct, Delete } from "../../Icons/Icons";
 import produce from "immer";
 import { nanoid } from "nanoid";
 
+import { useAuth } from "../../data/authProvider";
+import { db } from "../../data/firebase";
+
 const RepsSetsModal = ({
-  isRepsSetsModalOpen,
-  setCurrentExerciseData,
-  currentExerciseData,
-  setIsRepsSetsModalOpen,
+  isAddMoreSetsOpen,
+  setIsAddMoreSetsOpen,
+  exerciseStats,
+  isHidden,
 }) => {
+  const [currentExerciseData, setCurrentExerciseData] = React.useState(null);
+
+  const [currentArray, setCurrentArray] = React.useState(null);
+
+  const { user } = useAuth(); //context
+
+  //isHidden gives us the current active exercise set
+  //we filter through all the submitted exercise array and show the
+  //current active excercise in selectedExercise
+  const selectedExercise = exerciseStats?.filter(
+    (exer) => exer?.id === isHidden?.setId
+  );
+
+  const selectedExerciseObj = selectedExercise[0];
+
+  //const lmaoArr = selectedExerciseObj?.sets;
+
+  React.useEffect(() => {
+    setCurrentExerciseData(selectedExerciseObj);
+    setCurrentArray(selectedExerciseObj?.sets);
+  }, [selectedExerciseObj]);
+
+  console.log(currentExerciseData);
+
   //set currently being updated
   const [currentSet, setCurrentSet] = React.useState({
     reps: 0,
     weight: 0,
     id: "",
   });
-
-  console.log(currentExerciseData);
 
   //number of sets of same reps and weight
   const [numOfSets, setNumOfSets] = React.useState(1);
@@ -33,37 +58,79 @@ const RepsSetsModal = ({
   };
 
   //closes modal and sets number of set to 1
-  const closeRepsSetsModal = () => {
+  const closeAddMoreSetsModal = () => {
     setNumOfSets(1);
-    setIsRepsSetsModalOpen(false);
+    setIsAddMoreSetsOpen(false);
   };
 
+  const arr1 = [];
+
+  for (let i = 0; i < numOfSets; i++) {
+    if (currentSet.reps > 0 || currentSet.weight > 0)
+      arr1.push({
+        reps: currentSet?.reps,
+        weight: currentSet?.weight,
+        id: nanoid(), //different id for every set that has same weight and reps
+      });
+
+    // if (arr1.length> 0 && arr1?.length === numOfSets - 1) {
+    //   setCurrentArray((prevstate) => [...prevstate, ...arr1]);
+    // }
+  }
+
+  //   React.useEffect(() => {
+  //     if (currentArray) setCurrentArray((prevstate) => [...prevstate, ...arr1]);
+  //   }, []);
+
+  console.log(arr1.length);
+  console.log(currentArray);
+
+  //   React.useEffect(() => {
+  //     setCurrentExerciseData(
+  //       produce(currentExerciseData, (draft) => {
+  //         draft?.sets?.push(...arr1); //pushes and spread the setArray data in currentExerciseData object
+  //       })
+  //     );
+  //     //return () => {};
+  //   }, [arr1]);
+
   //submits the set
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    //console.log(currentExerciseData);
     //setArray takes all the data from currentSet object and pushes on itself,
     //with new ID for every set with same reps and weight
-    let setArray = Array.from({ length: numOfSets }, () => ({
-      reps: currentSet?.reps,
-      weight: currentSet?.weight,
-      id: nanoid(), //different id for every set that has same weight and reps
-    }));
+    // let setArray = Array.from({ length: numOfSets }, () => ({
+    //   reps: currentSet?.reps,
+    //   weight: currentSet?.weight,
+    //   id: nanoid(), //different id for every set that has same weight and reps
+    // }));
 
-    if (currentSet.reps > 0 || currentSet.weight > 0)
-      setCurrentExerciseData(
-        produce(currentExerciseData, (draft) => {
-          draft.sets.push(...setArray); //pushes and spread the setArray data in currentExerciseData object
-        })
-      );
+    // if (currentSet.reps > 0 || currentSet.weight > 0) {
+    //   setCurrentExerciseData(
+    //     produce(currentExerciseData, (draft) => {
+    //       draft.sets.push(...arr1); //pushes and spread the setArray data in currentExerciseData object
+    //     })
+    //   );
+    // }
+
+    await db
+      .collection("profiles")
+      .doc(user?.uid)
+      .collection("workouts")
+      .doc(currentExerciseData?.id)
+      .update({
+        sets: [...currentArray, ...arr1],
+      });
 
     setCurrentSet({ reps: 0, weight: 0 });
-    closeRepsSetsModal();
+    closeAddMoreSetsModal();
   };
 
   return (
     <div className=" text-gray-600 dark:text-gray-400 flex justify-center">
-      <Modal isOpen={isRepsSetsModalOpen} onClose={closeRepsSetsModal}>
+      <Modal isOpen={isAddMoreSetsOpen} onClose={closeAddMoreSetsModal}>
         <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
-          {currentExerciseData.currentExer}
+          {currentExerciseData?.exercise}
         </p>
         <ModalBody>
           <div className="flex bg-gray-50 dark:bg-black p-2 rounded-lg sm:flex-row justify-around  text-gray-600 dark:text-gray-300">
@@ -114,7 +181,7 @@ const RepsSetsModal = ({
         </ModalBody>
 
         <div className="flex justify-between">
-          <div onClick={closeRepsSetsModal} aria-label="delete">
+          <div onClick={closeAddMoreSetsModal} aria-label="delete">
             <Delete aria-label="delete" />
           </div>
           <div

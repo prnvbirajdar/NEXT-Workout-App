@@ -40,7 +40,7 @@ const Correct = () => {
 
 const Delete = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white">
+    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-500 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

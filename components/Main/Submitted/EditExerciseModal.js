@@ -21,6 +21,9 @@ const EditExerciseModal = ({
     (exer) => exer?.id === isHidden?.setId
   );
 
+  // const selectedExerciseObj = selectedExercise[0];
+
+  // console.log(selectedExerciseObj?.sets);
   //gives the sets array
   const selectedExerSets = selectedExercise[0]?.sets;
 
@@ -56,7 +59,7 @@ const EditExerciseModal = ({
     setSelected(setObj);
   };
 
-  //loops over the arrayy and updates it with new updated set
+  //loops over the array and updates it with new updated set
   for (let i = 0; i < selectedExerSets?.length; i++) {
     if (selectedExerSets[i]?.id === selected?.id) {
       selectedExerSets?.splice(i, 1, selected);

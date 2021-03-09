@@ -5,6 +5,8 @@ import { Delete, DownArrow, Edit, RightArrow } from "../../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 import DeleteExerciseModal from "./DeleteExerciseModal";
+import { AddSubmittedSet } from "../AddSet";
+import AddMoreSetsModal from "./AddMoreSetsModal";
 
 const DisplayExercisesAfterSubmit = ({
   selectedDate,
@@ -60,6 +62,15 @@ const DisplayExercisesAfterSubmit = ({
   };
   //DELETE EXERCISE MODAL STATE ------------ end
 
+  //ADD SETS MODAL STATE ------------ start
+  const [isAddMoreSetsOpen, setIsAddMoreSetsOpen] = React.useState(false);
+
+  function openAddMoreSetsModal() {
+    setIsAddMoreSetsOpen(true);
+  }
+
+  //ADD SETS MODAL STATE ------------ end
+
   function openEditExerciseModal(exercise) {
     setSelected(exercise);
     setIsEditExerciseModal(true);
@@ -105,11 +116,11 @@ const DisplayExercisesAfterSubmit = ({
       <section key={e.id} className="mb-4">
         <Card>
           <CardBody>
-            <div
-              className="cursor-pointer flex justify-between "
-              onClick={() => isSelected(e.id)}
-            >
-              <div className=" flex items-center ">
+            <div className=" flex justify-between ">
+              <div
+                className="flex items-center cursor-pointer flex-grow"
+                onClick={() => isSelected(e.id)}
+              >
                 <p className=" font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
                   {e.exercise}
                   {isHidden?.setBoolean && isHidden?.setId === e.id ? (
@@ -133,10 +144,30 @@ const DisplayExercisesAfterSubmit = ({
                   </span>
                 </p>
               </div>
-
-              <div aria-label="Delete" onClick={openDeleteExerciseModal}>
-                <Delete aria-label="Delete" />
+              <div className="flex">
+                <div
+                  aria-label="Add More Sets Button"
+                  className={`${
+                    isHidden.setBoolean && isHidden.setId === e.id
+                      ? "block"
+                      : "hidden"
+                  } md:mr-1 z-20`}
+                >
+                  <AddSubmittedSet
+                    aria-label="Add More Sets Button"
+                    openAddMoreSetsModal={openAddMoreSetsModal}
+                  />
+                </div>
+                <div aria-label="Delete" onClick={openDeleteExerciseModal}>
+                  <Delete aria-label="Delete" />
+                </div>
               </div>
+              <AddMoreSetsModal
+              isAddMoreSetsOpen ={ isAddMoreSetsOpen}
+              setIsAddMoreSetsOpen={ setIsAddMoreSetsOpen}
+                exerciseStats={exerciseStats}
+                isHidden={isHidden}
+              />
               <DeleteExerciseModal
                 id={e?.id}
                 deleteExercise={deleteExercise}
@@ -158,9 +189,6 @@ const DisplayExercisesAfterSubmit = ({
                 </p>
               </div>
             ) : (
-              <div></div>
-            )}
-            {e.sets &&
               e.sets.map(
                 (s, index) =>
                   s && (
@@ -223,7 +251,8 @@ const DisplayExercisesAfterSubmit = ({
                       )}
                     </div>
                   )
-              )}
+              )
+            )}
             <div
               className={`${
                 isHidden.setBoolean && isHidden.setId === e.id
