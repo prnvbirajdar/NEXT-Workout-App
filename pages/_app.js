@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <React.Fragment>
       <Head>
         <title>Lift Workout App</title>
-        <link rel="Lift Icon" type="image/ico" href="/db.ico" />
+        <link rel="Lift Icon" type="image/ico" href="/dumbell.ico" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <AuthProvider>

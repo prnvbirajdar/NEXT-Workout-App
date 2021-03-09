@@ -11,7 +11,11 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-          <link rel="Lift Icon" type="image/ico" href="/db.ico" />
+          <link rel="Lift Icon" type="image/ico" href="/dumbell.ico" />
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
         </Head>
         <body>
           <Main />
