@@ -52,12 +52,8 @@ const Main = ({ selectedDate }) => {
     sets: [],
   });
 
-  //console.log(currentExerciseData);
-
   //Array list of all submitted exercises on that day
   const [exerciseStats, setExerciseStats] = React.useState([]);
-
-  //console.log(exerciseStats);
 
   const submitExerciseData = async () => {
     await db
