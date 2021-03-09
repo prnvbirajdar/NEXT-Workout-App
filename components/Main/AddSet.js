@@ -23,7 +23,7 @@ const AddSet = ({ openRepsSetsModal }) => {
 
 const AddSubmittedSet = ({ openAddMoreSetsModal }) => {
   return (
-    <button
+    <div
       aria-label="Add More Sets"
       onClick={openAddMoreSetsModal}
       className=" inline-flex items-center justify-center w-10 h-10 text-gray-500 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white"
@@ -39,7 +39,7 @@ const AddSubmittedSet = ({ openAddMoreSetsModal }) => {
           clipRule="evenodd"
         />
       </svg>
-    </button>
+    </div>
   );
 };
 

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import PhysicalStatsModal from "../components/Profile/PhysicalStatsModal";
-import { Card, CardBody, Button } from "@windmill/react-ui";
+import { Card, CardBody } from "@windmill/react-ui";
 import { useAuth } from "../components/data/authProvider";
 import { db } from "../components/data/firebase";
-import DeleteAccountModal from "../components/Profile/DeleteAccountModal";
 import { useRouter } from "next/router";
 import PersonalDetailsCard from "../components/Profile/PersonalDetailsCard";
 import { Edit } from "../components/Icons/Icons";

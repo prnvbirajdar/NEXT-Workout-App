@@ -1,6 +1,7 @@
 const Add = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
   return (
     <button
+      aria-label="add"
       className={`inline-flex items-center justify-center ${circleHeight} ${circleWidth} mr-2 text-indigo-100 transition-colors bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800`}
     >
       <svg
@@ -19,7 +20,10 @@ const Add = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
 
 const Correct = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800">
+    <button
+      aria-label="correct"
+      className=" inline-flex items-center justify-center w-10 h-10 text-white transition-colors bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -42,6 +46,7 @@ const Delete = () => {
   return (
     <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-500 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white">
       <svg
+        aria-label="delete"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -64,6 +69,7 @@ const Home = () => {
   return (
     <button>
       <svg
+        aria-label="home"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -84,7 +90,7 @@ const Home = () => {
 
 const Calender = ({ onClick }) => {
   return (
-    <button onClick={onClick}>
+    <button onClick={onClick} aria-label="calender">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -130,6 +136,7 @@ const Close = () => {
 const Moon = () => {
   return (
     <svg
+      aria-label="moon"
       width="18"
       height="18"
       xmlns="http://www.w3.org/2000/svg"
@@ -145,6 +152,7 @@ const Moon = () => {
 const Sun = () => {
   return (
     <svg
+      aria-label="sun"
       width="18"
       height="18"
       xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +171,10 @@ const Sun = () => {
 
 const Edit = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white">
+    <button
+      aria-label="edit"
+      className=" inline-flex items-center justify-center w-10 h-10 text-gray-400 transition-colors rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
@@ -181,7 +192,10 @@ const Edit = () => {
 
 const Logo = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-10 h-10 text-black transition-colors rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white">
+    <button
+      aria-label="logo"
+      className=" inline-flex items-center justify-center w-10 h-10 text-black transition-colors rounded-lg focus:shadow-outline  hover:bg-indigo-900  hover:text-white"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height="32"
@@ -198,7 +212,10 @@ const Logo = () => {
 
 const CalenderLogo = () => {
   return (
-    <button className=" inline-flex items-center justify-center w-12 h-12 text-gray-800 dark:text-gray-100 transition rounded-lg focus:shadow-outline hover:bg-indigo-200 dark:hover:bg-indigo-800   ">
+    <button
+      aria-label="calender 2"
+      className=" inline-flex items-center justify-center w-12 h-12 text-gray-800 dark:text-gray-100 transition rounded-lg focus:shadow-outline hover:bg-indigo-200 dark:hover:bg-indigo-800   "
+    >
       <svg
         viewBox="0 0 500.03 500.03"
         xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +230,10 @@ const CalenderLogo = () => {
 
 const RightArrow = () => {
   return (
-    <button className=" w-5 h-5 text-gray-600 dark:text-gray-300">
+    <button
+      aria-label="right"
+      className=" w-5 h-5 text-gray-600 dark:text-gray-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 16"
@@ -231,7 +251,10 @@ const RightArrow = () => {
 
 const DownArrow = () => {
   return (
-    <button className=" w-5 h-5 text-gray-600 dark:text-gray-300">
+    <button
+      aria-label="down"
+      className=" w-5 h-5 text-gray-600 dark:text-gray-300"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 14"
