@@ -7,7 +7,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
 import Footer from "../components/Footer";
-
+import Head from "next/head";
 import { db } from "../components/data/firebase";
 
 const Home = () => {
@@ -63,29 +63,41 @@ const Home = () => {
   );
 
   return (
-    uniq.length > 0 && (
-      <div className="relative min-h-screen w-screen">
-        <Navbar
-          selectedDate={startDate}
-          handleDateChange={handleDateChange}
-          highlightDates={uniq.map((date) => new Date(date))} //maps the uniq array according to desired output
+    <React.Fragment>
+      <Head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width"
+          name="home.js"
+          content="home page"
         />
-        <DatePicker
-          selected={startDate}
-          onChange={handleDateChange}
-          name="startDate"
-          dateFormat="PPPP"
-          closeOnScroll={true}
-          customInput={<DateButton />}
-          highlightDates={uniq.map((date) => new Date(date))}
-        />
-        <Main
-          selectedDate={formattedDate}
-          handleDateChange={handleDateChange}
-        />
-        <Footer />
-      </div>
-    )
+      </Head>
+      <body>
+        {uniq.length > 0 && (
+          <div className="relative min-h-screen w-screen">
+            <Navbar
+              selectedDate={startDate}
+              handleDateChange={handleDateChange}
+              highlightDates={uniq.map((date) => new Date(date))} //maps the uniq array according to desired output
+            />
+            <DatePicker
+              selected={startDate}
+              onChange={handleDateChange}
+              name="startDate"
+              dateFormat="PPPP"
+              closeOnScroll={true}
+              customInput={<DateButton />}
+              highlightDates={uniq.map((date) => new Date(date))}
+            />
+            <Main
+              selectedDate={formattedDate}
+              handleDateChange={handleDateChange}
+            />
+            <Footer />
+          </div>
+        )}
+      </body>
+    </React.Fragment>
   );
 };
 

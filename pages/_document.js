@@ -13,6 +13,8 @@ class MyDocument extends Document {
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link rel="Lift Icon" type="image/ico" href="/dumbell.ico" />
           <meta
+            name="document.js"
+            content="main page"
             name="viewport"
             content="initial-scale=1.0, width=device-width"
           />
@@ -28,4 +30,3 @@ class MyDocument extends Document {
 
 export default MyDocument;
 
-// <link rel="Lift Icon" type="image/png" href="/calender.png" />

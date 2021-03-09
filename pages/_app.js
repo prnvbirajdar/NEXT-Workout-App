@@ -10,7 +10,12 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <title>Lift Workout App</title>
         <link rel="Lift Icon" type="image/ico" href="/dumbell.ico" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width"
+          name="app.js"
+          content="windmill theme context page"
+        />
       </Head>
       <AuthProvider>
         <Windmill usePreferences theme={myTheme}>

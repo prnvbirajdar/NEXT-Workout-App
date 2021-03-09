@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../components/data/authProvider";
 import Login from "../components/Login";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function Home() {
   const { user, loading } = useAuth(); //context
@@ -19,5 +20,17 @@ export default function Home() {
   if (loading) return null;
 
   //if user doesn't exist, stay at Login
-  return !user && <Login />;
+  return (
+    <React.Fragment>
+      <Head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0, width=device-width"
+          name="index.js"
+          content="index page"
+        />
+      </Head>
+      <body>{!user && <Login />}</body>
+    </React.Fragment>
+  );
 }
