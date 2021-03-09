@@ -14,8 +14,6 @@ const RepsSetsModal = ({
 }) => {
   const [currentExerciseData, setCurrentExerciseData] = React.useState(null);
 
-  const [currentArray, setCurrentArray] = React.useState(null);
-
   const { user } = useAuth(); //context
 
   //isHidden gives us the current active exercise set
@@ -29,7 +27,6 @@ const RepsSetsModal = ({
 
   React.useEffect(() => {
     setCurrentExerciseData(selectedExerciseObj);
-    setCurrentArray(selectedExerciseObj?.sets);
   }, [selectedExerciseObj]);
 
   //set currently being updated
@@ -78,7 +75,7 @@ const RepsSetsModal = ({
       .collection("workouts")
       .doc(currentExerciseData?.id)
       .update({
-        sets: [...currentArray, ...arr1],
+        sets: [...currentExerciseData?.sets, ...arr1],
       });
 
     setCurrentSet({ reps: 0, weight: 0 });
