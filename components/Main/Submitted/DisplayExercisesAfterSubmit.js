@@ -21,8 +21,6 @@ const DisplayExercisesAfterSubmit = ({
 }) => {
   const { user } = useAuth(); //context
 
-  //console.log(exerciseStats);
-
   //Expand exercise info
   const [isHidden, setIsHidden] = React.useState({
     setId: "",
@@ -151,7 +149,7 @@ const DisplayExercisesAfterSubmit = ({
                 </p>
               </div>
               <div className="flex">
-                <CopySet />
+                {/*<CopySet />*/}
                 <div
                   aria-label="Add More Sets Button"
                   className={`${
