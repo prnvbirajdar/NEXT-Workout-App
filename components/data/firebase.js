@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -15,7 +16,7 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-
+  firebase.analytics();
   firebase.firestore().settings({ experimentalForceLongPolling: true });
 } else {
   console.log("firebase apps already running...");
