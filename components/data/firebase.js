@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
+  apiKey: "AIzaSyCJAmGwfO7eoqfctF0JAwPORDfwcN5wYEE",
+  authDomain: "workout-app-prod.firebaseapp.com",
+  projectId: "workout-app-prod",
+  storageBucket: "workout-app-prod.appspot.com",
+  messagingSenderId: "319599430184",
+  appId: "1:319599430184:web:5f9eff26edd7b0f15f431d",
+  measurementId: "G-21X6PFGHTX",
 };
 
 if (firebase.apps.length === 0) {
@@ -30,7 +30,7 @@ const uiConfig = {
   signInFlow: "popup",
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-    // firebaseui?.auth?.AnonymousAuthProvider?.PROVIDER_ID,
+     // firebaseui?.auth?.AnonymousAuthProvider?.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],
