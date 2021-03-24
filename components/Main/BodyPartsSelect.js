@@ -1,5 +1,5 @@
 import { Card, CardBody } from "@windmill/react-ui";
-import { exerciseArray, exerciseList1 } from "../data/data";
+import { exerciseList } from "../data/data";
 import { Close } from "../Icons/Icons";
 
 const BodyPartsSelect = ({
@@ -26,7 +26,7 @@ const BodyPartsSelect = ({
           </div>
 
           <div className="flex justify-center flex-wrap ">
-            {exerciseList1.map((e) => (
+            {exerciseList.map((e) => (
               <div key={e.id} onClick={openExerciseModal}>
                 <button
                   aria-label="Muscle Select"

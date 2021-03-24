@@ -30,7 +30,7 @@ export default function Home() {
           content="index page"
         />
       </Head>
-      <body>{!user && <Login />}</body>
+      <section>{!user && <Login />}</section>
     </React.Fragment>
   );
 }

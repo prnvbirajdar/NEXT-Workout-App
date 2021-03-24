@@ -111,12 +111,18 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                       onKeyDown={() => setProfileOpen(!profileOpen)}
                     >
                       <span className="sr-only">Open user menu</span>
-
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src={user?.photoURL}
-                        alt="User profile picture"
-                      />
+                      {user?.photoURL ? (
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={user?.photoURL}
+                          alt="User profile picture"
+                        />
+                      ) : (
+                        <img
+                          src="/whitepng.png"
+                          className="h-8 w-8 rounded-full object-cover"
+                        />
+                      )}
                     </button>
                   </div>
                   <Transition

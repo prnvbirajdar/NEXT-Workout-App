@@ -23,7 +23,6 @@ const Home = () => {
   const uniq = [...new Set(exerciseDates)];
   //date is formated to desired output
   const formattedDate = format(startDate, "P");
-
   //on select a specific date, it sets it as today's date and shows all info on that date
   const handleDateChange = (date) => setStartDate(date);
 
@@ -44,15 +43,15 @@ const Home = () => {
       getExerciseDates();
     }
 
-    return () => {
-      getExerciseDates();
-    };
+    return () => getExerciseDates();
   }, [user]);
 
   useEffect(() => {
     if (!user) {
       router.push("/");
     }
+
+    // return () => router.push("/");
   }, [user]);
 
   //the strip of date seen on home page
@@ -72,31 +71,29 @@ const Home = () => {
           content="home page"
         />
       </Head>
-      <body>
-        {uniq.length > 0 && (
-          <div className="relative min-h-screen w-screen">
-            <Navbar
-              selectedDate={startDate}
-              handleDateChange={handleDateChange}
-              highlightDates={uniq.map((date) => new Date(date))} //maps the uniq array according to desired output
-            />
-            <DatePicker
-              selected={startDate}
-              onChange={handleDateChange}
-              name="startDate"
-              dateFormat="PPPP"
-              closeOnScroll={true}
-              customInput={<DateButton />}
-              highlightDates={uniq.map((date) => new Date(date))}
-            />
-            <Main
-              selectedDate={formattedDate}
-              handleDateChange={handleDateChange}
-            />
-            <Footer />
-          </div>
-        )}
-      </body>
+      <section>
+        <div className="relative min-h-screen w-screen">
+          <Navbar
+            selectedDate={startDate}
+            handleDateChange={handleDateChange}
+            highlightDates={uniq?.map((date) => new Date(date))} //maps the uniq array according to desired output
+          />
+          <DatePicker
+            selected={startDate}
+            onChange={handleDateChange}
+            name="startDate"
+            dateFormat="PPPP"
+            closeOnScroll={true}
+            customInput={<DateButton />}
+            highlightDates={uniq?.map((date) => new Date(date))}
+          />
+          <Main
+            selectedDate={formattedDate}
+            handleDateChange={handleDateChange}
+          />
+          <Footer />
+        </div>
+      </section>
     </React.Fragment>
   );
 };
