@@ -24,6 +24,7 @@ if (firebase.apps.length === 0) {
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+
 const uiConfig = {
   // Popup signin flow rather than redirect flow.
   signInFlow: "popup",
