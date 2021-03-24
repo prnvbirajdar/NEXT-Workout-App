@@ -1,5 +1,7 @@
 # Lift Workout App
 
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/k6hf6xn7tnjpd4fztqi5.png)
+
 Demo: https://lift-next.vercel.app
 
 Lift is an fitness app designed for resistance training. It allows users to create, track, and update their daily workout routines.
