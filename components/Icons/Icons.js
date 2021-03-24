@@ -210,7 +210,7 @@ const Logo = () => {
   );
 };
 
-const CalenderLogo = () => {
+const LiftLogo = () => {
   return (
     <button
       aria-label="calender 2"
@@ -304,6 +304,6 @@ export {
   Moon,
   Edit,
   Logo,
-  CalenderLogo,
+  LiftLogo,
   CopySet,
 };

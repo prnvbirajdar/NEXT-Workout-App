@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import NavProfile from "../components/NavProfile";
 import PhysicalStatsModal from "../components/Profile/PhysicalStatsModal";
 import { Card, CardBody } from "@windmill/react-ui";
 import { useAuth } from "../components/data/authProvider";
@@ -9,6 +9,9 @@ import PersonalDetailsCard from "../components/Profile/PersonalDetailsCard";
 import { Edit } from "../components/Icons/Icons";
 import Footer from "../components/Footer";
 import Head from "next/head";
+
+import DatePicker from "react-datepicker";
+import { format } from "date-fns";
 
 const Profile = () => {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
@@ -23,6 +26,15 @@ const Profile = () => {
     userName: "",
     userEmail: "",
   });
+
+  //grabs today's date
+  const [startDate, setStartDate] = React.useState(new Date());
+  //the strip of date seen on home page
+  const DateButton = ({ value }) => (
+    <p className="z-0 select-none py-1 px-4 w-screen text-center text-white bg-indigo-700 rounded font-medium md:text-lg shadow">
+      {value}
+    </p>
+  );
 
   const { user } = useAuth(); //context
 
@@ -76,7 +88,15 @@ const Profile = () => {
       </Head>
       <section>
         <div className="relative min-h-screen">
-          <Navbar />
+          <NavProfile />
+          <DatePicker
+            selected={startDate}
+            name="startDate"
+            dateFormat="PPPP"
+            closeOnScroll={true}
+            customInput={<DateButton />}
+          />
+
           <div className="pb-20 dark:bg-black transition-colors">
             <div className="flex justify-center mt-8 pt-5">
               <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">

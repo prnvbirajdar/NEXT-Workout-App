@@ -68,22 +68,6 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                   >
                     <Home aria-label="Home" />
                   </a>
-
-                  <DatePicker
-                    aria-label="Calender"
-                    selected={selectedDate}
-                    onChange={handleDateChange}
-                    highlightDates={highlightDates}
-                    name="startDate"
-                    dateFormat="MMM dd, yyyy"
-                    closeOnScroll={true}
-                    withPortal
-                    customInput={
-                      <div className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                        <Calender />
-                      </div>
-                    }
-                  />
                 </div>
               </div>
             </div>
