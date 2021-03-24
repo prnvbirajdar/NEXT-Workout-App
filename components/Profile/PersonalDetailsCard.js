@@ -1,8 +1,9 @@
 import { Card, CardBody } from "@windmill/react-ui";
 
 const PersonalDetailsCard = ({ user }) => {
+
   return (
-    user?.displayName === null || user?.email === null && (
+    user?.displayName !== null && user?.email !== null && (
       <div className="w-full">
         <Card>
           <CardBody>

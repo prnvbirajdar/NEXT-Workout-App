@@ -11,7 +11,7 @@ const Login = () => {
               <img
                 aria-hidden="true"
                 className="object-cover w-full h-full dark:hidden"
-                src="/final.webp"
+                src="/whitepng.png"
                 alt="Office"
                 height="640px"
                 width="426px"
@@ -20,7 +20,7 @@ const Login = () => {
               <img
                 aria-hidden="true"
                 className="hidden object-cover w-full h-full dark:block "
-                src="/fitness1.webp"
+                src="/darkpng.png"
                 alt="Office"
                 height="640px"
                 width="426px"
