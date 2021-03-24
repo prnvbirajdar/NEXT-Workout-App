@@ -1,21 +1,26 @@
-# Next.js + Tailwind CSS Example
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) (v2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+# Lift Workout App
+---
+Demo: https://lift-next.vercel.app
 
-## Deploy your own
+Lift is an fitness app designed for resistance training. It allows users to create, track, and update their daily workout routines.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Features:
+- Sign in with Google or Facebook to create a profile and starting tracking your workouts.
+- Allows users to select exercises based on specific body part.
+- Add sets, repititions and weight for every exercise.
+- Add, update, and track your physical stats like weight, height, and daily calorific intake.
+- Users can also go back and view, add, update or delete past workouts.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## Tools used:
+- Next.js
+- Firebase Firestore
+- Firebase Authentication
+- Tailwind
+- Immer
 
-## How to use
+---
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+### Running Project Locally:
+- Install dependencies: run `npm install` in the root project
+- Run project: `npm run dev`
