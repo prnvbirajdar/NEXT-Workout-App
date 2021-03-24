@@ -1,11 +1,11 @@
-
 # Lift Workout App
----
+
 Demo: https://lift-next.vercel.app
 
 Lift is an fitness app designed for resistance training. It allows users to create, track, and update their daily workout routines.
 
 ## Features:
+
 - Sign in with Google or Facebook to create a profile and starting tracking your workouts.
 - Allows users to select exercises based on specific body part.
 - Add sets, repititions and weight for every exercise.
@@ -13,6 +13,7 @@ Lift is an fitness app designed for resistance training. It allows users to crea
 - Users can also go back and view, add, update or delete past workouts.
 
 ## Tools used:
+
 - Next.js
 - Firebase Firestore
 - Firebase Authentication
@@ -22,5 +23,6 @@ Lift is an fitness app designed for resistance training. It allows users to crea
 ---
 
 ### Running Project Locally:
+
 - Install dependencies: run `npm install` in the root project
 - Run project: `npm run dev`
