@@ -30,9 +30,10 @@ const uiConfig = {
   signInFlow: "popup",
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-     // firebaseui?.auth?.AnonymousAuthProvider?.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,      
+    firebaseui?.auth?.AnonymousAuthProvider?.PROVIDER_ID,
+
   ],
   callbacks: {
     // Avoid redirects after sign-in.
