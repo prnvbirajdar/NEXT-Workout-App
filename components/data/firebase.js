@@ -10,14 +10,6 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
-
-  // apiKey: "AIzaSyD250hJjDTgufbmVlO3Y1w0IaMdirJlBy8",
-  // authDomain: "workout-app-a829e.firebaseapp.com",
-  // projectId: "workout-app-a829e",
-  // storageBucket: "workout-app-a829e.appspot.com",
-  // messagingSenderId: "769673552474",
-  // appId: "1:769673552474:web:782bee071ecfb3a8586e63",
-  // measurementId: "G-NP4K8MLQ4W",
 };
 
 if (firebase.apps.length === 0) {
@@ -37,7 +29,7 @@ const uiConfig = {
   signInFlow: "popup",
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-    firebaseui?.auth?.AnonymousAuthProvider?.PROVIDER_ID,
+    // firebaseui?.auth?.AnonymousAuthProvider?.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],

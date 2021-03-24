@@ -1,7 +1,13 @@
 import { Card, CardBody } from "@windmill/react-ui";
 import { db } from "../../data/firebase";
 import { useAuth } from "../../data/authProvider";
-import { Delete, DownArrow, Edit, RightArrow } from "../../Icons/Icons";
+import {
+  CopySet,
+  Delete,
+  DownArrow,
+  Edit,
+  RightArrow,
+} from "../../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
 import DeleteExerciseModal from "./DeleteExerciseModal";
@@ -145,6 +151,7 @@ const DisplayExercisesAfterSubmit = ({
                 </p>
               </div>
               <div className="flex">
+                <CopySet />
                 <div
                   aria-label="Add More Sets Button"
                   className={`${
@@ -163,8 +170,8 @@ const DisplayExercisesAfterSubmit = ({
                 </div>
               </div>
               <AddMoreSetsModal
-              isAddMoreSetsOpen ={ isAddMoreSetsOpen}
-              setIsAddMoreSetsOpen={ setIsAddMoreSetsOpen}
+                isAddMoreSetsOpen={isAddMoreSetsOpen}
+                setIsAddMoreSetsOpen={setIsAddMoreSetsOpen}
                 exerciseStats={exerciseStats}
                 isHidden={isHidden}
               />

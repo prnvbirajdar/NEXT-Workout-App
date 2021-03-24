@@ -1,7 +1,6 @@
 import { Card, CardBody } from "@windmill/react-ui";
 
 const PersonalDetailsCard = ({ user }) => {
-  console.log(user);
   return (
     user?.displayName === null || user?.email === null && (
       <div className="w-full">
