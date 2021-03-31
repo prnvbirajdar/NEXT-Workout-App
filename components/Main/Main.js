@@ -94,7 +94,7 @@ const Main = ({ selectedDate }) => {
   };
 
   const [copySets, setCopySets] = useState([]);
-  
+
   const pasteExerciseData = async () => {
     for (let i = 0; i < copySets.length; i++) {
       const element = copySets[i];
@@ -121,11 +121,6 @@ const Main = ({ selectedDate }) => {
     }
 
     setCopySets([]);
-    // setCurrentExerciseData({
-    //   currentExer: "",
-    //   notes: "",
-    //   sets: [],
-    // });
   };
 
   return (
@@ -222,9 +217,13 @@ const Main = ({ selectedDate }) => {
       <div className=" w-11/12 sm:w-2/3  lg:max-w-xl">
         {exerciseStats.length > 0 && (
           <div
-            className="mb-2 flex justify-end"
+            className="mb-2 flex justify-end has-tooltip"
             onClick={() => setCopySets(exerciseStats)}
           >
+            <span class="tooltip rounded-md shadow-lg px-2 py-1.5 dark:bg-gray-900 bg-white text-gray-600 dark:text-gray-300 transition font-semibold -mt-10">
+              Copy Exercises
+            </span>
+
             <CopySet />
           </div>
         )}
