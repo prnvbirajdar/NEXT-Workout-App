@@ -94,11 +94,7 @@ const Main = ({ selectedDate }) => {
   };
 
   const [copySets, setCopySets] = useState([]);
-
-  console.log(exerciseStats);
-
-  console.log(copySets);
-
+  
   const pasteExerciseData = async () => {
     for (let i = 0; i < copySets.length; i++) {
       const element = copySets[i];
