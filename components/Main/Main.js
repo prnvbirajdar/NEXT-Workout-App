@@ -144,12 +144,12 @@ const Main = ({ selectedDate }) => {
       {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
         <div></div>
       ) : (
-        <div className="flex ">
-          <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
-          <div onClick={pasteExerciseData}>
-            <p className="dark:text-white">paste</p>
-          </div>
-        </div>
+        <AddExercise
+          openCard={openCard}
+          exerciseStats={exerciseStats}
+          pasteExerciseData={pasteExerciseData}
+          copySets={copySets}
+        />
       )}
 
       <AddExerciseModal
