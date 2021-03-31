@@ -2,7 +2,6 @@ import { Card, CardBody } from "@windmill/react-ui";
 import { db } from "../../data/firebase";
 import { useAuth } from "../../data/authProvider";
 import {
-  CopySet,
   Delete,
   DownArrow,
   Edit,
@@ -10,7 +9,7 @@ import {
 } from "../../Icons/Icons";
 import EditExerciseModal from "./EditExerciseModal";
 import EditExerciseNotes from "./EditExerciseNotes";
-import DeleteExerciseModal from "./DeleteExerciseModal";
+// import DeleteExerciseModal from "./DeleteExerciseModal";
 import { AddSubmittedSet } from "../AddSet";
 import AddMoreSetsModal from "./AddMoreSetsModal";
 
@@ -31,18 +30,21 @@ const DisplayExercisesAfterSubmit = ({
   const [selected, setSelected] = React.useState(null);
 
   //DELETE EXERCISE MODAL STATE ------------ start
-  const [
-    isDeleteExerciseModalOpen,
-    setIsDeleteExerciseModalOpen,
-  ] = React.useState(false);
+  // const [
+  //   isDeleteExerciseModalOpen,
+  //   setIsDeleteExerciseModalOpen,
+  // ] = React.useState(false);
 
-  function openDeleteExerciseModal() {
-    setIsDeleteExerciseModalOpen(true);
-  }
-  function closeDeleteExerciseModal() {
-    setIsDeleteExerciseModalOpen(false);
-  }
+  // function openDeleteExerciseModal() {
+  //   setIsDeleteExerciseModalOpen(true);
+  // }
+  // function closeDeleteExerciseModal() {
+  //   setIsDeleteExerciseModalOpen(false);
+  // }
 
+  //DELETE EXERCISE MODAL STATE ------------ end
+
+  // delete entire exercises
   const deleteExercise = async (id) => {
     await db
       .collection("profiles")
@@ -54,6 +56,7 @@ const DisplayExercisesAfterSubmit = ({
     setIsEditExerciseModal(false);
   };
 
+  // expand or hide when cliced on an exercise
   const isSelected = (id) => {
     exerciseStats?.map((ex) => {
       if (ex.id === id) {
@@ -64,7 +67,6 @@ const DisplayExercisesAfterSubmit = ({
       }
     });
   };
-  //DELETE EXERCISE MODAL STATE ------------ end
 
   //ADD SETS MODAL STATE ------------ start
   const [isAddMoreSetsOpen, setIsAddMoreSetsOpen] = React.useState(false);
@@ -149,7 +151,6 @@ const DisplayExercisesAfterSubmit = ({
                 </p>
               </div>
               <div className="flex">
-                {/*<CopySet />*/}
                 <div
                   aria-label="Add More Sets Button"
                   className={`${
@@ -163,7 +164,7 @@ const DisplayExercisesAfterSubmit = ({
                     openAddMoreSetsModal={openAddMoreSetsModal}
                   />
                 </div>
-                <div aria-label="Delete" onClick={openDeleteExerciseModal}>
+                <div aria-label="Delete" onClick={() => deleteExercise(e.id)}>
                   <Delete aria-label="Delete" />
                 </div>
               </div>
@@ -173,13 +174,13 @@ const DisplayExercisesAfterSubmit = ({
                 exerciseStats={exerciseStats}
                 isHidden={isHidden}
               />
-              <DeleteExerciseModal
+              {/*<DeleteExerciseModal
                 id={e?.id}
                 deleteExercise={deleteExercise}
                 setIsHidden={setIsHidden}
                 isDeleteExerciseModalOpen={isDeleteExerciseModalOpen}
                 closeDeleteExerciseModal={closeDeleteExerciseModal}
-              />
+              />*/}
             </div>
             {e.sets.length === 0 ? (
               <div

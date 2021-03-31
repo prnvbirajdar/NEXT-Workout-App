@@ -6,13 +6,15 @@ import AddExercise from "./AddExercise";
 import AddSet from "./AddSet";
 import RepsSetsModal from "./RepsSetsModal";
 import RepsSetsDisplay from "./RepsSetsDisplay";
-import { Correct, Delete } from "../Icons/Icons";
+import { CopySet, Correct, Delete } from "../Icons/Icons";
 import produce from "immer";
 
 import { db } from "../data/firebase";
 import firebase from "firebase/app";
 import { useAuth } from "../data/authProvider";
 import DisplayExercisesAfterSubmit from "./Submitted/DisplayExercisesAfterSubmit";
+
+import { nanoid } from "nanoid";
 
 const Main = ({ selectedDate }) => {
   const { user } = useAuth(); //context
@@ -91,6 +93,45 @@ const Main = ({ selectedDate }) => {
     setIsExerciseOpen(false);
   };
 
+  const [copySets, setCopySets] = useState([]);
+
+  console.log(exerciseStats);
+
+  console.log(copySets);
+
+  const pasteExerciseData = async () => {
+    for (let i = 0; i < copySets.length; i++) {
+      const element = copySets[i];
+
+      await db
+        .collection("profiles")
+        .doc(user.uid)
+        .collection("workouts")
+        .add({
+          exercise: element.exercise,
+          sets: element.sets,
+          timeStamp: firebase.firestore.FieldValue.serverTimestamp(),
+          profileId: user.uid,
+          date: selectedDate,
+          notes: element.notes,
+          id: nanoid(),
+        })
+        .then(() => {
+          console.log("Document successfully written!");
+        })
+        .catch((error) => {
+          console.error("Error writing document: ", error);
+        });
+    }
+
+    setCopySets([]);
+    // setCurrentExerciseData({
+    //   currentExer: "",
+    //   notes: "",
+    //   sets: [],
+    // });
+  };
+
   return (
     <main className="pb-20 transition flex items-center flex-col dark:bg-black bg-gray-50 w-screen">
       <BodyPartsSelect
@@ -103,7 +144,12 @@ const Main = ({ selectedDate }) => {
       {currentExerciseData.currentExer.length > 0 || isCardOpen ? (
         <div></div>
       ) : (
-        <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
+        <div className="flex ">
+          <AddExercise openCard={openCard} exerciseStats={exerciseStats} />
+          <div onClick={pasteExerciseData}>
+            <p className="dark:text-white">paste</p>
+          </div>
+        </div>
       )}
 
       <AddExerciseModal
@@ -177,7 +223,15 @@ const Main = ({ selectedDate }) => {
         </div>
       )}
 
-      <div className="mt-5 w-11/12 sm:w-2/3  lg:max-w-xl">
+      <div className=" w-11/12 sm:w-2/3  lg:max-w-xl">
+        {exerciseStats.length > 0 && (
+          <div
+            className="mb-2 flex justify-end"
+            onClick={() => setCopySets(exerciseStats)}
+          >
+            <CopySet />
+          </div>
+        )}
         <DisplayExercisesAfterSubmit
           selectedDate={selectedDate}
           exerciseStats={exerciseStats}

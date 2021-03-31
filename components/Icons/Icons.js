@@ -18,6 +18,23 @@ const Add = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
   );
 };
 
+const Paste = ({ lineHeight, lineWidth, circleHeight, circleWidth }) => {
+  return (
+    <button
+      aria-label="Paste"
+      className={`inline-flex items-center justify-center ${circleHeight} ${circleWidth} mr-2 text-indigo-100 transition-colors bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800`}
+    >
+      <svg
+        className={`${lineHeight} ${lineWidth} fill-current`}
+        viewBox="0 0 20 20"
+      >
+        <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+        <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+      </svg>
+    </button>
+  );
+};
+
 const Correct = () => {
   return (
     <button
@@ -274,7 +291,7 @@ const CopySet = () => {
   return (
     <div
       aria-label="Copy Sets"
-      className=" inline-flex items-center justify-center w-10 h-10 text-gray-500 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white"
+      className=" cursor-pointer inline-flex items-center justify-center w-10 h-10 text-gray-500 transition-colors rounded-lg focus:shadow-outline hover:bg-indigo-900  hover:text-white"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -284,8 +301,8 @@ const CopySet = () => {
         viewBox="0 0 20 20"
         fill="currentColor"
       >
-        <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
-        <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+        <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+        <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
       </svg>
     </div>
   );
@@ -306,4 +323,5 @@ export {
   Logo,
   LiftLogo,
   CopySet,
+  Paste,
 };

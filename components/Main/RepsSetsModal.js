@@ -16,8 +16,6 @@ const RepsSetsModal = ({
     id: "",
   });
 
-  console.log(currentExerciseData);
-
   //number of sets of same reps and weight
   const [numOfSets, setNumOfSets] = React.useState(1);
 
