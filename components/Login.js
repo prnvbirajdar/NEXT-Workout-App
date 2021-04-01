@@ -59,7 +59,7 @@ const Login = () => {
                </button>*/}
                   <button
                     onClick={() => auth.signInAnonymously()}
-                    className="flex space-x-3 items-center mx-auto py-2.5 pl-4 lg:pr-12 pr-7 sm:pr-12 md:pr-7 lg:ml-14 shadow-lg bg-indigo-700 text-white rounded-sm"
+                    className="flex space-x-3 items-center mx-auto py-2.5 pl-3.5 lg:pr-12 pr-7 sm:pr-12 md:pr-7 lg:ml-14 shadow-lg bg-indigo-700 text-white rounded-sm"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ const Login = () => {
                         d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                       />
                     </svg>
-                    <p className="text-sm font-medium"> Continue as Guest</p>
+                    <p className="text-sm font-semibold"> Continue as Guest</p>
                   </button>
                   <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 </div>
