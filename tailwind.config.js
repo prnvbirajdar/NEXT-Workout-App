@@ -5,9 +5,6 @@ module.exports = windmill({
   darkMode: "class",
   theme: {
     extend: {
-      paddingRight: {
-        "pr-15": "60px",
-      },
       colors: {
         "accent-1": "#333",
       },
