@@ -49,7 +49,7 @@ const AddExercise = ({
       </div>
 
       {exerciseStats.length === 0 ? (
-        <div className="bg-white dark:bg-gray-900 transition h-auto p-5 px-10 rounded mt-20 max-w-xl mx-6 text-center">
+        <div className="bg-white dark:bg-gray-900 transition h-auto p-5 px-10 rounded mt-10 max-w-xl mx-6 text-center">
           <p className="text-gray-800 dark:text-gray-300 transition  font-semibold">
             No exercises recorded. <br className="block md:hidden" /> Click on
             'Add Exercise' to get started.
