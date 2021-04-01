@@ -1,12 +1,12 @@
 @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
-  height: 100vh;
+  min-height: 100vh;
   @apply bg-gray-50 dark:bg-black transition-all;
 }
-
-@tailwind components;
 
 .tooltip {
   @apply invisible absolute;
@@ -15,4 +15,3 @@ body {
 .has-tooltip:hover .tooltip {
   @apply visible z-50;
 }
-@tailwind utilities;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NavProfile from "../components/NavProfile";
+import Navbar from "../components/Navbar";
 import PhysicalStatsModal from "../components/Profile/PhysicalStatsModal";
 import { Card, CardBody } from "@windmill/react-ui";
 import { useAuth } from "../components/data/authProvider";
@@ -86,9 +86,8 @@ const Profile = () => {
           content="profile page"
         />
       </Head>
-      <section>
-        <div className="relative min-h-screen">
-          <NavProfile />
+      <section className="relative min-h-screen  overflow-hidden">
+          <Navbar />
           <DatePicker
             selected={startDate}
             name="startDate"
@@ -164,7 +163,6 @@ const Profile = () => {
             />
           </div>
           <Footer />
-        </div>
       </section>
     </React.Fragment>
   );

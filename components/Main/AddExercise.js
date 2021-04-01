@@ -8,7 +8,7 @@ const AddExercise = ({
 }) => {
   return (
     <div>
-      <div className="flex justify-around space-x-10 md:space-x-20">
+      <div className="flex justify-center space-x-10 lg:space-x-20">
         <div
           aria-label="Add Exercise"
           onClick={openCard}
