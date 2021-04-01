@@ -28,7 +28,6 @@ const uiConfig = {
   signInFlow: "popup",
   // We will display Google and Facebook as auth providers.
   signInOptions: [
-    firebase.auth.AnonymousAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],

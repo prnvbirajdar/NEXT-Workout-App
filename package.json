@@ -12,7 +12,6 @@
     "@windmill/react-ui": "^0.5.0",
     "autoprefixer": "^10.0.4",
     "firebase": "^8.2.6",
-    "firebaseui": "^4.8.0",
     "immer": "^8.0.1",
     "nanoid": "^3.1.20",
     "next": "latest",

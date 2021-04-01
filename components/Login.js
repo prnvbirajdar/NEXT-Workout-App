@@ -1,3 +1,4 @@
+import { Button } from "@windmill/react-ui";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import { auth, uiConfig } from "../components/data/firebase";
 
@@ -34,7 +35,11 @@ const Login = () => {
                 <h2 className="  md:text-lg text-center text-base font-medium mb-6 md:mb-12 leading-3  lg:leading-3 ">
                   Train hard, track smart.
                 </h2>
-                <div className="">
+                <div>
+                  <div onClick={() => auth.signInAnonymously()}>
+                    <Button>Guest</Button>
+                  </div>
+
                   <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 </div>
               </div>

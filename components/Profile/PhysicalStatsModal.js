@@ -118,15 +118,7 @@ const PhysicalStatsModal = ({
               </div>
             </div>
           </ModalBody>
-          <div className="flex justify-between">
-            <div
-              aria-label="delete"
-              layout="outline"
-              onClick={closeProfileModal}
-            >
-              <Delete aria-label="delete" />
-            </div>
-
+          <div className="flex justify-end">
             <div aria-label="correct" type="submit">
               <Correct aria-label="correct" />
             </div>
