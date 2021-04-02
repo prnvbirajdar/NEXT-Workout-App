@@ -5,10 +5,28 @@ import { auth, uiConfig } from "../components/data/firebase";
 const Login = () => {
   return (
     <main>
+      <div className="text-black px-5">
+        <p className="px-5 rounded py-1 bg-gray-300 block sm:hidden">Mobile</p>
+        <p className="px-5 rounded py-1 bg-red-300  hidden sm:block md:hidden">
+          Sm
+        </p>
+        <p className="px-5 rounded py-1 bg-green-300 hidden  sm:hidden md:block  lg:hidden">
+          Md
+        </p>
+        <p className="px-5 rounded py-1 bg-blue-300 hidden sm:hidden md:hidden lg:block xl:hidden">
+          Lg
+        </p>
+        <p className="px-5 rounded py-1 bg-yellow-300 hidden sm:hidden md:hidden lg:hidden xl:block 2xl:hidden">
+          xl
+        </p>
+        <p className="px-5 rounded py-1 bg-purple-300 hidden sm:hidden md:hidden lg:hidden xl:hidden 2xl:block">
+          2xl
+        </p>
+      </div>
       <div className="flex items-center min-h-screen p-6 bg-white dark:bg-gray-900">
         <div className="flex-0 h-full max-w-4xl mx-auto overflow-hidden bg-gray-100 rounded-lg shadow-xl dark:bg-black">
-          <div className="flex flex-col overflow-y-auto md:flex-row">
-            <div className="h-48 md:h-auto md:w-1/2">
+          <div className="flex flex-col overflow-y-auto md:flex-row w-72 sm:w-80">
+            <div className="h-48 md:h-auto md:w-1/2 ">
               <img
                 aria-hidden="true"
                 className="object-cover w-full h-full dark:hidden"
