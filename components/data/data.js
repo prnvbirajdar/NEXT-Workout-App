@@ -114,7 +114,11 @@ const exerciseList = [
       { id: 714, exercise: "Goblet Squat" },
       { id: 715, exercise: "Single Leg Deadlift" },
       { id: 716, exercise: "Hack Squat" },
-      { id: 717, exercise: "Good Mornings" },
+      { id: 717, exercise: "Good Morning" },
+      { id: 718, exercise: "Dumbbell RDL" },
+      { id: 719, exercise: "Cable Glute Kickback" },
+      { id: 720, exercise: "Machine Hip Abductors" },
+      { id: 721, exercise: "Machine Hip Adductors" },
     ],
   },
   {
