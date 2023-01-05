@@ -58,7 +58,7 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
               </div>
 
               <div className="md:block">
-                <div className="ml-8 flex items-baseline space-x-4">
+                <div className="ml-8 flex items-baseline sm:space-x-4">
                   <a
                     aria-label="Home"
                     onClick={() => {
@@ -97,12 +97,12 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                 </div>
               </div>
             </div>
-            <div className=" md:block">
-              <div className="ml-4 flex items-center md:ml-6">
+            <div className="md:block">
+              <div className="sm:ml-4 flex items-center md:ml-6">
                 <button
                   aria-label="dark mode"
                   onClick={toggleMode}
-                  className="bg-white hover:bg-gray-100 focus:ring focus:ring-gray-500 transition dark:bg-gray-800 dark:hover:bg-gray-900 focus:outline-none rounded-md p-1.5"
+                  className="hidden sm:block bg-white hover:bg-gray-100 focus:ring focus:ring-gray-500 transition dark:bg-gray-800 dark:hover:bg-gray-900 focus:outline-none rounded-md p-1.5"
                 >
                   {mode === "dark" ? (
                     <Sun aria-hidden="true" />
@@ -110,7 +110,7 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                     <Moon aria-hidden="true" />
                   )}
                 </button>
-                <div className="ml-6 relative" ref={wrapperRef}>
+                <div className="ml-2 sm:ml-6 relative" ref={wrapperRef}>
                   <div>
                     <button
                       aria-label="profile menu"
@@ -150,6 +150,22 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                       aria-orientation="vertical"
                       aria-labelledby="user-menu"
                     >
+                      <a
+                        href="#"
+                        className="block sm:hidden px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 "
+                        role="menuitem"
+                        tabIndex="0"
+                        onClick={() => {
+                          toggleMode();
+                          setProfileOpen(false)
+                        }}
+                      >
+                        {mode === "dark" ? (
+                          <Sun aria-hidden="true" />
+                        ) : (
+                          <Moon aria-hidden="true" />
+                        )}
+                      </a>
                       <a
                         href="#"
                         className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 "
