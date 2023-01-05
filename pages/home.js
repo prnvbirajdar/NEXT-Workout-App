@@ -67,8 +67,6 @@ const Home = () => {
         <meta
           name="viewport"
           content="initial-scale=1.0, width=device-width"
-          name="home.js"
-          content="home page"
         />
       </Head>
       <section>

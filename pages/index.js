@@ -26,8 +26,6 @@ export default function Home() {
         <meta
           name="viewport"
           content="initial-scale=1.0, width=device-width"
-          name="index.js"
-          content="index page"
         />
       </Head>
       <section>{!user && <Login />}</section>

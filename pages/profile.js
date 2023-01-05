@@ -86,8 +86,6 @@ const Profile = () => {
         <meta
           name="viewport"
           content="initial-scale=1.0, width=device-width"
-          name="profile.js"
-          content="profile page"
         />
       </Head>
       <section className="relative min-h-screen  overflow-hidden">
@@ -101,13 +99,13 @@ const Profile = () => {
         />
 
         <div className="pb-20 dark:bg-black transition-colors">
-          <div className="flex justify-center mt-8 pt-5">
+          {user?.displayName && <div className="flex justify-center mt-10 pt-5">
             <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
               <PersonalDetailsCard user={user} />
             </div>
-          </div>
+          </div>}
 
-          <div className="flex justify-center mt-8 pt-2">
+          <div className="flex justify-center mt-10 pt-2">
             <div className="w-full sm:w-1/2 lg:w-1/3 shadow text-gray-600 dark:text-gray-400 ">
               <Card>
                 <CardBody>
