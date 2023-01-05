@@ -133,12 +133,3 @@ const RepsSetsModal = ({
 };
 
 export default RepsSetsModal;
-
-//alternate way to update setCurrentExerciseData
-
-// setCurrentExerciseData((prevstate) => {
-//   return {
-//     ...prevstate,
-//     sets: [...prevstate.sets, ...setArray],
-//   };
-// });
