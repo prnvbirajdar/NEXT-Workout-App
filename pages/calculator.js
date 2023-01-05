@@ -89,9 +89,10 @@ const Calculator = () => {
             <div className="w-full sm:w-1/2 lg:w-1/3 text-gray-600 dark:text-gray-400">
               <Card className='shadow'>
                 <CardBody>
-                  <p className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-center text-xl">
-                    Weight Calculator
-                  </p>
+                  <h3 className="mb-4 font-semibold text-gray-600 dark:text-gray-300 text-center text-xl">
+                    Plates Calculator
+                  </h3>
+                  <p className='text-center mb-2'>Enter the weight you're planning to lift:</p>
                   <form onSubmit={(e) => {
                     e.preventDefault();
                     calculate(weight)
@@ -123,7 +124,7 @@ const Calculator = () => {
                   </div>
                 </CardBody>
               </Card>
-              <p className='text-xs mt-2 mx-4 sm:mx-0'>* The weights mentioned above are for one side of the bar. The bar is assumed to be 45 lbs.
+              <p className='text-xs mt-2 mx-4 sm:mx-0'>* The weights mentioned above are for one side of a 45 lbs bar.
               </p>
             </div>
           </div>
