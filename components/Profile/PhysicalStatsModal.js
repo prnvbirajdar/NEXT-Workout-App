@@ -13,8 +13,6 @@ const PhysicalStatsModal = ({
 }) => {
   const { user } = useAuth(); //context
 
-  console.log(physicalStats);
-
   const [newWeight, setNewWeight] = React.useState(physicalStats?.weight);
   const [newHeight, setNewHeight] = React.useState(physicalStats?.height);
   const [newDailyCalories, setNewDailyCalories] = React.useState(
