@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useContext } from "react";
 import { Transition } from "@headlessui/react";
 import { WindmillContext } from "@windmill/react-ui";
 import { useAuth } from "./data/authProvider";
-import { Moon, Sun, Calender, Home, LiftLogo } from "./Icons/Icons";
+import { Moon, Sun, Calender, Home, LiftLogo, Calculator } from "./Icons/Icons";
 import { useRouter } from "next/router";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -84,6 +84,16 @@ const Nav = ({ handleDateChange, selectedDate, highlightDates }) => {
                       </div>
                     }
                   />
+
+                  <a
+                    aria-label="Home"
+                    onClick={() => {
+                      router.push("/calculator");
+                    }}
+                    className="cursor-pointer dark:text-gray-300 text-gray-700 dark:hover:bg-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    <Calculator aria-label="Home" />
+                  </a>
                 </div>
               </div>
             </div>
