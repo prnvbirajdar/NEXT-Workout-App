@@ -179,7 +179,7 @@ const Main = ({ selectedDate }) => {
               )}
               {currentExerciseData?.sets?.length > 0 && (
                 <div>
-                  <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-xl">
+                  <p className="my-2 font-semibold text-gray-600 dark:text-gray-300 md:text-base">
                     Notes
                   </p>
                   <div className=" sm:mx-4 ">
