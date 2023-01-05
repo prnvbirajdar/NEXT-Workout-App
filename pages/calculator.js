@@ -111,7 +111,7 @@ const Calculator = () => {
                     <Correct
                       aria-label="correct" />
                   </form>
-                  <div className="flex flex-col justify-around p-2 mx-4 mb-2 mt-4">
+                  <div className="flex flex-col justify-around pt-2 sm:px-2 sm:mx-4 mt-4">
                     {Object.entries(displayWeights).reverse().map(([key, value]) => (
                       <div key={key} className="flex justify-between p-2 transition bg-gray-50 dark:bg-black rounded mb-3">
                         <label>{key === "2" ? "2.5" : key} lbs</label>
@@ -123,7 +123,7 @@ const Calculator = () => {
                   </div>
                 </CardBody>
               </Card>
-              <p className='text-xs mt-2'>* The weights mentioned above are for one side of the bar. The bar is assumed to be 45 lbs.
+              <p className='text-xs mt-2 mx-4 sm:mx-0'>* The weights mentioned above are for one side of the bar. The bar is assumed to be 45 lbs.
               </p>
             </div>
           </div>
